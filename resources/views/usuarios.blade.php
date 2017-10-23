@@ -4,10 +4,13 @@
 
 <table class="table table-bordered">
   <tr>
-    <th>Nome</th>
-    <th>Email</th>
-    <th class="col-md-1" align="center">Remover</th>
-    <th class="col-md-1">Ver</th>
+    <thead style="text-align:center">
+      <th>Nome</th>
+      <th>Email</th>
+      <th class="col-md-1" align="center">Remover</th>
+      <th class="col-md-1" align="center">Ver</th>
+    </thead>
+    
   </tr>
   @foreach ($usuarios as $u)
     <tr>

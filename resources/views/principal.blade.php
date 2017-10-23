@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="{{ URL::asset('nprogress/nprogress.css') }}" />
     <!-- Custom styling plus plugins -->
     <link rel="stylesheet" href="{{ URL::asset('build/css/custom.min.css') }}" />
+    <style type="text/css">
+      th {
+      text-align:center;
+      }
+    </style>
   </head>
   <body class="nav-md">
     <div class="container body">
