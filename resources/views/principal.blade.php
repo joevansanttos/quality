@@ -45,12 +45,12 @@
                   </li>
                   <li><a><i class="fa fa-user"></i> Usuários<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="usuarios">Consultores</a></li>
+                      <li><a href="/usuarios">Consultores</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-briefcase"></i> Clientes<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="clientes">Clientes</a></li>
+                      <li><a href="/clientes">Clientes</a></li>
                       <li><a href="departamentos">Departamentos</a></li>                        
                       <li><a href="gestores">Gestores</a></li>                          
                     </ul>
