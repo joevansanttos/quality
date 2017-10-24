@@ -1,5 +1,9 @@
 @extends('principal')
 
+@section("cabecalho")
+<h3>Usuários</h3>
+@stop
+
 @section("conteudo")
 
 <table class="table table-bordered">

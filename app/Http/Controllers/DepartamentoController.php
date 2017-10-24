@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Cliente;
 
 class DepartamentoController extends Controller
 {
-    public function novo($id){
+    public function mostra($id){
     	$cliente = Cliente::find($id);
     	return view ('departamento-formulario')->with('c', $cliente);
     }

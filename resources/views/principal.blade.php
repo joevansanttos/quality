@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Projek | Gestão da Qualidade Total</title>
+    <title>Projek - Quality</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ URL::asset('imagens/favicon.ico') }}"/>
     <link rel="stylesheet" href="{{ URL::asset('bootstrap/dist/css/bootstrap.min.css') }}" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ URL::asset('font-awesome/css/font-awesome.min.css') }}" />
@@ -27,12 +28,15 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index2.php" class="site_title"><img src="../../images/botao.png" width="40" right="40" ><span>PROJEK</span></a>
+              <a href="index2.php" class="site_title"><i class="fa fa-rocket"></i><span> Projek Quality</span>
+              </a>
             </div>
+
             <div class="clearfix"></div>
+
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="" alt="..." >
+                <img src="{{URL::asset('imagens/user.png')}}" alt="..." class="img-circle profile_img" >
               </div>
               <div class="profile_info">
                 <span>Bem Vindo,</span>
@@ -41,7 +45,6 @@
             <br />
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>Geral</h3>
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -122,12 +125,13 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>PROJEK</h3>
+                @yield('cabecalho')    
+                
               </div>
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
+                    <input type="text" class="form-control" placeholder="Pesquise...">
                     <span class="input-group-btn">
                       <button class="btn btn-default" type="button">Go!</button>
                     </span>
