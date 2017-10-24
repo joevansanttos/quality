@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 23-Out-2017 às 17:42
+-- Generation Time: 24-Out-2017 às 20:23
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -48,9 +48,60 @@ INSERT INTO `clientes` (`id`, `nome`) VALUES
 
 CREATE TABLE `departamentos` (
   `id` int(11) NOT NULL,
-  `cliente` int(11) DEFAULT NULL,
+  `cliente_id` int(11) DEFAULT NULL,
   `nome` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `departamentos`
+--
+
+INSERT INTO `departamentos` (`id`, `cliente_id`, `nome`) VALUES
+(8, 1, 'Teste');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `pis`
+--
+
+CREATE TABLE `pis` (
+  `departamento_id` int(11) DEFAULT NULL,
+  `codigo` varchar(20) NOT NULL,
+  `data_revisado` varchar(255) DEFAULT NULL,
+  `id_consultor` int(11) DEFAULT NULL,
+  `gestor_pi_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `pis`
+--
+
+INSERT INTO `pis` (`departamento_id`, `codigo`, `data_revisado`, `id_consultor`, `gestor_pi_id`) VALUES
+(8, '445454', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `stakeholders_dep`
+--
+
+CREATE TABLE `stakeholders_dep` (
+  `id` int(11) NOT NULL,
+  `responsavel` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `cargo` varchar(255) DEFAULT NULL,
+  `departamento_id` varchar(255) DEFAULT NULL,
+  `pi` varchar(20) DEFAULT NULL,
+  `telefone` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `stakeholders_dep`
+--
+
+INSERT INTO `stakeholders_dep` (`id`, `responsavel`, `email`, `cargo`, `departamento_id`, `pi`, `telefone`) VALUES
+(5, 'Fábio Dias', 'joevansantos@hotmail.com', 'Coordenador do setor da Folha de Pagamento', '8', NULL, '(71) 98444-4444');
 
 -- --------------------------------------------------------
 
@@ -97,6 +148,18 @@ ALTER TABLE `departamentos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pis`
+--
+ALTER TABLE `pis`
+  ADD PRIMARY KEY (`codigo`);
+
+--
+-- Indexes for table `stakeholders_dep`
+--
+ALTER TABLE `stakeholders_dep`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -115,7 +178,12 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT for table `departamentos`
 --
 ALTER TABLE `departamentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `stakeholders_dep`
+--
+ALTER TABLE `stakeholders_dep`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `usuarios`
 --

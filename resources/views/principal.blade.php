@@ -59,13 +59,13 @@
                   <li><a><i class="fa fa-briefcase"></i> Clientes<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="/clientes">Clientes</a></li>
-                      <li><a href="departamentos">Departamentos</a></li>                        
+                      <li><a href="/departamentos">Departamentos</a></li>                        
                       <li><a href="gestores">Gestores</a></li>                          
                     </ul>
                   </li>
                   <li><a><i class="fa fa-file-text"></i> Mapeamento<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="processos">Processos em Andamento</a></li>  
+                      <li><a href="/pis">Processos</a></li>  
                     </ul>
                   </li>           
                 </ul>

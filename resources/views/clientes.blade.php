@@ -23,7 +23,7 @@
         <a href="produtos/remove/{{$c->id}}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
       </td>
       <td align="center">
-        <a href="departamentos/mostra/{{$c->id}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+        <a href="departamentos/novo/{{$c->id}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
       </td>
     </tr>
   @endforeach
