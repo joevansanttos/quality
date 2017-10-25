@@ -16,13 +16,13 @@
   @foreach ($pis as $p)
     
     <tr>
-      <td>{{$p->codigo}}</td>
+      <td>{{$p->id}}</td>
           
       <td align="center">
         <a href="produtos/remove/{{$p->id}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
       </td>
       <td align="center">
-        <a href="pis/mostra/{{$p->codigo}}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+        <a href="pis/mostra/{{$p->id}}"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
       </td>
       <td align="center">
         <a href="pis/novo/{{$p->id}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>

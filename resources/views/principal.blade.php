@@ -152,6 +152,7 @@
           </div>
         </div>      
         <!-- /page content -->
+
         <!-- footer content -->
         <footer>
           <div class="pull-right">
@@ -160,12 +161,15 @@
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
+        
       </div>
     </div>
+
     <script type="text/javascript" src="{{URL::asset('jquery/dist/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('nprogress/nprogress.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('build/js/custom.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('fastclick/lib/fastclick.js')}}"></script>
     @yield('script') 
   </body>
 </html>

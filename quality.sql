@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 24-Out-2017 às 20:23
+-- Generation Time: 25-Out-2017 às 20:45
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -25,6 +25,45 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `aplicacoes`
+--
+
+CREATE TABLE `aplicacoes` (
+  `id` int(11) NOT NULL,
+  `pi_id` int(11) DEFAULT NULL,
+  `descricao` varchar(1000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `aplicacoes`
+--
+
+INSERT INTO `aplicacoes` (`id`, `pi_id`, `descricao`) VALUES
+(1, 445454, 'aplicacao');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `classificacoes`
+--
+
+CREATE TABLE `classificacoes` (
+  `id` int(11) NOT NULL,
+  `descricao` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `classificacoes`
+--
+
+INSERT INTO `classificacoes` (`id`, `descricao`) VALUES
+(1, 'Operação'),
+(2, 'Gestão'),
+(3, 'Suporte');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `clientes`
 --
 
@@ -39,6 +78,25 @@ CREATE TABLE `clientes` (
 
 INSERT INTO `clientes` (`id`, `nome`) VALUES
 (1, 'Gevan');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `definicoes`
+--
+
+CREATE TABLE `definicoes` (
+  `id` int(11) NOT NULL,
+  `pi_id` varchar(11) DEFAULT NULL,
+  `descricao` varchar(10000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `definicoes`
+--
+
+INSERT INTO `definicoes` (`id`, `pi_id`, `descricao`) VALUES
+(2, '445454', 'definições');
 
 -- --------------------------------------------------------
 
@@ -62,12 +120,118 @@ INSERT INTO `departamentos` (`id`, `cliente_id`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `gestor_macro`
+--
+
+CREATE TABLE `gestor_macro` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) DEFAULT NULL,
+  `tel` varchar(25) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `cargo` varchar(255) DEFAULT NULL,
+  `macroprocesso_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `gestor_macro`
+--
+
+INSERT INTO `gestor_macro` (`id`, `nome`, `tel`, `email`, `cargo`, `macroprocesso_id`) VALUES
+(5, 'José Folha', '(71) 98998-8888', 'jose@gevan.com.br', 'Coordenador do setor da Folha de Pagamento', 4),
+(6, 'José', '(71) 98444-4444', 'jose@gevan.com', 'Adm', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `macroprocessos`
+--
+
+CREATE TABLE `macroprocessos` (
+  `id` int(11) NOT NULL,
+  `pi_id` varchar(11) NOT NULL,
+  `data_ultima` varchar(25) DEFAULT NULL,
+  `data_proxima` varchar(25) DEFAULT NULL,
+  `classificacao_id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `numero` varchar(10) NOT NULL,
+  `pessoas` int(11) NOT NULL,
+  `periodicidade_id` int(11) NOT NULL,
+  `horas` int(11) NOT NULL,
+  `descricao` varchar(2000) DEFAULT NULL,
+  `maturidade_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `maturidade`
+--
+
+CREATE TABLE `maturidade` (
+  `descricao` varchar(200) DEFAULT NULL,
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `maturidade`
+--
+
+INSERT INTO `maturidade` (`descricao`, `id`) VALUES
+('Estado inicial', 1),
+('Repetitivo', 2),
+('Definido', 3),
+('Gerenciado', 4),
+('Otimizado', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `objetivos`
+--
+
+CREATE TABLE `objetivos` (
+  `id` int(11) NOT NULL,
+  `pi_id` varchar(11) DEFAULT NULL,
+  `descricao` varchar(1000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `objetivos`
+--
+
+INSERT INTO `objetivos` (`id`, `pi_id`, `descricao`) VALUES
+(3, '445454', 'sasasas');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `periodicidade`
+--
+
+CREATE TABLE `periodicidade` (
+  `id` int(11) NOT NULL,
+  `descricao` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `periodicidade`
+--
+
+INSERT INTO `periodicidade` (`id`, `descricao`) VALUES
+(1, 'Diário'),
+(2, 'Semanal'),
+(3, 'Quinzenal'),
+(4, 'Mensal');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `pis`
 --
 
 CREATE TABLE `pis` (
   `departamento_id` int(11) DEFAULT NULL,
-  `codigo` varchar(20) NOT NULL,
+  `id` varchar(20) NOT NULL,
   `data_revisado` varchar(255) DEFAULT NULL,
   `id_consultor` int(11) DEFAULT NULL,
   `gestor_pi_id` int(11) DEFAULT NULL
@@ -77,7 +241,7 @@ CREATE TABLE `pis` (
 -- Extraindo dados da tabela `pis`
 --
 
-INSERT INTO `pis` (`departamento_id`, `codigo`, `data_revisado`, `id_consultor`, `gestor_pi_id`) VALUES
+INSERT INTO `pis` (`departamento_id`, `id`, `data_revisado`, `id_consultor`, `gestor_pi_id`) VALUES
 (8, '445454', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -136,9 +300,27 @@ INSERT INTO `usuarios` (`senha`, `nome`, `email`, `sexo`, `estado`, `cidade`, `t
 --
 
 --
+-- Indexes for table `aplicacoes`
+--
+ALTER TABLE `aplicacoes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `classificacoes`
+--
+ALTER TABLE `classificacoes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `clientes`
 --
 ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `definicoes`
+--
+ALTER TABLE `definicoes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -148,10 +330,40 @@ ALTER TABLE `departamentos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `gestor_macro`
+--
+ALTER TABLE `gestor_macro`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `macroprocessos`
+--
+ALTER TABLE `macroprocessos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `maturidade`
+--
+ALTER TABLE `maturidade`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `objetivos`
+--
+ALTER TABLE `objetivos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `periodicidade`
+--
+ALTER TABLE `periodicidade`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pis`
 --
 ALTER TABLE `pis`
-  ADD PRIMARY KEY (`codigo`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `stakeholders_dep`
@@ -170,15 +382,55 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT for table `aplicacoes`
+--
+ALTER TABLE `aplicacoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `classificacoes`
+--
+ALTER TABLE `classificacoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `definicoes`
+--
+ALTER TABLE `definicoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `departamentos`
 --
 ALTER TABLE `departamentos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `gestor_macro`
+--
+ALTER TABLE `gestor_macro`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `macroprocessos`
+--
+ALTER TABLE `macroprocessos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `maturidade`
+--
+ALTER TABLE `maturidade`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `objetivos`
+--
+ALTER TABLE `objetivos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `periodicidade`
+--
+ALTER TABLE `periodicidade`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `stakeholders_dep`
 --
