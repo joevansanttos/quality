@@ -14,12 +14,18 @@ Route::get('/dashboard', 'LoginController@dashboard');
 Route::get('/users', 'UserController@lista');
 Route::get('/users/novo', 'UserController@novo');
 Route::post('/users/adiciona', 'UserController@adiciona');
-
+Route::get('/users/perfis', 'UserController@perfis');
+Route::resource('user-editar-formulario','UserController');
+Route::get('/users/encontrar/{id}', 'UserController@encontrar');
+Route::post('/users/alterar', 'UserController@alterar');
 
 Route::get('/clientes', 'ClienteController@lista');
 Route::get('/clientes/novo', 'ClienteController@novo');
 Route::post('/clientes/adiciona', 'ClienteController@adiciona');
 Route::post('/clientes/gestores', 'ClienteController@gestores');
+Route::resource('cliente-editar-formulario','ClienteController');
+Route::get('/clientes/encontrar/{id}', 'ClienteController@encontrar');
+Route::post('/clientes/alterar', 'ClienteController@alterar');
 
 Route::resource('departamento-formulario','DepartamentoController');
 Route::get('/departamentos/mostra/{id}', 'DepartamentoController@mostra');

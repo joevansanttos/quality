@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UserRequest;
 use Validator;
 use App\User;
+use Auth;
 
 class UserController extends Controller
 {
@@ -27,6 +28,11 @@ class UserController extends Controller
 	  return view('user-formulario');
 	}
 
+	public function perfis(){
+		$user = Auth::user();
+	  return view('user-profile')->with('u', $user);;
+	}
+
 	public function adiciona(UserRequest $request){
 		$user = User::create([
 			'name' => $request->name,
@@ -41,5 +47,16 @@ class UserController extends Controller
 
 		return redirect('/users')->withInput();
 	  
+	}
+
+	public function encontrar($id){
+		$user = User::find($id);
+		return view ('user-editar-formulario')->with('u', $user);
+	}
+
+	public function alterar(UserRequest $request){
+		$user = User::find($request->user_id);
+		$user->update($request->all());
+		return redirect('/users')->withInput();
 	}
 }

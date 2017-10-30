@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ URL::asset('font-awesome/css/font-awesome.min.css') }}" />
     <!-- NProgress -->
     <link rel="stylesheet" href="{{ URL::asset('nprogress/nprogress.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('bootstrap-daterangepicker/daterangepicker.css') }}" />
     <!-- Custom styling plus plugins -->
     <link rel="stylesheet" href="{{ URL::asset('build/css/custom.min.css') }}" />
     <style type="text/css">
@@ -108,10 +109,12 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="{{URL::asset('imagens/user.png')}}">
+                    {{Auth::user()->name}}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="../profiles/usuario-profile.php?>"> Perfil</a></li>
+                    <li><a href="users/perfis"> Perfil</a></li>
                     <li>
                       <a href="javascript:;">
                         <span>Configurações</span>
@@ -122,7 +125,9 @@
                   </ul>
                 </li>
                 <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false"></a>
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    
+                  </a>
                 </li>
               </ul>
             </nav>
@@ -183,6 +188,12 @@
     <script type="text/javascript" src="{{URL::asset('parsleyjs/dist/parsley.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('parsleyjs/dist/i18n/pt-br.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('raphael/raphael.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('morris.js/morris.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('raphael/raphael.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('moment/min/moment.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('bootstrap-daterangepicker/daterangepicker.js')}}"></script>
     @yield('script') 
   </body>
 </html>

@@ -32,4 +32,15 @@ class ClienteController extends Controller
      return redirect('/clientes')->withInput();
    }
 
+   public function encontrar($id){
+    $cliente = Cliente::find($id);
+    return view ('cliente-editar-formulario')->with('c', $cliente);
+   }
+
+   public function alterar(ClientesRequest $request){
+    $cliente = Cliente::find($request->cliente_id);
+    $cliente->update($request->all());
+    return redirect('/clientes')->withInput();
+   }
+
 }

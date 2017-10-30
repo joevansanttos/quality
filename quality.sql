@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 30-Out-2017 às 02:15
+-- Generation Time: 30-Out-2017 às 13:13
 -- Versão do servidor: 10.0.31-MariaDB-0ubuntu0.16.04.2
 -- PHP Version: 7.1.8
 
@@ -77,7 +77,7 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id`, `nome`) VALUES
-(1, 'Gevan');
+(1, 'Novo Gevan');
 
 -- --------------------------------------------------------
 
@@ -461,9 +461,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`password`, `name`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `updated_at`, `created_at`, `remember_token`) VALUES
-('0b1020edf5fc9f514e6adac231e012aa', 'Fabio', 'fabio@projek.com', 'masculino', 'BA', 'Salvador', '(71) 92332-2344', 10, 'Martins', NULL, NULL, NULL),
 ('$2y$10$jdbLBw30n9ARCaItEDqabuVnWXjSI0qHnSuC7TrYpoVS/dF7PZ2Iu', 'Maria', 'maria@projek.com', NULL, NULL, NULL, NULL, 28, NULL, '2017-10-26 01:24:44', '2017-10-26 01:24:44', '1ZKtZQhsVNtMWeCDyoYq9cxAQFvuuuHDKoboH491RdVdS4dNPVSsW4MX46V5'),
-('$2y$10$R58Ecc33APRPMNKHM2YyjOobbHIY.M8r6EzycSeXyjrO5ht6UjP7q', 'Joevan', 'joevansantos@hotmail.com', 'masculino', 'RJ', '3300936', '(71) 98344-4444', 31, 'Santos de Oliveira', '2017-10-29 11:50:00', '2017-10-29 11:50:00', NULL);
+('$2y$10$R58Ecc33APRPMNKHM2YyjOobbHIY.M8r6EzycSeXyjrO5ht6UjP7q', 'Joevan', 'joevansantos@projek.com', 'masculino', 'BA', '2917508', '(71) 98344-4444', 31, 'Santos', '2017-10-30 10:04:29', '2017-10-29 11:50:00', '2bRb3c0IHG5Pp8GltfSI5uqRtga8Z3WdH3n32Ul4rBGLXla5LsDjerqoc6GN');
 
 --
 -- Indexes for dumped tables

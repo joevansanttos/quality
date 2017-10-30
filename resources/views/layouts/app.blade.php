@@ -29,7 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('Projek', 'Projek') }}
+                        {{ config('Projek', 'Projek Quality') }}
                     </a>
                 </div>
 
