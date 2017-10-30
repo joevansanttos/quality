@@ -11,6 +11,12 @@ use App\Cliente;
 
 class ClienteController extends Controller
 {
+  
+  public function __construct()
+  {
+      $this->middleware('auth');
+  } 
+
    public function lista(){
      $clientes = Cliente::all();
      return view('clientes')->with('clientes', $clientes);

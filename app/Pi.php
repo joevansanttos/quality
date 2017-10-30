@@ -8,7 +8,7 @@ class Pi extends Model
 {
    protected $table = 'pis';
    public $timestamps = false;
-   protected $fillable = array('id', 'departamento_id');
+   protected $fillable = array('cod', 'departamento_id');
 
    public function objetivo(){
        return $this->hasOne('App\Objetivo');
@@ -22,11 +22,15 @@ class Pi extends Model
        return $this->hasOne('App\Definicao');
    } 
 
+   public function informacao(){
+       return $this->hasOne('App\Informacao');
+   } 
+
    public function macroprocessos(){
        return $this->hasMany('App\Macroprocesso');
    } 
 
-   public function classificacao(){
-       return $this->belongsTo('estoque\Classificacao');
+   public function departamento(){
+       return $this->belongsTo('App\Departamento');
    }
 }

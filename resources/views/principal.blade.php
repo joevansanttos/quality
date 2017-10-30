@@ -16,9 +16,7 @@
     <!-- Custom styling plus plugins -->
     <link rel="stylesheet" href="{{ URL::asset('build/css/custom.min.css') }}" />
     <style type="text/css">
-      th {
-      text-align:center;
-      }
+    
     </style>
   </head>
   <body class="nav-md">
@@ -40,6 +38,7 @@
               </div>
               <div class="profile_info">
                 <span>Bem Vindo,</span>
+                <h2>{{Auth::user()->name}}</h2>
               </div>
             </div>
             <br />
@@ -48,26 +47,36 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index2.php">Dashboard</a></li>
+                      <li><a href="/dashboard">Dashboard</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-user"></i> Usuários<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-users"></i> Usuários<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/usuarios">Consultores</a></li>
+                      <li><a href="/users">Consultores</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-briefcase"></i> Clientes<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="/clientes">Clientes</a></li>
                       <li><a href="/departamentos">Departamentos</a></li>                        
-                      <li><a href="gestores">Gestores</a></li>                          
+                      <li><a href="/gestores">Gestores</a></li>                          
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-file-text"></i> Mapeamento<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-wrench"></i> Mapeamento<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="/pis">Processos</a></li>  
                     </ul>
-                  </li>           
+                  </li>
+                  <li><a><i class="fa fa-line-chart"></i> Auditoria<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      
+                    </ul>
+                  </li>   
+                  <li><a><i class="fa fa-graduation-cap"></i> Universidade<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      
+                    </ul>
+                  </li>              
                 </ul>
               </div>
             </div>
@@ -109,7 +118,7 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Ajuda</a></li>
-                    <li><a href="../../logout.php"><i class="fa fa-sign-out pull-right"></i> Sair</a></li>
+                    <li><a href="/logout"><i class="fa fa-sign-out pull-right"></i> Sair</a></li>
                   </ul>
                 </li>
                 <li role="presentation" class="dropdown">
@@ -143,6 +152,7 @@
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
+                  @yield('titulo')
                   <div class="x_content">
                     @yield('conteudo')                    
                   </div>
@@ -170,6 +180,9 @@
     <script type="text/javascript" src="{{URL::asset('nprogress/nprogress.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('build/js/custom.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('fastclick/lib/fastclick.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('parsleyjs/dist/parsley.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('parsleyjs/dist/i18n/pt-br.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
     @yield('script') 
   </body>
 </html>

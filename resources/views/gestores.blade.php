@@ -1,9 +1,10 @@
 @extends('principal')
 
 @section("cabecalho")
-<h3>Dashboard</h3>
+<h3>Gestores</h3>
 @stop
 
 @section("conteudo")
+
 
 @stop

@@ -1,23 +1,23 @@
 @extends('principal')
 
 @section("cabecalho")
-<h3>Novo Processo</h3>
+<h3>Novo Subprocesso</h3>
 @stop
 
 @section("conteudo")
 
 
-<form action="/pis/adiciona_macroprocesso" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+<form action="/pis/macroprocessos/adiciona_subprocesso" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 	<input type="hidden" name="_token" value="{{csrf_token()}}">
 	<div class="form-group">
-		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nº do Processo<span class="required">*</span>
+		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nº do SubProcesso<span class="required">*</span>
 		</label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<input  data-inputmask="'mask' : '9{1,2}'" type="text"  id="n_processo" name="numero" required="required" class="form-control col-md-6 col-xs-12">
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Título do Processo<span class="required">*</span>
+		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Título do SubProcesso<span class="required">*</span>
 		</label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<input type="text"  id="t_processo" name="titulo" required="required" class="form-control col-md-7 col-xs-12">
@@ -62,8 +62,8 @@
 		</label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<select class="form-control col-md-3"  id="id_periodicidade" name="maturidade_id" required="required" >
-				@foreach ($maturidade as $m)
-				<option value="{{$m->id}}">{{$m->descricao}}</option>
+				@foreach ($maturidade as $mat)
+				<option value="{{$mat->id}}">{{$mat->descricao}}</option>
 				@endforeach
 			</select>  
 		</div>
@@ -97,7 +97,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 			<button type="reset" name="reset" class="btn btn-primary">Resetar</button>
 			<button id="send" type="submit" name="enviar" class="btn btn-success">Cadastrar</button>
-			<input type="hidden" name="pi_id" value="{{$p->id}}">
+			<input type="hidden" name="macroprocesso_id" value="{{$m->id}}">
 		</div>
 	</div>
 </form>

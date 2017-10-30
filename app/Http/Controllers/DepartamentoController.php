@@ -11,6 +11,10 @@ use App\StakeholderDepartamento;
 
 class DepartamentoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     
 		public function lista(){
 		  $departamentos = Departamento::all();

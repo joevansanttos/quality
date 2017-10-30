@@ -1,14 +1,19 @@
 @extends('principal')
 
+@section("cabecalho")
+<h3>Novo Usuário</h3>
+@stop
+
+
 @section("conteudo")
 
-<form id="form" action="/usuarios/adiciona" method="post"  enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+<form id="form" action="/users/adiciona" method="post"  enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
   <input type="hidden" name="_token" value="{{csrf_token()}}">
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nome <span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" id="nome" name="nome" data-parsley-maxlength="10" required="required" class="form-control col-md-7 col-xs-12">
+      <input type="text" id="nome" name="name" data-parsley-maxlength="10" required="required" class="form-control col-md-7 col-xs-12">
     </div>
   </div>
   <div class="form-group">
@@ -27,7 +32,7 @@
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="senha">Senha<span class="required">*</span></label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="password" id="senha" name="senha" required="required" class="form-control col-md-8 col-xs-12">
+      <input type="password" id="senha" name="password" required="required" class="form-control col-md-8 col-xs-12">
     </div>
   </div>
   <div class="form-group">

@@ -1,19 +1,25 @@
 <?php
 
 
-Route::get('/', function () {
-    return view('login-form');
-});
 
-Route::resource('auth', 'LoginController');
+Auth::routes();
 
-Route::get('/usuarios', 'UsuarioController@lista');
-Route::get('/usuarios/novo', 'UsuarioController@novo');
-Route::post('/usuarios/adiciona', 'UsuarioController@adiciona');
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::post('/login', 'LoginController@login');
+Route::get('/logout', 'LoginController@logout');
+Route::get('/dashboard', 'LoginController@dashboard');
+
+Route::get('/users', 'UserController@lista');
+Route::get('/users/novo', 'UserController@novo');
+Route::post('/users/adiciona', 'UserController@adiciona');
+
 
 Route::get('/clientes', 'ClienteController@lista');
 Route::get('/clientes/novo', 'ClienteController@novo');
 Route::post('/clientes/adiciona', 'ClienteController@adiciona');
+Route::post('/clientes/gestores', 'ClienteController@gestores');
 
 Route::resource('departamento-formulario','DepartamentoController');
 Route::get('/departamentos/mostra/{id}', 'DepartamentoController@mostra');
@@ -32,6 +38,10 @@ Route::resource('objetivo-formulario','PiController');
 Route::get('/pis/objetivo/{id}', 'PiController@objetivo');
 Route::post('/pis/adiciona_objetivo', 'PiController@adiciona_objetivo');
 
+Route::resource('informacao-formulario','PiController');
+Route::get('/pis/informacao/{id}', 'PiController@informacao');
+Route::post('/pis/adiciona_informacao', 'PiController@adiciona_informacao');
+
 Route::resource('aplicacao-formulario','PiController');
 Route::get('/pis/aplicacao/{id}', 'PiController@aplicacao');
 Route::post('/pis/adiciona_aplicacao', 'PiController@adiciona_aplicacao');
@@ -40,9 +50,26 @@ Route::resource('definicao-formulario','PiController');
 Route::get('/pis/definicao/{id}', 'PiController@definicao');
 Route::post('/pis/adiciona_definicao', 'PiController@adiciona_definicao');
 
-Route::resource('macroprocesso-formulario','PiController');
-Route::get('/pis/macroprocesso/{id}', 'PiController@macroprocesso');
-Route::post('/pis/adiciona_macroprocesso', 'PiController@adiciona_macroprocesso');
+Route::resource('macroprocesso-formulario','MacroController');
+Route::get('/pis/macroprocesso/{id}', 'MacroController@macroprocesso');
+Route::get('/pis/macroprocessos/{id}', 'MacroController@mostra');
+Route::post('/pis/adiciona_macroprocesso', 'MacroController@adiciona_macroprocesso');
+Route::resource('stakeholder-macro-formulario','MacroController');
+Route::get('/pis/macroprocessos/stakeholder/{id}', 'MacroController@stakeholder');
+Route::post('/pis/macroprocessos/adiciona_stakeholder', 'MacroController@adiciona_stakeholder');
+
+Route::resource('subprocesso-formulario','SubController');
+Route::get('/pis/macroprocessos/subprocesso/{id}', 'SubController@subprocesso');
+Route::post('/pis/macroprocessos/adiciona_subprocesso', 'SubController@adiciona_subprocesso');
+Route::get('/pis/macroprocessos/subprocessos/{id}', 'SubController@mostra');
+Route::resource('stakeholder-sub-formulario','SubController');
+Route::get('/pis/macroprocessos/subprocessos/stakeholder/{id}', 'SubController@stakeholder');
+Route::post('/pis/macroprocessos/subprocessos/adiciona_stakeholder', 'SubController@adiciona_stakeholder');
+
+Route::resource('microprocesso-formulario','MicroController');
+Route::get('/pis/macroprocessos/subprocessos/microprocesso/{id}', 'MicroController@microprocesso');
+Route::post('/pis/macroprocessos/subprocessos/microprocesso/adiciona_microprocesso', 'MicroController@adiciona_microprocesso');
+Route::get('/pis/macroprocessos/subprocessos/microprocessos/{id}', 'MicroController@mostra');
 
 
-Route::post('/login', 'LoginController@login');
+?>

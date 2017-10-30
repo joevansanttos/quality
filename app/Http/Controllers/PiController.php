@@ -8,19 +8,28 @@ use App\Http\Requests\PisRequest;
 use App\Http\Requests\ObjetivoRequest;
 use App\Http\Requests\AplicacaoRequest;
 use App\Http\Requests\DefinicaoRequest;
-use App\Http\Requests\MacroprocessoRequest;
+use App\Http\Requests\InformacaoRequest;
 use App\Pi;
 use App\Departamento;
 use App\Objetivo;
 use App\Aplicacao;
 use App\Definicao;
 use App\Macroprocesso;
+use App\Subprocesso;
 use App\Classificacao;
+use App\Informacao;
 use App\Periodicidade;
 use App\Maturidade;
+use App\GestorMacro;
+
 
 class PiController extends Controller
 {
+			public function __construct()
+			{
+			    $this->middleware('auth');
+			}
+
 			public function lista(){
 			  $pis = Pi::all();
 			  return view('pis')->with('pis', $pis);
@@ -53,6 +62,17 @@ class PiController extends Controller
 				return view ('objetivo-formulario')->with('p', $pi);
 			}
 
+			public function adiciona_informacao(InformacaoRequest $request){
+	    	$informacao = Informacao::create($request->all());
+	    	$id = $request->input('pi_id');
+	    	return redirect()->action('PiController@mostra', ['id' => $id ]);
+	    }
+
+	    public function informacao($id){
+				$pi = Pi::find($id);
+				return view ('informacao-formulario')->with('p', $pi);
+			}
+
 			public function adiciona_aplicacao(AplicacaoRequest $request){
 	    	$aplicacao = Aplicacao::create($request->all());
 	    	$id = $request->input('pi_id');
@@ -75,14 +95,6 @@ class PiController extends Controller
 				return view ('definicao-formulario')->with('p', $pi);
 			}
 
-			public function adiciona_macroprocesso(DefinicaoRequest $request){
-	    	$macroprocesso = Macroprocesso::create($request->all());
-	    	$id = $request->input('pi_id');
-	    	return redirect()->action('PiController@mostra', ['id' => $id ]);
-	    }
-
-	    public function macroprocesso($id){
-				$pi = Pi::find($id);
-				return view ('macroprocesso-formulario')->with('p', $pi)->with('classificacoes', Classificacao::all())->with('periodicidade', Periodicidade::all())->with('maturidade', Maturidade::all());
-			}
+			
+					
 }
