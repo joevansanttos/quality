@@ -56,15 +56,6 @@ class UserController extends Controller
 		
 		return redirect('/users')->withInput();
 
-
-		 
-
-		
-
-
-
-		
-
 		//return redirect('/users')->withInput();
 	  
 	}
@@ -78,5 +69,11 @@ class UserController extends Controller
 		$user = User::find($request->user_id);
 		$user->update($request->all());
 		return redirect('/users')->withInput();
+	}
+
+	public function remover($id){
+	 $user = User::find($id);
+	 $user->delete();
+	 return redirect('/users')->withInput();
 	}
 }

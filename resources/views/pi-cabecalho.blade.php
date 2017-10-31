@@ -5,20 +5,17 @@
       <div class="panel-heading primary ">
         <h4 class="panel-title">
           <a data-toggle="collapse" href="#objetivo">1. Objetivo</a>
-            <a href="/pis/objetivo/{{$p->id}}"><button data-toggle="tooltip" data-placement="top" title="Adicionar Objetivo" class="btn btn-info btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>      
-            <a  href="../forms/form-altera-objetivo"><button data-toggle="tooltip" data-placement="top" title="Editar" class="btn btn-info btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> 
+          @if (empty($p->objetivo))
+            <a href="/pis/objetivo/{{$p->id}}"><button data-toggle="tooltip" data-placement="top" title="Adicionar Objetivo" class="btn btn-info btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>
+          @else      
+            <a  href="/pis/objetivo/encontrar/{{$p->objetivo->id}}"><button data-toggle="tooltip" data-placement="top" title="Editar" class="btn btn-info btn-xs pull-right"><i class="fa fa-pencil"></i></button></a>
+          @endif 
           <div class="clearfix"></div>
         </h4>
       </div>
-      @if (!empty($p->objetivo))
       <div id="objetivo" class="panel-collapse collapse">
         <div class="panel-body">{{$p->objetivo->descricao}}</div>
       </div>
-      @else
-      <div id="objetivo" class="panel-collapse collapse">
-        <div class="panel-body"></div>
-      </div>
-      @endif
     </div>   
 </div>
 <!-- End Panel Objetivo -->
@@ -29,8 +26,11 @@
       <div class="panel-heading">
         <h4 class="panel-title">
           <a data-toggle="collapse" href="#aplicacao">2. Aplicação</a>
-            <a href="/pis/aplicacao/{{$p->id}}"><button data-toggle="tooltip" data-placement="top" title="Adicionar Aplicação" class="btn btn-info btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>   
-          <a href="../forms/form-altera-aplicacao.php?cod_pi?>"><button data-toggle="tooltip" data-placement="top" title="Editar" class="btn btn-info btn-xs pull-right"><i class="fa fa-pencil"></i></button></a>
+          @if (empty($p->aplicacao))
+          <a href="/pis/aplicacao/{{$p->id}}"><button data-toggle="tooltip" data-placement="top" title="Adicionar Aplicação" class="btn btn-info btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>
+          @else
+          <a href="/pis/aplicacao/encontrar/{{$p->aplicacao->id}}"><button data-toggle="tooltip" data-placement="top" title="Editar" class="btn btn-info btn-xs pull-right"><i class="fa fa-pencil"></i></button></a>
+          @endif
           <div class="clearfix"></div>
         </h4>
       </div>
@@ -52,9 +52,12 @@
   <div class="panel panel-info">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" href="#definicao">3. Definições</a>                              
+          <a data-toggle="collapse" href="#definicao">3. Definições</a>
+          @if (empty($p->definicao))                              
           <a href="/pis/definicao/{{$p->id}}"><button data-toggle="tooltip" data-placement="top" title="Adicionar Definições" class="btn btn-info btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>
-          <a href="../profiles/pi-profile.php?cod_pi"><button data-toggle="tooltip" data-placement="top" title="Editar" class="btn btn-info btn-xs pull-right"><i class="fa fa-pencil"></i></button></a>
+          @else
+          <a href="/pis/definicao/encontrar/{{$p->definicao->id}}"><button data-toggle="tooltip" data-placement="top" title="Editar" class="btn btn-info btn-xs pull-right"><i class="fa fa-pencil"></i></button></a>
+          @endif
           <div class="clearfix"></div>
         </h4>
       </div>                          

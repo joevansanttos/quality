@@ -18,6 +18,7 @@ Route::get('/users/perfis', 'UserController@perfis');
 Route::resource('user-editar-formulario','UserController');
 Route::get('/users/encontrar/{id}', 'UserController@encontrar');
 Route::post('/users/alterar', 'UserController@alterar');
+Route::get('/users/remover/{id}', 'UserController@remover');
 
 Route::get('/clientes', 'ClienteController@lista');
 Route::get('/clientes/novo', 'ClienteController@novo');
@@ -43,18 +44,28 @@ Route::get('/pis', 'PiController@lista');
 Route::resource('objetivo-formulario','PiController');
 Route::get('/pis/objetivo/{id}', 'PiController@objetivo');
 Route::post('/pis/adiciona_objetivo', 'PiController@adiciona_objetivo');
+Route::resource('objeto-alterar-formulario','PiController');
+Route::get('/pis/objetivo/encontrar/{id}', 'PiController@encontrar_objetivo');
+Route::post('/pis/objetivo/alterar', 'PiController@alterar_objetivo');
 
-Route::resource('informacao-formulario','PiController');
-Route::get('/pis/informacao/{id}', 'PiController@informacao');
-Route::post('/pis/adiciona_informacao', 'PiController@adiciona_informacao');
 
 Route::resource('aplicacao-formulario','PiController');
 Route::get('/pis/aplicacao/{id}', 'PiController@aplicacao');
 Route::post('/pis/adiciona_aplicacao', 'PiController@adiciona_aplicacao');
+Route::resource('aplicacao-alterar-formulario','PiController');
+Route::get('/pis/aplicacao/encontrar/{id}', 'PiController@encontrar_aplicacao');
+Route::post('/pis/aplicacao/alterar', 'PiController@alterar_aplicacao');
 
 Route::resource('definicao-formulario','PiController');
 Route::get('/pis/definicao/{id}', 'PiController@definicao');
 Route::post('/pis/adiciona_definicao', 'PiController@adiciona_definicao');
+Route::resource('definicao-alterar-formulario','PiController');
+Route::get('/pis/definicao/encontrar/{id}', 'PiController@encontrar_definicao');
+Route::post('/pis/definicao/alterar', 'PiController@alterar_definicao');
+
+Route::resource('informacao-formulario','PiController');
+Route::get('/pis/informacao/{id}', 'PiController@informacao');
+Route::post('/pis/adiciona_informacao', 'PiController@adiciona_informacao');
 
 Route::resource('macroprocesso-formulario','MacroController');
 Route::get('/pis/macroprocesso/{id}', 'MacroController@macroprocesso');

@@ -95,6 +95,48 @@ class PiController extends Controller
 				return view ('definicao-formulario')->with('p', $pi);
 			}
 
+			public function encontrar_objetivo($id){
+				$objetivo = Objetivo::find($id);
+				$pi = $objetivo->pi;
+				return view ('objetivo-alterar-formulario')->with('o', $objetivo)->with('p', $pi);
+			}
+
+			public function alterar_objetivo(ObjetivoRequest $request){
+				$objetivo = Objetivo::find($request->objetivo_id);
+				$objetivo->update($request->all());
+				$pi = $objetivo->pi;
+				$id = $pi->id;
+				return redirect()->action('PiController@mostra', ['id' => $id ]);
+			}
+
+			public function encontrar_aplicacao($id){
+				$aplicacao = Aplicacao::find($id);
+				$pi = $aplicacao->pi;
+				return view ('aplicacao-alterar-formulario')->with('a', $aplicacao)->with('p', $pi);
+			}
+
+			public function alterar_aplicacao(AplicacaoRequest $request){
+				$aplicacao = Aplicacao::find($request->aplicacao_id);
+				$aplicacao->update($request->all());
+				$pi = $aplicacao->pi;
+				$id = $pi->id;
+				return redirect()->action('PiController@mostra', ['id' => $id ]);
+			}
+
+			public function encontrar_definicao($id){
+				$definicao = Definicao::find($id);
+				$pi = $definicao->pi;
+				return view ('definicao-alterar-formulario')->with('d', $definicao)->with('p', $pi);
+			}
+
+			public function alterar_definicao(DefinicaoRequest $request){
+				$definicao = Definicao::find($request->definicao_id);
+				$definicao->update($request->all());
+				$pi = $definicao->pi;
+				$id = $pi->id;
+				return redirect()->action('PiController@mostra', ['id' => $id ]);
+			}
+
 			
 					
 }
