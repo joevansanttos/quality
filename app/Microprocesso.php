@@ -15,6 +15,10 @@ class Microprocesso extends Model
    }
 
    public function gestor(){
-       return $this->hasMany('App\GestorMicro');
+       return $this->hasOne('App\GestorMicro');
+   } 
+
+   public function stakeholders(){
+       return $this->hasMany('App\StakeholderMicro');
    } 
 }

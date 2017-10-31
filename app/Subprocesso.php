@@ -19,7 +19,7 @@ class Subprocesso extends Model
 	}
 
 	public function gestor(){
-	    return $this->hasMany('App\GestorSub');
+	    return $this->hasOne('App\GestorSub');
 	} 
 
 	public function stakeholders(){

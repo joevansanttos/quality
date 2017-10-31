@@ -60,4 +60,23 @@ class SubController extends Controller
       $id = $pi->id;      
       return redirect()->action('PiController@mostra', ['id' => $id ]);
      }
+
+     public function remover($id){
+      $subprocesso = Subprocesso::find($id);
+      $gestor = $subprocesso->gestor;
+      if(!empty($gestor)){
+        $gestor->delete();
+      }
+      $stakeholders = $subprocesso->stakeholders;
+      if(!empty($stakeholders)){        
+        foreach ($stakeholders as $stakeholder) {
+          $stakeholder->delete(); 
+        }     
+      }    
+      $macroprocesso = $subprocesso->macroprocesso;
+      $pi = $macroprocesso->pi;
+      $id = $pi->id;
+      $subprocesso->delete();      
+      return redirect()->action('PiController@mostra', ['id' => $id ]);
+     }
 }

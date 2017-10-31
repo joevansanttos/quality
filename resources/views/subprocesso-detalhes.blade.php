@@ -50,10 +50,10 @@
     </thead>
   </tr>
     <tr>
-      <td>{{$g[0]->nome}}</td>
-      <td>{{$g[0]->tel}}</td>
-      <td>{{$g[0]->email}}</td>
-      <td>{{$g[0]->cargo}}</td>
+      <td>{{$g->nome}}</td>
+      <td>{{$g->tel}}</td>
+      <td>{{$g->email}}</td>
+      <td>{{$g->cargo}}</td>
       <td align="center">
         <a href="pis/novo/{{$s->id}}"><button data-toggle="tooltip" data-placement="top" title="Novo Departamento" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button></a>
       </td>

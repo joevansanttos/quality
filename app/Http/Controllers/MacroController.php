@@ -55,5 +55,23 @@ class MacroController extends Controller
         return redirect()->action('PiController@mostra', ['id' => $id ]);
        }
 
+       public function remover($id){
+        $macroprocesso = Macroprocesso::find($id);
+        $gestor = $macroprocesso->gestor;
+        if(!empty($gestor)){
+          $gestor->delete();
+        }
+        $stakeholders = $macroprocesso->stakeholders;
+        if(!empty($stakeholders)){        
+          foreach ($stakeholders as $stakeholder) {
+            $stakeholder->delete(); 
+          }     
+        }    
+        $pi = $macroprocesso->pi;
+        $id = $pi->id;
+        $macroprocesso->delete();      
+        return redirect()->action('PiController@mostra', ['id' => $id ]);
+       }
+
 
 }

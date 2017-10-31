@@ -1,7 +1,7 @@
 @extends('principal')
 
 @section("cabecalho")
-<h3>{{$m->titulo}}</h3>
+<h3>{{$m->numero}}{{$m->titulo}}</h3>
 @stop
 
 @section("conteudo")
@@ -11,22 +11,6 @@
   <div class="clearfix"></div>
 </div>
 
-<table class="table table-bordered">
-    <tr>
-      <thead style="text-align:center">
-        <th>Nº</th>
-        <th>Título</th>
-        <th class="col-md-1" align="center">Editar</th>
-      </thead>
-    </tr>
-    <tr>
-      <td class="col-md-2">{{$m->numero}}</td>
-      <td class="col-md-9">{{$m->titulo}}</td>
-      <td align="center">
-        <a href="pis/novo/{{$m->id}}"><button data-toggle="tooltip" data-placement="top" title="Novo Departamento" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button></a>
-      </td>
-    </tr>
-</table>
 
 <table class="table table-bordered">
   <tr>
@@ -67,10 +51,10 @@
     </thead>
   </tr>
     <tr>
-      <td>{{$g[0]->nome}}</td>
-      <td>{{$g[0]->tel}}</td>
-      <td>{{$g[0]->email}}</td>
-      <td>{{$g[0]->cargo}}</td>
+      <td>{{$g->nome}}</td>
+      <td>{{$g->tel}}</td>
+      <td>{{$g->email}}</td>
+      <td>{{$g->cargo}}</td>
       <td align="center">
         <a href="pis/novo/{{$m->id}}"><button data-toggle="tooltip" data-placement="top" title="Novo Departamento" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button></a>
       </td>

@@ -35,7 +35,7 @@
                   <a data-toggle="collapse" data-parent="#accordion" href="<?=$idpanel?>">
                     {{$macroprocesso->numero}} {{$macroprocesso->titulo}}
                   </a>
-                  <a href="/pis/macroprocessos/stakeholder/{{$macroprocesso->id}}">
+                  <a href="/pis/macroprocessos/remover/{{$macroprocesso->id}}">
                     <button data-toggle="tooltip" data-placement="top" title="Remover Processo" class="btn btn-success btn-xs pull-right"><i class="fa fa-trash"></i></button>
                   </a>                                                         
                   <a href="/pis/macroprocessos/{{$macroprocesso->id}}">

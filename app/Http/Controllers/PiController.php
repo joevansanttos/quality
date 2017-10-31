@@ -9,6 +9,8 @@ use App\Http\Requests\ObjetivoRequest;
 use App\Http\Requests\AplicacaoRequest;
 use App\Http\Requests\DefinicaoRequest;
 use App\Http\Requests\InformacaoRequest;
+use App\Http\Controllers\MacroController;
+
 use App\Pi;
 use App\Departamento;
 use App\Objetivo;
@@ -136,6 +138,61 @@ class PiController extends Controller
 				$id = $pi->id;
 				return redirect()->action('PiController@mostra', ['id' => $id ]);
 			}
+
+			public function encontrar_informacao($id){
+				$informacao = Informacao::find($id);
+				$pi = $informacao->pi;
+				return view ('informacao-alterar-formulario')->with('i', $informacao)->with('p', $pi);
+			}
+
+			public function alterar_informacao(InformacaoRequest $request){
+				$informacao = Informacao::find($request->informacao_id);
+				$informacao->update($request->all());
+				$pi = $informacao->pi;
+				$id = $pi->id;
+				return redirect()->action('PiController@mostra', ['id' => $id ]);
+			}
+
+			public function encontrar($id){
+				$pi = Pi::find($id);
+				return view ('pi-alterar-formulario')->with('p', $pi);
+			}
+
+			public function alterar(PisRequest $request){
+				$pi = Pi::find($request->pi_id);
+				$pi->update($request->all());
+				return redirect('/pis')->withInput();
+			}
+
+			public function remover($id){
+			 $pi = Pi::find($id);
+			 $objetivo = $pi->objetivo;
+			 if(!empty($objetivo)){
+			 	$objetivo->delete();
+			 }
+			 $aplicacao = $pi->aplicacao;
+			 if(!empty($aplicacao)){
+			 	$aplicacao->delete();
+			 }
+			 $definicao = $pi->definicao;
+			 if(!empty($definicao)){
+			 	$definicao->delete();
+			 }
+			 $informacao = $pi->informacao;
+			 if(!empty($informacao)){
+			 	$informacao->delete();
+			 }
+			 $macroprocessos = $pi->macroprocessos;
+			 if(!empty($macroprocessos)){
+			 		$macroController = new MacroController;	        
+			   foreach ($macroprocessos as $macroprocesso) {
+			   		$macroController->remover($macroprocesso->id);
+			   }     
+			 }    
+			 $pi->delete();
+			 return redirect('/pis')->withInput();
+			}
+
 
 			
 					

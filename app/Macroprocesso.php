@@ -19,7 +19,7 @@ class Macroprocesso extends Model
    	} 
 
    	public function gestor(){
-   	    return $this->hasMany('App\GestorMacro');
+   	    return $this->hasOne('App\GestorMacro');
    	} 
 
     public function stakeholders(){

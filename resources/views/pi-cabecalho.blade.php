@@ -34,15 +34,9 @@
           <div class="clearfix"></div>
         </h4>
       </div>
-      @if (!empty($p->aplicacao))
       <div id="aplicacao" class="panel-collapse collapse">
         <div class="panel-body">{{$p->aplicacao->descricao}}</div>
       </div>
-      @else
-      <div id="aplicacao" class="panel-collapse collapse">
-        <div class="panel-body"></div>
-      </div>
-      @endif
     </div>   
 </div>
 <!-- End Panel Aplicacao -->
@@ -61,15 +55,9 @@
           <div class="clearfix"></div>
         </h4>
       </div>                          
-      @if (!empty($p->definicao))
       <div id="definicao" class="panel-collapse collapse">
         <div class="panel-body">{{$p->definicao->descricao}}</div>
-      </div>
-      @else
-      <div id="definicao" class="panel-collapse collapse">
-        <div class="panel-body"></div>
-      </div>
-      @endif                       
+      </div>                     
     </div>   
 </div>
 <!-- End Panel Definicao -->
@@ -80,19 +68,17 @@
       <div class="panel-heading">
         <h4 class="panel-title">
           <a data-toggle="collapse" href="#informacao">4. Informações Gerais</a>
-            <a href="/pis/informacao/{{$p->id}}"><button data-toggle="tooltip" data-placement="top" title="Adicionar Informações" class="btn btn-info btn-xs  pull-right"><i class="fa fa-plus"></i></button></a> </a>  
+          @if (empty($p->informacao))
+            <a href="/pis/informacao/{{$p->id}}"><button data-toggle="tooltip" data-placement="top" title="Adicionar Informações" class="btn btn-info btn-xs  pull-right"><i class="fa fa-plus"></i></button></a> </a>
+          @else
+            <a href="/pis/informacao/encontrar/{{$p->informacao->id}}"><button data-toggle="tooltip" data-placement="top" title="Editar" class="btn btn-info btn-xs pull-right"><i class="fa fa-pencil"></i></button></a>
+          @endif  
           <div class="clearfix"></div>
         </h4>
       </div>
-      @if (!empty($p->informacao))
       <div id="informacao" class="panel-collapse collapse">
         <div class="panel-body">{{$p->informacao->descricao}}</div>
       </div>
-      @else
-      <div id="informacao" class="panel-collapse collapse">
-        <div class="panel-body"></div>
-      </div>
-      @endif
     </div>   
 </div>
 <!-- End Panel Informacao --> 

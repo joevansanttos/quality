@@ -14,7 +14,6 @@
       <th>Email</th>
       <th>Telefone</th>
       <th>Estado</th>
-      <th>Cidade</th>
       <th>Ações</th>
     </thead>
     
@@ -26,7 +25,6 @@
       <td>{{$u->email}}</td>
       <td>{{$u->telefone}}</td>
       <td>{{$u->estado}}</td>
-      <td>{{$u->cidade}}</td>
       <td align="center"> 
         <a href="users/remover/{{$u->id}}"><button data-toggle="tooltip" data-placement="top" title="Remove Cliente" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>            
       </td>
