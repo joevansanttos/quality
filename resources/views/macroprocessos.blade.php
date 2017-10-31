@@ -35,16 +35,19 @@
                   <a data-toggle="collapse" data-parent="#accordion" href="<?=$idpanel?>">
                     {{$macroprocesso->numero}} {{$macroprocesso->titulo}}
                   </a>
-                  <a href="/pis/macroprocessos/subprocesso/{{$macroprocesso->id}}">
-                    <button data-toggle="tooltip" data-placement="top" title="Adicionar Subprocesso" class="btn btn-success btn-xs pull-right"><i class="fa fa-plus"></i>
-                    </button>
-                  </a>                                                                   
+                  <a href="/pis/macroprocessos/stakeholder/{{$macroprocesso->id}}">
+                    <button data-toggle="tooltip" data-placement="top" title="Remover Processo" class="btn btn-success btn-xs pull-right"><i class="fa fa-trash"></i></button>
+                  </a>                                                         
                   <a href="/pis/macroprocessos/{{$macroprocesso->id}}">
                     <button data-toggle="tooltip" data-placement="top" title="Detalhes do Processo" class="btn btn-success btn-xs pull-right"><i class="fa fa-search"></i></button>
                   </a>
                   <a href="/pis/macroprocessos/stakeholder/{{$macroprocesso->id}}">
                     <button data-toggle="tooltip" data-placement="top" title="Adiciona Stakeholder" class="btn btn-success btn-xs pull-right"><i class="fa fa-users"></i></button>
-                  </a>  
+                  </a>
+                  <a href="/pis/macroprocessos/subprocesso/{{$macroprocesso->id}}">
+                    <button data-toggle="tooltip" data-placement="top" title="Adicionar Subprocesso" class="btn btn-success btn-xs pull-right"><i class="fa fa-plus"></i>
+                    </button>
+                  </a>    
                   <div class="clearfix"></div>
                 </h4>
               </div>

@@ -12,6 +12,23 @@
 </div>
 
 <table class="table table-bordered">
+    <tr>
+      <thead style="text-align:center">
+        <th>Nº</th>
+        <th>Título</th>
+        <th class="col-md-1" align="center">Editar</th>
+      </thead>
+    </tr>
+    <tr>
+      <td class="col-md-2">{{$m->numero}}</td>
+      <td class="col-md-9">{{$m->titulo}}</td>
+      <td align="center">
+        <a href="pis/novo/{{$m->id}}"><button data-toggle="tooltip" data-placement="top" title="Novo Departamento" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button></a>
+      </td>
+    </tr>
+</table>
+
+<table class="table table-bordered">
   <tr>
     <thead style="text-align:center">
       <th>Classificação</th>
@@ -19,7 +36,7 @@
       <th>Periodicidade</th>
       <th>Horas</th>
       <th>Maturidade</th>
-      <th class="col-md-1" align="center">Ações</th>
+      <th class="col-md-1" align="center">Editar</th>
     </thead>
   </tr>
     <tr>
