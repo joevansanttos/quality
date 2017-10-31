@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 30-Out-2017 às 13:13
+-- Generation Time: 31-Out-2017 às 11:37
 -- Versão do servidor: 10.0.31-MariaDB-0ubuntu0.16.04.2
 -- PHP Version: 7.1.8
 
@@ -453,16 +453,19 @@ CREATE TABLE `users` (
   `sobrenome` varchar(255) DEFAULT NULL,
   `updated_at` varchar(50) DEFAULT NULL,
   `created_at` varchar(50) DEFAULT NULL,
-  `remember_token` varchar(1000) DEFAULT NULL
+  `remember_token` varchar(1000) DEFAULT NULL,
+  `image` varchar(2000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`password`, `name`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `updated_at`, `created_at`, `remember_token`) VALUES
-('$2y$10$jdbLBw30n9ARCaItEDqabuVnWXjSI0qHnSuC7TrYpoVS/dF7PZ2Iu', 'Maria', 'maria@projek.com', NULL, NULL, NULL, NULL, 28, NULL, '2017-10-26 01:24:44', '2017-10-26 01:24:44', '1ZKtZQhsVNtMWeCDyoYq9cxAQFvuuuHDKoboH491RdVdS4dNPVSsW4MX46V5'),
-('$2y$10$R58Ecc33APRPMNKHM2YyjOobbHIY.M8r6EzycSeXyjrO5ht6UjP7q', 'Joevan', 'joevansantos@projek.com', 'masculino', 'BA', '2917508', '(71) 98344-4444', 31, 'Santos', '2017-10-30 10:04:29', '2017-10-29 11:50:00', '2bRb3c0IHG5Pp8GltfSI5uqRtga8Z3WdH3n32Ul4rBGLXla5LsDjerqoc6GN');
+INSERT INTO `users` (`password`, `name`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `updated_at`, `created_at`, `remember_token`, `image`) VALUES
+('$2y$10$jdbLBw30n9ARCaItEDqabuVnWXjSI0qHnSuC7TrYpoVS/dF7PZ2Iu', 'Maria', 'maria@projek.com', NULL, NULL, NULL, NULL, 28, NULL, '2017-10-26 01:24:44', '2017-10-26 01:24:44', '1ZKtZQhsVNtMWeCDyoYq9cxAQFvuuuHDKoboH491RdVdS4dNPVSsW4MX46V5', NULL),
+('$2y$10$R58Ecc33APRPMNKHM2YyjOobbHIY.M8r6EzycSeXyjrO5ht6UjP7q', 'Joevan', 'joevansantos@projek.com', 'masculino', 'BA', '2917508', '(71) 98344-4444', 31, 'Santos', '2017-10-30 10:04:29', '2017-10-29 11:50:00', 'ekfjS7J4iNZB2hXSnvaPvEzcTn0nbTNpyf7OAVLTEIsERNH9XAjfT5i1HcjU', NULL),
+('$2y$10$cd5DjiW6tbjvuBNV3YpzrOZ0NZBT0OaKB/l4A.ENeJbFBhU/nFnwO', 'Juliana', 'juliana@projek.com', 'feminino', 'PI', '2201101', '(71) 98333-3333', 48, 'Santos de Oliveira', '2017-10-31 10:18:25', '2017-10-31 10:18:25', '08r4DFhtOJ6TA99h034HHXlgqu2zH597l4oIgCmyHEzk7wnoQ2a85jNkufBq', 'image/X3KJrDreWsXw1glLF0ApezjSiQ1lxAhSqVJblclq.jpeg'),
+('$2y$10$nBAyk1Fg71pH9U8W5EYfwOpF7tJJxWWgku0YzymHijWvUxDsJtDyG', 'José', 'jose@hotmail.com', 'masculino', 'PI', '2201150', '(71) 98333-3333', 49, 'Paulo', '2017-10-31 10:33:57', '2017-10-31 10:33:57', NULL, 'public/6bpBQ1gWseNn8gGvVU6HvDIKIJHyYCHHfJN5qRxg.jpeg');
 
 --
 -- Indexes for dumped tables
@@ -691,7 +694,7 @@ ALTER TABLE `subprocessos`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

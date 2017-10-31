@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 use App\User;
 use Auth;
@@ -34,6 +35,7 @@ class UserController extends Controller
 	}
 
 	public function adiciona(UserRequest $request){
+
 		$user = User::create([
 			'name' => $request->name,
 			'sobrenome' => $request->sobrenome,
@@ -43,9 +45,27 @@ class UserController extends Controller
 			'sexo' =>$request->sexo,
 			'estado' =>$request->estado,
 			'cidade' =>$request->cidade,
+
 		]);
 
+		if ($request->hasFile('image')) {
+		  $path = $request->file('image')->store('public');
+		  $user->image = $path;
+		  $user->save();
+		}
+		
 		return redirect('/users')->withInput();
+
+
+		 
+
+		
+
+
+
+		
+
+		//return redirect('/users')->withInput();
 	  
 	}
 

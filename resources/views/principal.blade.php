@@ -35,7 +35,10 @@
 
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{URL::asset('imagens/user.png')}}" alt="..." class="img-circle profile_img" >
+                @unless(is_null(Auth::user()->image))
+                  <img src="{{asset('storage/user.png')}}" alt="..." class="img-circle profile_img" >
+                @endif
+                
               </div>
               <div class="profile_info">
                 <span>Bem Vindo,</span>
