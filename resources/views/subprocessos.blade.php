@@ -23,17 +23,16 @@
             <a data-toggle="collapse" data-parent="<?=$idaccordion2?>" href="<?=$idpanel2?>"> 
 
               {{$sub->numero}} {{$sub->titulo}} 
-              <a href="/pis/macroprocessos/subprocessos/remover/{{$sub->id}}">
+              <a href="subprocessos/remover/{{$sub->id}}">
                 <button data-toggle="tooltip" data-placement="top" title="Remover Subprocesso" class="btn btn-warning btn-xs pull-right"><i class="fa fa-trash"></i></button>
               </a>
-              <a href="/pis/macroprocessos/subprocessos/stakeholder/{{$sub->id}}">
-                    <button data-toggle="tooltip" data-placement="top" title="Adiciona Stakeholder" class="btn btn-warning btn-xs pull-right"><i class="fa fa-users"></i></button>
-              </a>      
-                                          
-              <a href="/pis/macroprocessos/subprocessos/{{$sub->id}}">
+              <a href="subprocessos/{{$sub->id}}">
                 <button data-toggle="tooltip" data-placement="top" title="Detalhes do Subprocesso" class="btn btn-warning btn-xs pull-right"><i class="fa fa-search"></i></button>
               </a>
-              <a href="/pis/macroprocessos/subprocessos/microprocesso/{{$sub->id}}">
+              <a href="subprocessos/stakeholder/{{$sub->id}}">
+                    <button data-toggle="tooltip" data-placement="top" title="Adiciona Stakeholder" class="btn btn-warning btn-xs pull-right"><i class="fa fa-users"></i></button>
+              </a>                           
+              <a href="microprocesso/{{$sub->id}}">
                 <button data-toggle="tooltip" data-placement="top" title="Adicionar Subprocesso" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i>
                 </button>
               </a>    
@@ -41,7 +40,11 @@
             </a>
           </h4>
         </div>
-        <div id="<?=$panel2?>" class="panel-collapse collapse"> 
+        <div id="<?=$panel2?>" class="panel-collapse collapse">
+          <div class="panel-body">
+            
+              
+          </div> 
 
            @include('microprocessos') 
                                                                        

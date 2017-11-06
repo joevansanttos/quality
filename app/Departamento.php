@@ -14,7 +14,11 @@ class Departamento extends Model
       return $this->belongsTo('App\Cliente');
   	}
 
-  	public function stakeholder(){
-  	    return $this->hasMany('App\StakeholderDepartamento');
+  	public function gestor(){
+  	    return $this->hasOne('App\GestorDep');
   	}
+
+  	public function pi(){
+  	    return $this->hasOne('App\Pi');
+  	} 
 }

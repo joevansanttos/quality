@@ -20,16 +20,16 @@
             <a data-toggle="collapse" href="<?=$idpanel3?>">
               {{$micro->numero}} {{$micro->titulo}}                           
             </a>
-            <a href="/pis/macroprocessos/subprocessos/microprocessos/remover/{{$micro->id}}">
+            <a href="microprocessos/remover/{{$micro->id}}">
               <button data-toggle="tooltip" data-placement="top" title="Remover Processo" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash"></i></button>
             </a>      
-            <a href="/pis/macroprocessos/subprocessos/microprocessos/{{$micro->id}}">
+            <a href="microprocessos/{{$micro->id}}">
               <button data-toggle="tooltip" data-placement="top" title="Detalhes do Subprocesso" class="btn btn-danger btn-xs pull-right"><i class="fa fa-search"></i></button>
             </a>
-            <a href="/pis/macroprocessos/subprocessos/microprocessos/stakeholder/{{$micro->id}}">
+            <a href="microprocessos/stakeholder/{{$micro->id}}">
               <button data-toggle="tooltip" data-placement="top" title="Adiciona Stakeholder" class="btn btn-danger btn-xs pull-right"><i class="fa fa-users"></i></button>
             </a>
-            <a href="../forms/form-altera-microprocesso.php?id_microprocesso"><button class="btn btn-danger btn-xs pull-right"><i class="fa fa-plus"></i></button></a> 
+            <a href=""><button class="btn btn-danger btn-xs pull-right"><i class="fa fa-plus"></i></button></a> 
             <div class="clearfix"></div>
           </h4>
         </div>

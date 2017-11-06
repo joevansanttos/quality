@@ -193,6 +193,11 @@ class PiController extends Controller
 			 return redirect('/pis')->withInput();
 			}
 
+			public function imprimir($id){
+				$pi = Pi::find($id);
+				return view ('pi-imprimir')->with('p', $pi);
+			}
+
 
 			
 					

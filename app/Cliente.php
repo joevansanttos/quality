@@ -8,7 +8,10 @@ class Cliente extends Model
 {
   protected $table = 'clientes';
   public $timestamps = false;
-  protected $fillable = array('nome');
+  protected $fillable = array('nome', 'site', 'estado', 'cidade', 'bairro', 'endereco', 'segmento',  'tel' );
 
+  public function departamentos(){
+      return $this->hasMany('App\Departamento');
+  } 
   
 }

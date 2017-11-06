@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ClientesRequest;
+use App\Http\Controllers\DepartamentoController;
 use Validator;
 use App\Cliente;
 
@@ -40,6 +41,19 @@ class ClienteController extends Controller
    public function alterar(ClientesRequest $request){
     $cliente = Cliente::find($request->cliente_id);
     $cliente->update($request->all());
+    return redirect('/clientes')->withInput();
+   }
+
+   public function remover($id){
+    $cliente = Cliente::find($id);
+    $departamentos = $cliente->departamentos;
+    if(!empty($departamentos)){
+        $departamentoController = new DepartamentoController;         
+      foreach ($departamentos as $departamento) {
+          $departamentoController->remover($departamento->id);
+      }     
+    }    
+    $cliente->delete();
     return redirect('/clientes')->withInput();
    }
 

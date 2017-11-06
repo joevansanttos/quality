@@ -21,7 +21,7 @@ class UserController extends Controller
 	
 	public function lista(){
 	  $users = User::all();
-	  return view('users')->with('users', $users);
+	  return view('/users')->with('users', $users);
 
 	}	
 
@@ -56,7 +56,6 @@ class UserController extends Controller
 		
 		return redirect('/users')->withInput();
 
-		//return redirect('/users')->withInput();
 	  
 	}
 
@@ -68,6 +67,12 @@ class UserController extends Controller
 	public function alterar(UserRequest $request){
 		$user = User::find($request->user_id);
 		$user->update($request->all());
+		if ($request->hasFile('image')) {
+		  $path = $request->file('image')->store('public');
+		  $path = explode('/',$path);
+		  $user->image = $path[1];
+		  $user->save();
+		}
 		return redirect('/users')->withInput();
 	}
 
@@ -76,4 +81,9 @@ class UserController extends Controller
 	 $user->delete();
 	 return redirect('/users')->withInput();
 	}
+
+
+	
+
+
 }

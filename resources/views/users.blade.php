@@ -32,5 +32,5 @@
   @endforeach
 </table>
 <div class="ln_solid"></div> 
-<a class="btn btn-default"  href="users/novo"><i class="fa fa-plus"></i></a>
+<a class="btn btn-default"  href="/users/novo"><i class="fa fa-plus"></i></a>
 @stop

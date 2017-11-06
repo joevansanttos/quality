@@ -6,8 +6,22 @@
 
 @section("conteudo")
 
-<form action="/pis/alterar" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+<form action="alterar" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
   <input type="hidden" name="_token" value="{{csrf_token()}}">
+   <div class="form-group">
+     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Cliente<span class="required">*</span>
+     </label>
+     <div class="col-md-6 col-sm-6 col-xs-12">
+       <input type="text" readonly="readonly" value="{{$p->departamento->cliente->nome}}" id="cliente" name="cliente" required="required" class="form-control col-md-7 col-xs-12">
+     </div>
+   </div>
+  <div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Departamento<span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <input type="text" placeholder="{{$p->departamento->nome}}" readonly="readonly" class="form-control col-md-7 col-xs-12">
+    </div>
+  </div>
  <div class="form-group">
    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Código do PI<span class="required">*</span>
    </label>

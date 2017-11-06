@@ -6,7 +6,7 @@
 @stop
 
 @section("conteudo")
-<form action="/pis/definicao/alterar" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+<form action="alterar" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 	<input type="hidden" name="_token" value="{{csrf_token()}}">
 	<div class="form-group">
 		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Código PI<span class="required">*</span>

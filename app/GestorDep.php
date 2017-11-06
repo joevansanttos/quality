@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class StakeholderDepartamento extends Model
+class GestorDep extends Model
 {
-  protected $table = 'stakeholders_dep';
+  protected $table = 'gestor_dep';
   public $timestamps = false;
   protected $fillable = array('responsavel', 'email', 'cargo','telefone', 'departamento_id'); 
 

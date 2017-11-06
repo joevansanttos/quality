@@ -7,7 +7,7 @@
 
 @section("conteudo")
 
-<form id="form" action="/users/adiciona" method="post"  enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+<form id="form" action="adiciona" method="post"  enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
   <input type="hidden" name="_token" value="{{csrf_token()}}">
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nome <span class="required">*</span>
@@ -83,15 +83,6 @@
 @stop
 
 @section("script")
-<script type="text/javascript" src="{{URL::asset('jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
-<script type="text/javascript" src="{{URL::asset('parsleyjs/dist/parsley.min.js')}}"></script>
-<script type="text/javascript" src="{{URL::asset('cidade/cidades-estados-utf8.js')}}"></script>
-<script language="JavaScript" type="text/javascript" charset="utf-8">
-  new dgCidadesEstados({
-    cidade: document.getElementById('cidade'),
-    estado: document.getElementById('estado')
-   
-  })
-</script>
+
 
 @stop

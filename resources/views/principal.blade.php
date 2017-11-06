@@ -35,17 +35,20 @@
 
             <div class="profile clearfix">
               <div class="profile_pic">
-                @unless(is_null(Auth::user()->image))
+                @if(is_null(Auth::user()->image))
                   <img src="{{asset('storage/user.png')}}" alt="..." class="img-circle profile_img" >
+                @else
+                <img src="{{asset('storage/' . Auth::user()->image)}}" alt="..." class="img-circle profile_img" >
                 @endif
-                
               </div>
               <div class="profile_info">
                 <span>Bem Vindo,</span>
                 <h2>{{Auth::user()->name}}</h2>
               </div>
             </div>
+
             <br />
+
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
@@ -63,12 +66,11 @@
                     <ul class="nav child_menu">
                       <li><a href="/clientes">Clientes</a></li>
                       <li><a href="/departamentos">Departamentos</a></li>                        
-                      <li><a href="/gestores">Gestores</a></li>                          
                     </ul>
                   </li>
                   <li><a><i class="fa fa-wrench"></i> Mapeamento<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/pis">Processos</a></li>  
+                      <li><a href="/pis">Manuais de Processos</a></li>  
                     </ul>
                   </li>
                   <li><a><i class="fa fa-line-chart"></i> Auditoria<span class="fa fa-chevron-down"></span></a>
@@ -112,12 +114,16 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{URL::asset('imagens/user.png')}}">
+                    @if(is_null(Auth::user()->image))
+                        <img src="{{asset('storage/user.png' )}}" >
+                    @else
+                      <img src="{{asset('storage/' . Auth::user()->image)}}" >
+                    @endif                    
                     {{Auth::user()->name}}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="users/perfis"> Perfil</a></li>
+                    <li><a href="/users/perfis"> Perfil</a></li>
                     <li>
                       <a href="javascript:;">
                         <span>Configurações</span>
@@ -197,6 +203,15 @@
     <script type="text/javascript" src="{{URL::asset('raphael/raphael.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('moment/min/moment.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('cidade/cidades-estados-utf8.js')}}"></script>
+    <script language="JavaScript" type="text/javascript" charset="utf-8">
+      new dgCidadesEstados({
+        cidade: document.getElementById('cidade'),
+        estado: document.getElementById('estado')
+       
+      })
+    </script>
     @yield('script') 
   </body>
 </html>

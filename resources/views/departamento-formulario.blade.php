@@ -6,7 +6,7 @@
 
 @section("conteudo")
 
-<form action="/departamentos/adiciona" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+<form action="adiciona" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
   <input type="hidden" name="_token" value="{{csrf_token()}}">
  <div class="form-group">
    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Cliente<span class="required">*</span>
@@ -27,7 +27,7 @@
      <label for="socio" class="control-label col-md-3 col-sm-3 col-xs-12">Responsável pelo Processo <span class="required">*</span></label>                      
      <div class=" col-sm-6 col-xs-12 col-md-6">
        <div class="form-group">
-         <input type="text" placeholder="Nome" name="responsavel" class="form-control">
+         <input type="text" placeholder="Nome" name="responsavel" required="required" class="form-control">
        </div>                      
        <div class="form-group">
          <input type="text" placeholder="Cargo" id="profissao" name="cargo" required="required" class="form-control col-md-7 col-xs-12">
