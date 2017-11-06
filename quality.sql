@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 06-Nov-2017 às 01:29
+-- Generation Time: 06-Nov-2017 às 15:45
 -- Versão do servidor: 10.0.31-MariaDB-0ubuntu0.16.04.2
 -- PHP Version: 7.1.8
 
@@ -72,13 +72,6 @@ CREATE TABLE `clientes` (
   `bairro` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Extraindo dados da tabela `clientes`
---
-
-INSERT INTO `clientes` (`id`, `nome`, `site`, `endereco`, `estado`, `cidade`, `tel`, `segmento`, `bairro`) VALUES
-(1, 'Gevan', 'www.gevan.com.br', 'Av. Afrânio Peixoto, 901 - Coutos, Salvador - BA, 40730-200', 'BA', '2927408', '(71) 3521-1344', 'Transporte', 'Coutos');
-
 -- --------------------------------------------------------
 
 --
@@ -103,13 +96,6 @@ CREATE TABLE `departamentos` (
   `nome` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `departamentos`
---
-
-INSERT INTO `departamentos` (`id`, `cliente_id`, `nome`) VALUES
-(1, 1, 'Financeiro');
-
 -- --------------------------------------------------------
 
 --
@@ -124,16 +110,6 @@ CREATE TABLE `gestor_dep` (
   `departamento_id` varchar(255) DEFAULT NULL,
   `telefone` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `gestor_dep`
---
-
-INSERT INTO `gestor_dep` (`id`, `responsavel`, `email`, `cargo`, `departamento_id`, `telefone`) VALUES
-(5, 'Fábio Dias', 'joevansantos@hotmail.com', 'Coordenador do setor da Folha de Pagamento', '8', '(71) 98444-4444'),
-(8, 'José Gevan', 'jose@hotmail.com', 'Diretor', '11', '(71) 98333-3333'),
-(9, 'Mario Slva 2', 'mario@teste.com', 'Diretor', '12', '(71) 98333-3333'),
-(10, 'José Gevan', 'jose@gevan.com.br', 'Diretor', '1', '(71) 98333-3333');
 
 -- --------------------------------------------------------
 
@@ -150,13 +126,6 @@ CREATE TABLE `gestor_macro` (
   `macroprocesso_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `gestor_macro`
---
-
-INSERT INTO `gestor_macro` (`id`, `nome`, `tel`, `email`, `cargo`, `macroprocesso_id`) VALUES
-(1, 'Marcos Gevan', '(71) 98333-3333', 'marcos@gevan.com', 'Contador', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -172,13 +141,6 @@ CREATE TABLE `gestor_micro` (
   `cargo` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `gestor_micro`
---
-
-INSERT INTO `gestor_micro` (`id`, `microprocesso_id`, `nome`, `email`, `tel`, `cargo`) VALUES
-(1, 7, 'Joevan', 'cat@hotmail.com', '(71) 33333-3333', 'Empresário');
-
 -- --------------------------------------------------------
 
 --
@@ -193,14 +155,6 @@ CREATE TABLE `gestor_sub` (
   `tel` varchar(25) DEFAULT NULL,
   `cargo` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `gestor_sub`
---
-
-INSERT INTO `gestor_sub` (`id`, `subprocesso_id`, `nome`, `email`, `tel`, `cargo`) VALUES
-(6, 12, 'Catharina', 'maria@projek.com', '(71) 98333-3333', 'Empresário'),
-(7, 13, 'Luciana Gevan', 'luciana@gevan.com', '(71) 98333-3333', 'Administradora');
 
 -- --------------------------------------------------------
 
@@ -234,13 +188,6 @@ CREATE TABLE `macroprocessos` (
   `descricao` varchar(2000) DEFAULT NULL,
   `maturidade_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `macroprocessos`
---
-
-INSERT INTO `macroprocessos` (`id`, `pi_id`, `data_ultima`, `data_proxima`, `classificacao_id`, `titulo`, `numero`, `pessoas`, `periodicidade_id`, `horas`, `descricao`, `maturidade_id`) VALUES
-(1, '1', NULL, NULL, 2, 'Compras', '1', 12, 3, 120, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -282,13 +229,6 @@ CREATE TABLE `microprocessos` (
   `horas` int(11) NOT NULL,
   `maturidade_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `microprocessos`
---
-
-INSERT INTO `microprocessos` (`id`, `subprocesso_id`, `descricao`, `numero`, `titulo`, `pessoas`, `classificacao_id`, `periodicidade_id`, `horas`, `maturidade_id`) VALUES
-(7, 12, '323232', '1', 'Subprocesso sub', 12, 1, 1, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -338,13 +278,6 @@ CREATE TABLE `pis` (
   `cod` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `pis`
---
-
-INSERT INTO `pis` (`departamento_id`, `id`, `data_revisado`, `id_consultor`, `gestor_pi_id`, `cod`) VALUES
-(1, 1, NULL, NULL, NULL, 'XXXXX');
-
 -- --------------------------------------------------------
 
 --
@@ -390,13 +323,6 @@ CREATE TABLE `stakeholders_sub` (
   `departamento` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `stakeholders_sub`
---
-
-INSERT INTO `stakeholders_sub` (`id`, `subprocesso_id`, `nome`, `email`, `cargo`, `departamento`) VALUES
-(1, 12, 'Paulo Carlos', 'paulo@hotmail.com', 'Vendedor', 'Compras');
-
 -- --------------------------------------------------------
 
 --
@@ -415,14 +341,6 @@ CREATE TABLE `subprocessos` (
   `horas` int(11) NOT NULL,
   `maturidade_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `subprocessos`
---
-
-INSERT INTO `subprocessos` (`id`, `macroprocesso_id`, `descricao`, `numero`, `titulo`, `pessoas`, `classificacao_id`, `periodicidade_id`, `horas`, `maturidade_id`) VALUES
-(12, 13, '2121', '1', 'Subprocesso', 12, 1, 1, 12, 1),
-(13, 1, 'Este subprocesso pertence ao processo de Compras', '1', 'Compras Subprocesso', 12, 1, 1, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -451,9 +369,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`password`, `name`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `updated_at`, `created_at`, `remember_token`, `image`) VALUES
-('$2y$10$R58Ecc33APRPMNKHM2YyjOobbHIY.M8r6EzycSeXyjrO5ht6UjP7q', 'Joevan', 'joevansantos@projek.com', 'masculino', 'BA', '2917508', '(71) 99673-0948', 31, 'Santos', '2017-11-04 14:52:37', '2017-10-29 11:50:00', 'GgCTXD0BgV5UkhoYA9nKiY62AogHpLORh1ZiTkDU8G3Rz3QXn3CcVxGjee7y', 'PdAEXi96Hn2we8M5ALbeEw61QO7rvB0u2LF7bS2A.png'),
-('$2y$10$cd5DjiW6tbjvuBNV3YpzrOZ0NZBT0OaKB/l4A.ENeJbFBhU/nFnwO', 'Juliana', 'juliana@projek.com', 'feminino', 'PI', '2201101', '(71) 98333-3333', 48, 'Santos de Oliveira', '2017-11-02 18:11:25', '2017-10-31 10:18:25', 'QsD9DYFDk8hirVTtgD4bJtXm6NAgjfiVVPfxS1dShgJRrjmmoXxdykgOTeWk', 'vYWBqFyPlyPnelARuFKGTgQHSKiuc6xCy4iEm0H0.jpeg'),
-('$2y$10$OSg6FK0u5W7XlYXh8mBRXeaD0hsJZ9rl3f2ykkoYFK.HqAKsOqw5G', 'Fábio', 'fabio.martins@projek.com.br', 'masculino', 'PR', '4101200', '(71) 98333-3333', 49, 'Martins', '2017-11-02 16:34:50', '2017-11-02 16:34:50', NULL, NULL);
+('$2y$10$lRjICI53Jk2lrSYBK9kXV.oi65ksqSju/Y9vmycmGohK4h6.WcriS', 'Fábio', 'fabio.martins@projek.com.br', 'masculino', 'BA', '2927408', '(71) 98333-3333', 50, 'Martins', '2017-11-06 14:44:39', '2017-11-06 14:44:39', '1Pgvfb7baEyI7YuwXQMoPMzhlHS6IVWl2TOihOILfw0YNU0ERiSu4xISXJkd', NULL);
 
 --
 -- Indexes for dumped tables
@@ -603,7 +519,7 @@ ALTER TABLE `classificacoes`
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `definicoes`
 --
@@ -613,27 +529,27 @@ ALTER TABLE `definicoes`
 -- AUTO_INCREMENT for table `departamentos`
 --
 ALTER TABLE `departamentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `gestor_dep`
 --
 ALTER TABLE `gestor_dep`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `gestor_macro`
 --
 ALTER TABLE `gestor_macro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `gestor_micro`
 --
 ALTER TABLE `gestor_micro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `gestor_sub`
 --
 ALTER TABLE `gestor_sub`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `informacoes`
 --
@@ -643,7 +559,7 @@ ALTER TABLE `informacoes`
 -- AUTO_INCREMENT for table `macroprocessos`
 --
 ALTER TABLE `macroprocessos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `maturidade`
 --
@@ -653,7 +569,7 @@ ALTER TABLE `maturidade`
 -- AUTO_INCREMENT for table `microprocessos`
 --
 ALTER TABLE `microprocessos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `objetivos`
 --
@@ -668,7 +584,7 @@ ALTER TABLE `periodicidade`
 -- AUTO_INCREMENT for table `pis`
 --
 ALTER TABLE `pis`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `stakeholders_macro`
 --
@@ -683,17 +599,17 @@ ALTER TABLE `stakeholders_micro`
 -- AUTO_INCREMENT for table `stakeholders_sub`
 --
 ALTER TABLE `stakeholders_sub`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `subprocessos`
 --
 ALTER TABLE `subprocessos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
