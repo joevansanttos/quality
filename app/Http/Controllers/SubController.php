@@ -79,4 +79,21 @@ class SubController extends Controller
       $subprocesso->delete();      
       return redirect()->action('PiController@mostra', ['id' => $id ]);
      }
+
+     public function encontrar($id){
+      $s = Subprocesso::find($id);
+      $g = $s->gestor;
+      return view ('sub-editar-formulario')->with('s', $s)->with('classificacoes', Classificacao::all())->with('periodicidade', Periodicidade::all())->with('maturidade', Maturidade::all())->with('g',($g));
+     }
+
+     public function alterar(SubRequest $request){
+       $subprocesso = Subprocesso::find($request->id);
+       $subprocesso->update($request->all());
+       $gestorSub = GestorSub::find($request->gestor_sub_id);
+       $input = $request->except('numero', 'id', 'titulo', 'pessoas', 'horas', 'classificacao_id', 'periodicidade_id', 'maturidade_id', 'descricao', 'gestor_sub_id');
+       $gestorSub->update($input);
+       $macroprocesso = $subprocesso->macroprocesso;
+       $pi = $macroprocesso->pi;
+       return redirect()->action('PiController@mostra', ['id' => $pi->id ]);
+     }
 }

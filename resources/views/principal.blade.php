@@ -8,16 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Projek - Quality</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ URL::asset('imagens/favicon.ico') }}"/>
-    <link rel="stylesheet" href="{{ URL::asset('bootstrap/dist/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ URL::asset('font-awesome/css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('vendors/font-awesome/css/font-awesome.min.css') }}" />
     <!-- NProgress -->
-    <link rel="stylesheet" href="{{ URL::asset('nprogress/nprogress.css') }}" />
-    <link rel="stylesheet" href="{{ URL::asset('bootstrap-daterangepicker/daterangepicker.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('vendors/nprogress/nprogress.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('vendors/bootstrap-daterangepicker/daterangepicker.css') }}" />
     <!-- Custom styling plus plugins -->
-    <link rel="stylesheet" href="{{ URL::asset('build/css/custom.min.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('vendors/build/css/custom.min.css') }}" />
     <style type="text/css">
-    
+      .carousel-control.left, .carousel-control.right {
+      background-image:none; 
+      color: rgba(0,0,0,0.3);
+      }
     </style>
   </head>
   <body class="nav-md">
@@ -35,7 +38,8 @@
 
             <div class="profile clearfix">
               <div class="profile_pic">
-                @if(is_null(Auth::user()->image))
+                @php($exists = Storage::disk('public')->exists(Auth::user()->image))
+                @if($exists == false )
                   <img src="{{asset('storage/user.png')}}" alt="..." class="img-circle profile_img" >
                 @else
                 <img src="{{asset('storage/' . Auth::user()->image)}}" alt="..." class="img-circle profile_img" >
@@ -114,7 +118,8 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    @if(is_null(Auth::user()->image))
+                    @php($exists = Storage::disk('public')->exists(Auth::user()->image))
+                    @if($exists == false)
                         <img src="{{asset('storage/user.png' )}}" >
                     @else
                       <img src="{{asset('storage/' . Auth::user()->image)}}" >
@@ -189,22 +194,24 @@
       </div>
     </div>
 
-    <script type="text/javascript" src="{{URL::asset('jquery/dist/jquery.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('bootstrap/dist/js/bootstrap.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('nprogress/nprogress.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('build/js/custom.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('fastclick/lib/fastclick.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('parsleyjs/dist/parsley.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('parsleyjs/dist/i18n/pt-br.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('raphael/raphael.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('morris.js/morris.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('raphael/raphael.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('moment/min/moment.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('bootstrap-daterangepicker/daterangepicker.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('cidade/cidades-estados-utf8.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/jquery/dist/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/nprogress/nprogress.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/build/js/custom.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/fastclick/lib/fastclick.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/parsleyjs/dist/parsley.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/parsleyjs/dist/i18n/pt-br.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/echarts/dist/echarts.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/Chart.js/dist/Chart.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/raphael/raphael.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/morris.js/morris.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/raphael/raphael.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/moment/min/moment.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/cidade/cidades-estados-utf8.js')}}"></script>
     <script language="JavaScript" type="text/javascript" charset="utf-8">
       new dgCidadesEstados({
         cidade: document.getElementById('cidade'),

@@ -1,12 +1,8 @@
 <?php
 
-
-
 Auth::routes();
 
-
 Route::get('/', 'HomeController@index')->name('home');
-
 Route::resource('dashboard','LoginController');
 Route::post('/login', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout');
@@ -29,6 +25,8 @@ Route::resource('cliente-editar-formulario','ClienteController');
 Route::get('/clientes/encontrar/{id}', 'ClienteController@encontrar');
 Route::post('/clientes/alterar', 'ClienteController@alterar');
 Route::get('/clientes/remover/{id}', 'ClienteController@remover');
+Route::get('/clientes/relatorio/{id}', 'ClienteController@relatorio');
+Route::get('/clientes/relatorio/imprime/{id}', 'ClienteController@imprime');
 
 Route::resource('departamento-formulario','DepartamentoController');
 Route::get('/departamentos/mostra/{id}', 'DepartamentoController@mostra');
@@ -47,7 +45,7 @@ Route::get('/pis/novo/{id}', 'PiController@novo');
 Route::get('/pis/encontrar/{id}', 'PiController@encontrar');
 Route::post('/pis/novo/adiciona', 'PiController@adiciona');
 Route::get('/pis', 'PiController@lista');
-Route::post('/pis/alterar', 'PiController@alterar');
+Route::post('/pis/encontrar/alterar', 'PiController@alterar');
 Route::get('/pis/remover/{id}', 'PiController@remover');
 Route::get('/pis/imprimir/{id}', 'PiController@imprimir');
 
@@ -87,6 +85,9 @@ Route::resource('stakeholder-macro-formulario','MacroController');
 Route::get('/pis/macroprocessos/stakeholder/{id}', 'MacroController@stakeholder');
 Route::post('/pis/macroprocessos/stakeholder/adiciona', 'MacroController@adiciona_stakeholder');
 Route::get('/pis/macroprocessos/remover/{id}', 'MacroController@remover');
+Route::resource('macro-editar-formulario','MacroController');
+Route::get('/pis/macroprocessos/encontrar/{id}', 'MacroController@encontrar');
+Route::post('/pis/macroprocessos/encontrar/alterar', 'MacroController@alterar');
 
 Route::resource('subprocesso-formulario','SubController');
 Route::get('/pis/subprocesso/{id}', 'SubController@subprocesso');
@@ -96,6 +97,10 @@ Route::resource('stakeholder-sub-formulario','SubController');
 Route::get('/pis/subprocessos/stakeholder/{id}', 'SubController@stakeholder');
 Route::post('/pis/subprocessos/stakeholder/adiciona', 'SubController@adiciona_stakeholder');
 Route::get('/pis/subprocessos/remover/{id}', 'SubController@remover');
+Route::resource('sub-editar-formulario','SubController');
+Route::get('/pis/subprocessos/encontrar/{id}', 'SubController@encontrar');
+Route::post('/pis/subprocessos/encontrar/alterar', 'SubController@alterar');
+
 
 
 Route::resource('microprocesso-formulario','MicroController');
@@ -106,6 +111,9 @@ Route::resource('stakeholder-micro-formulario','MicroController');
 Route::get('/pis/microprocessos/stakeholder/{id}', 'MicroController@stakeholder');
 Route::post('/pis/microprocessos/stakeholder/{id}', 'MicroController@adiciona_stakeholder');
 Route::get('/pis/microprocessos/remover/{id}', 'MicroController@remover');
+Route::resource('micro-editar-formulario','MicroController');
+Route::get('/pis/microprocessos/encontrar/{id}', 'MicroController@encontrar');
+Route::post('/pis/microprocessos/encontrar/alterar', 'MicroController@alterar');
 
 
 

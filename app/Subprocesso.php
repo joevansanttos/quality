@@ -15,7 +15,7 @@ class Subprocesso extends Model
 	}
 
 	public function microprocessos(){
-		return $this->hasMany('App\Microprocesso');
+		return $this->hasMany('App\Microprocesso')->orderBy('numero');
 	}
 
 	public function gestor(){

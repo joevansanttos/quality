@@ -18,11 +18,11 @@ class DepartamentoController extends Controller
         $this->middleware('auth');
     }
     
-		public function lista(){
-		  $departamentos = Departamento::all();
-		  return view('departamentos')->with('departamentos', $departamentos);
+	public function lista(){
+		$departamentos = Departamento::all();
+		return view('departamentos')->with('departamentos', $departamentos);
 
-		}	
+	}	
     public function mostra($id){
     	$cliente = Cliente::find($id);
     	return view ('departamento-formulario')->with('c', $cliente);

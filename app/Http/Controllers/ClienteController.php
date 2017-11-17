@@ -57,4 +57,15 @@ class ClienteController extends Controller
     return redirect('/clientes')->withInput();
    }
 
+   public function relatorio($id){
+     $cliente = Cliente::find($id);
+    return view ('cliente-relatorio')->with('c', $cliente);
+   }
+
+   public function imprime($id){
+     $cliente = Cliente::find($id);
+    return view ('relatorio-imprimir')->with('c', $cliente);
+   }
+
+
 }

@@ -27,7 +27,7 @@ class Pi extends Model
    } 
 
    public function macroprocessos(){
-       return $this->hasMany('App\Macroprocesso');
+       return $this->hasMany('App\Macroprocesso')->orderBy('numero');
    } 
 
    public function departamento(){

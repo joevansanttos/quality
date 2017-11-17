@@ -51,8 +51,10 @@
                   <div class="clearfix"></div>
                 </h4>
               </div>
-
-               @include('subprocessos')  
+             
+                
+                @include('subprocessos')  
+                 
                       
             </div>
           </div>

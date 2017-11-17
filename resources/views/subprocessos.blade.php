@@ -1,6 +1,7 @@
 
 <div id="<?=$panel?>" class="panel-collapse collapse">
   <div class="panel-body"> 
+    
   <?php
     $i = 1;
     $subprocessos = $macroprocesso->subprocessos;
@@ -22,7 +23,7 @@
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="<?=$idaccordion2?>" href="<?=$idpanel2?>"> 
 
-              {{$sub->numero}} {{$sub->titulo}} 
+              {{$sub->numero . '.'}} {{$sub->titulo}} 
               <a href="subprocessos/remover/{{$sub->id}}">
                 <button data-toggle="tooltip" data-placement="top" title="Remover Subprocesso" class="btn btn-warning btn-xs pull-right"><i class="fa fa-trash"></i></button>
               </a>
@@ -41,10 +42,6 @@
           </h4>
         </div>
         <div id="<?=$panel2?>" class="panel-collapse collapse">
-          <div class="panel-body">
-            
-              
-          </div> 
 
            @include('microprocessos') 
                                                                        

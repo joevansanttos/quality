@@ -18,7 +18,7 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" href="<?=$idpanel3?>">
-              {{$micro->numero}} {{$micro->titulo}}                           
+              {{$micro->numero . '.'}} {{$micro->titulo}}                           
             </a>
             <a href="microprocessos/remover/{{$micro->id}}">
               <button data-toggle="tooltip" data-placement="top" title="Remover Processo" class="btn btn-danger btn-xs pull-right"><i class="fa fa-trash"></i></button>
