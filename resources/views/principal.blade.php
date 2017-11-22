@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ URL::asset('vendors/bootstrap-daterangepicker/daterangepicker.css') }}" />
     <!-- Custom styling plus plugins -->
     <link rel="stylesheet" href="{{ URL::asset('vendors/build/css/custom.min.css') }}" />
+    
     <style type="text/css">
       .carousel-control.left, .carousel-control.right {
       background-image:none; 
