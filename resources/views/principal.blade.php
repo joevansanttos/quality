@@ -42,7 +42,7 @@
                 @if($exists == false )
                   <img src="{{asset('storage/user.png')}}" alt="..." class="img-circle profile_img" >
                 @else
-                <img src="{{asset('storage/' . Auth::user()->image)}}" alt="..." class="img-circle profile_img" >
+                  <img src="{{asset('storage/' . Auth::user()->image)}}" alt="..." class="img-circle profile_img" >
                 @endif
               </div>
               <div class="profile_info">
@@ -79,7 +79,7 @@
                   </li>
                   <li><a><i class="fa fa-line-chart"></i> Auditoria<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      
+                      <li><a href="/auditorias">Auditoria de Processos</a></li>
                     </ul>
                   </li>   
                   <li><a><i class="fa fa-graduation-cap"></i> Universidade<span class="fa fa-chevron-down"></span></a>

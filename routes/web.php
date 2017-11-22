@@ -115,6 +115,7 @@ Route::resource('micro-editar-formulario','MicroController');
 Route::get('/pis/microprocessos/encontrar/{id}', 'MicroController@encontrar');
 Route::post('/pis/microprocessos/encontrar/alterar', 'MicroController@alterar');
 
+Route::get('/auditorias', 'AuditoriaController@lista');
 
 
 ?>
