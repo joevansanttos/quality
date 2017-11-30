@@ -12,8 +12,12 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ URL::asset('vendors/font-awesome/css/font-awesome.min.css') }}" />
     <!-- NProgress -->
+     <link rel="stylesheet" href="{{ URL::asset('vendors/switchery/dist/switchery.min.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('vendors/nprogress/nprogress.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('vendors/bootstrap-daterangepicker/daterangepicker.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('vendors/select2/dist/css/select2.min.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('vendors/iCheck/skins/flat/green.css') }}" />
+   
     <!-- Custom styling plus plugins -->
     <link rel="stylesheet" href="{{ URL::asset('vendors/build/css/custom.min.css') }}" />
     
@@ -199,11 +203,15 @@
     <script type="text/javascript" src="{{URL::asset('vendors/jquery/dist/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('vendors/nprogress/nprogress.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('vendors/build/js/custom.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('vendors/fastclick/lib/fastclick.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('vendors/parsleyjs/dist/parsley.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('vendors/parsleyjs/dist/i18n/pt-br.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/iCheck/icheck.min.js')}}"></script>
+    
     <script type="text/javascript" src="{{URL::asset('vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/jquery.hotkeys/jquery.hotkeys.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/google-code-prettify/src/prettify.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendors/select2/dist/js/select2.full.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('vendors/echarts/dist/echarts.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('vendors/Chart.js/dist/Chart.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('vendors/raphael/raphael.min.js')}}"></script>
@@ -221,6 +229,7 @@
        
       })
     </script>
+    <script type="text/javascript" src="{{URL::asset('vendors/build/js/custom.min.js')}}"></script>
     @yield('script') 
   </body>
 </html>

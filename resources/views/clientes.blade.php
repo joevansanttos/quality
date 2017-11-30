@@ -9,17 +9,13 @@
 <table class="table table-bordered">
   <tr>
     <th>Nome</th> 
-    <th>Site</th>
     <th>Endereço</th>
-    <th>Segmento</th>    
     <th class="col-md-2">Ações</th>
   </tr>
   @foreach ($clientes as $c)
     <tr>
       <td>{{$c->nome}}</td>
-      <td>{{$c->site}}</td>
       <td>{{$c->endereco}}</td> 
-      <td>{{$c->segmento}}</td>       
       <td align="center">
         <a href="departamentos/novo/{{$c->id}}"><button data-toggle="tooltip" data-placement="top" title="Novo Departamento" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>
         <a href="clientes/relatorio/{{$c->id}}"><button data-toggle="tooltip" data-placement="top" title="Ver Relatório" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
