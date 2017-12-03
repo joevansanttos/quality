@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 03-Dez-2017 às 14:17
+-- Generation Time: 03-Dez-2017 às 19:52
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -53,15 +53,36 @@ INSERT INTO `aplicacoes` (`id`, `pi_id`, `descricao`) VALUES
 CREATE TABLE `auditorias` (
   `id` int(11) NOT NULL,
   `cod` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `cliente_id` int(11) DEFAULT NULL
+  `cliente_id` int(11) DEFAULT NULL,
+  `data` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `auditorias`
 --
 
-INSERT INTO `auditorias` (`id`, `cod`, `cliente_id`) VALUES
-(2, 'TESTE', 6);
+INSERT INTO `auditorias` (`id`, `cod`, `cliente_id`, `data`) VALUES
+(2, '1235387', 6, '2012-12-18');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `auditorias_auditorinfo`
+--
+
+CREATE TABLE `auditorias_auditorinfo` (
+  `id` int(11) NOT NULL,
+  `auditor` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `membros` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auditoria_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `auditorias_auditorinfo`
+--
+
+INSERT INTO `auditorias_auditorinfo` (`id`, `auditor`, `membros`, `auditoria_id`) VALUES
+(1, 'Juliana Bueno Colpas', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -128,7 +149,7 @@ CREATE TABLE `auditorias_contato` (
 --
 
 INSERT INTO `auditorias_contato` (`id`, `nome`, `email`, `tel`, `auditoria_id`) VALUES
-(1, 'Antonio Carlos', 'vendas@romiti.com.br', '(11) 3229-2000', 2);
+(1, 'Antonio Carlos Silva', 'vendas@romiti.com.br', '(11) 3229-2000', 2);
 
 -- --------------------------------------------------------
 
@@ -203,7 +224,7 @@ CREATE TABLE `auditorias_norma` (
 --
 
 INSERT INTO `auditorias_norma` (`id`, `norma`, `auditoria_id`) VALUES
-(2, '14790:2011', 2);
+(2, '14790:2012', 2);
 
 -- --------------------------------------------------------
 
@@ -6780,6 +6801,12 @@ ALTER TABLE `auditorias`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `auditorias_auditorinfo`
+--
+ALTER TABLE `auditorias_auditorinfo`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `auditorias_certificacao`
 --
 ALTER TABLE `auditorias_certificacao`
@@ -6991,6 +7018,11 @@ ALTER TABLE `aplicacoes`
 --
 ALTER TABLE `auditorias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `auditorias_auditorinfo`
+--
+ALTER TABLE `auditorias_auditorinfo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `auditorias_certificacao`
 --

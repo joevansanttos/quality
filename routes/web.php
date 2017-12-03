@@ -119,14 +119,24 @@ Route::get('/auditorias', 'AuditoriaController@lista');
 Route::get('/auditorias/novo', 'AuditoriaController@novo');
 Route::get('/auditorias/{id}', 'AuditoriaController@mostra');
 Route::post('/auditorias/adiciona', 'AuditoriaController@adiciona');
+Route::get('/auditorias/encontrar/{id}', 'AuditoriaController@encontrar');
+Route::post('/auditorias/encontrar/alterar', 'AuditoriaController@alterar');
 
 Route::get('/auditorias/{id}/gerais/contato/novo', 'AuditoriaGeraisController@novo_contato');
 Route::post('/auditorias/{id}/gerais/contato/adiciona', 'AuditoriaGeraisController@adiciona_contato');
+Route::get('/auditorias/{id}/gerais/contato/encontrar', 'AuditoriaGeraisController@encontrar_contato');
+Route::post('/auditorias/{id}/gerais/contato/alterar', 'AuditoriaGeraisController@alterar_contato');
 
 Route::get('/auditorias/{id}/informacoes/norma/novo', 'AuditoriaInformacaoController@nova_norma');
 Route::post('/auditorias/{id}/informacoes/norma/adiciona', 'AuditoriaInformacaoController@adiciona_norma');
+Route::get('/auditorias/{id}/informacoes/norma/encontrar', 'AuditoriaInformacaoController@encontrar_norma');
+Route::post('/auditorias/{id}/informacoes/norma/alterar', 'AuditoriaInformacaoController@alterar_norma');
 Route::get('/auditorias/{id}/informacoes/certificacao/novo', 'AuditoriaInformacaoController@informacoes_certificacao_novo');
 Route::post('/auditorias/{id}/informacoes/certificacao/adiciona', 'AuditoriaInformacaoController@adiciona_certificacao');
+Route::get('/auditorias/{id}/informacoes/certificacao/encontrar', 'AuditoriaInformacaoController@encontrar_certificacao');
+Route::post('/auditorias/{id}/informacoes/certificacao/alterar', 'AuditoriaInformacaoController@alterar_certificacao');
+Route::get('/auditorias/{id}/informacoes/auditorinfo/novo', 'AuditoriaInformacaoController@novo_auditorinfo');
+Route::post('/auditorias/{id}/informacoes/auditorinfo/adiciona', 'AuditoriaInformacaoController@adiciona_auditorinfo');
 Route::get('/auditorias/{id}/informacoes/plano/novo', 'AuditoriaInformacaoController@novo_plano');
 Route::post('/auditorias/{id}/informacoes/plano/adiciona', 'AuditoriaInformacaoController@adiciona_plano');
 

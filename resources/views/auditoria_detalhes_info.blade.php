@@ -19,13 +19,19 @@
             <div class="panel panel-danger">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" href="{{$normaId}}">2.1{{'.' . $normaString}} NORMA</a>                
+                  <a data-toggle="collapse" href="{{$normaId}}">2.1{{'.' . $normaString}} NORMA</a>
+                   <a href="{{$norma->id}}/informacoes/norma/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Norma" class="btn btn-danger btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                 
                   <div class="clearfix"></div>
                 </h4>
               </div>
               <div id="{{$normaHref}}" class="panel-collapse collapse">
-                <div class="panel-body">      
-                  {{$norma->norma}}                                       
+                <div class="panel-body"> 
+                  <table class="table table-bordered">
+                    <tr>
+                      <td>Norma: {{$norma->norma}}</td>
+                    </tr>
+                  </table>     
+                                                         
                 </div>
               </div>
             </div>   
@@ -44,21 +50,43 @@
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" href="#certificacao-escopo">2.2 ESCOPO DA CERTIFICAÇÃO</a>
-        <a href="{{$a->id}}/informacoes/certificacao/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Processo" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
+        @if ($a->certificacao != null)
+          <a href="{{$a->certificacao->id}}/informacoes/certificacao/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Certificação" class="btn btn-warning btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>
+        @else
+          <a href="{{$a->id}}/informacoes/certificacao/novo"><button data-toggle="tooltip" data-placement="top" title="Adicionar Certificação" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>
+        @endif
+                               
         <div class="clearfix"></div>
       </h4>
     </div>
     <div id="certificacao-escopo" class="panel-collapse collapse">
       <div class="panel-body">
-
-        <p>Inglês: {{$a->certificacao->ingles}}</p>  
-        <p>Português: {{$a->certificacao->portugues}}</p>
-        <p>Nº de Sites: {{$a->certificacao->sites}}</p> 
-        <p>Nº de Funcionários: {{$a->certificacao->funcionarios}}</p> 
-        <p>Escritório Central: {{$a->certificacao->escritorio}}</p> 
-        <p>Tipo de Auditoria: {{$a->certificacao->tipo}}</p>
-        <p>Data de Inicio: {{$a->certificacao->inicio}}</p> 
-        <p>Data de Término: {{$a->certificacao->termino}}</p>                                           
+        <table class="table table-bordered">
+          <tr>
+            <td>Inglês: {{$a->certificacao->ingles}}</td>
+          </tr>
+          <tr>
+            <td>Português: {{$a->certificacao->portugues}}</td>
+          </tr>
+          <tr>
+            <td>Nº de Sites: {{$a->certificacao->sites}}</td>
+          </tr>
+          <tr>
+            <td>Nº de Funcionários: {{$a->certificacao->funcionarios}}</td>
+          </tr>
+          <tr>
+            <td>Escritório Central: {{$a->certificacao->escritorio}}</td>
+          </tr>
+          <tr>
+            <td>Tipo de Auditoria: {{$a->certificacao->tipo}}</td>
+          </tr>
+          <tr>
+            <td>Data de Inicio: {{$a->certificacao->inicio}}</td>
+          </tr>
+          <tr>
+            <td>Data de Término: {{$a->certificacao->termino}}</td>
+          </tr>
+        </table>                                         
       </div>
     </div>
   </div>   
@@ -70,14 +98,14 @@
   <div class="panel panel-warning">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" href="#auditor-info">2.3 INFORMAÇÕES DO AUDITOR</a>
-        <a href="/informacoes/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Processo" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
+        <a data-toggle="collapse" href="#auditor-informacoes">2.3 INFORMAÇÕES DO AUDITOR</a>
+        <a href="{{$a->id}}/informacoes/auditorinfo/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Processo" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
         <div class="clearfix"></div>
       </h4>
     </div>
-    <div id="auditor-info" class="panel-collapse collapse">
+    <div id="auditor-informacoes" class="panel-collapse collapse">
       <div class="panel-body">      
-                                                    
+          {{$a->auditorinfo->auditor}}                                          
       </div>
     </div>
   </div>   

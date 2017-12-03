@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AuditoriaCertificacaoRequest;
 use App\Http\Requests\AuditoriaPlanoRequest;
 use App\Http\Requests\AuditoriaNormaRequest;
+use App\Http\Requests\AuditoriaAuditorInfoRequest;
 use App\Auditoria;
 use App\AuditoriaCertificacao;
 use App\AuditoriaPlano;
 use App\AuditoriaNorma;
+use App\AuditoriaAuditorInfo;
 
 
 class AuditoriaInformacaoController extends Controller
@@ -52,4 +54,38 @@ class AuditoriaInformacaoController extends Controller
     return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
   }
 
+  public function novo_auditorinfo($id){
+    $auditoria = Auditoria::find($id);
+    return view ('auditoria_auditorinfo_form')->with('a', $auditoria);
+  }
+
+  public function adiciona_auditorinfo(AuditoriaAuditorInfoRequest $request){
+    AuditoriaAuditorInfo::create($request->all());
+    $auditoria = Auditoria::find($request->auditoria_id);
+    return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
+  }
+
+  public function encontrar_norma($id){
+    $auditoriaNorma = AuditoriaNorma::find($id);
+    return view ('auditoria_norma_alterar')->with('a', $auditoriaNorma);
+  }
+
+  public function alterar_norma(AuditoriaNormaRequest $request){
+    $auditoriaNorma = AuditoriaNorma::find($request->auditoria_norma_id);
+    $auditoriaNorma->update($request->all());
+    $auditoria = Auditoria::find($auditoriaNorma->auditoria->id);
+    return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
+  }
+
+  public function encontrar_certificacao($id){
+    $auditoriaCertificacao = AuditoriaCertificacao::find($id);
+    return view ('auditoria_certificacao_alterar')->with('a', $auditoriaCertificacao);
+  }
+
+  public function alterar_certificacao(AuditoriaCertificacaoRequest $request){
+    $auditoriaCertificacao = AuditoriaCertificacao::find($request->auditoria_certificacao_id);
+    $auditoriaCertificacao->update($request->all());
+    $auditoria = Auditoria::find($auditoriaCertificacao->auditoria->id);
+    return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
+  }
 }

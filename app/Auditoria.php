@@ -8,7 +8,7 @@ class Auditoria extends Model
 {
   protected $table = 'auditorias';
   public $timestamps = false;
-  protected $fillable = array('cod', 'cliente_id');
+  protected $fillable = array('cod', 'data', 'cliente_id');
 
   public function cliente(){
       return $this->belongsTo('App\Cliente');
@@ -59,5 +59,9 @@ class Auditoria extends Model
 
   public function normas(){
       return $this->hasMany('App\AuditoriaNorma');
+  } 
+
+  public function auditorinfo(){
+      return $this->hasOne('App\AuditoriaAuditorInfo');
   } 
 }

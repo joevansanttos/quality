@@ -24,4 +24,16 @@ class AuditoriaGeraisController extends Controller
     $auditoria = Auditoria::find($request->auditoria_id);
     return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
   }
+
+  public function encontrar_contato($id){
+    $auditoriaContato = AuditoriaContato::find($id);
+    return view ('auditoria_contato_alterar')->with('a', $auditoriaContato);
+  }
+
+  public function alterar_contato(AuditoriaContatoRequest $request){
+    $auditoriaContato = AuditoriaContato::find($request->auditoria_contato_id);
+    $auditoriaContato->update($request->all());
+    $auditoria = Auditoria::find($auditoriaContato->auditoria->id);
+    return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
+  }
 }

@@ -36,5 +36,17 @@ class AuditoriaController extends Controller
     return redirect()->action('AuditoriaController@lista');
   }
 
+  public function encontrar($id){
+    $auditoria = Auditoria::find($id);
+    $clientes = Cliente::all();
+    return view ('auditoria_alterar_form')->with('a', $auditoria)->with('clientes', $clientes);
+  }
+
+  public function alterar(AuditoriaRequest $request){
+    $auditoria = Auditoria::find($request->auditoria_id);
+    $auditoria->update($request->all());
+    return redirect('/auditorias')->withInput();
+  }
+
   
 }
