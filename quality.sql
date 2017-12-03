@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 30-Nov-2017 às 16:23
+-- Generation Time: 03-Dez-2017 às 14:17
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -189,6 +189,25 @@ INSERT INTO `auditorias_naoconformidade` (`id`, `n_contrato`, `n_relatorio`, `au
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `auditorias_norma`
+--
+
+CREATE TABLE `auditorias_norma` (
+  `id` int(11) NOT NULL,
+  `norma` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auditoria_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `auditorias_norma`
+--
+
+INSERT INTO `auditorias_norma` (`id`, `norma`, `auditoria_id`) VALUES
+(2, '14790:2011', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `auditorias_notas`
 --
 
@@ -227,6 +246,52 @@ CREATE TABLE `auditorias_observacoes` (
 
 INSERT INTO `auditorias_observacoes` (`id`, `observacoes`, `auditoria_id`) VALUES
 (1, '1.', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `auditorias_plano`
+--
+
+CREATE TABLE `auditorias_plano` (
+  `data` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `horario` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `atividade` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `site` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `processo` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auditor` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `clausula` varchar(3000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auditoria_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `auditorias_plano`
+--
+
+INSERT INTO `auditorias_plano` (`data`, `horario`, `atividade`, `site`, `processo`, `auditor`, `clausula`, `auditoria_id`) VALUES
+('2012-12-06', '09:00', 'Auditoria', 'Cotia - SP SEDE', 'Sistema de Gestão: Compras, Recebimento, Vendas.', 'JBC', '4 Requisitos para o processo de cadeia de custódia -Método de separação física.', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `auditorias_recomendacao`
+--
+
+CREATE TABLE `auditorias_recomendacao` (
+  `id` int(11) NOT NULL,
+  `norma` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `acreditacao` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `copias` int(11) DEFAULT NULL,
+  `idioma` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auditoria_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `auditorias_recomendacao`
+--
+
+INSERT INTO `auditorias_recomendacao` (`id`, `norma`, `acreditacao`, `copias`, `idioma`, `auditoria_id`) VALUES
+(1, '14790:2011', 'UKAS', 0, 'Português (Brasil)', 2);
 
 -- --------------------------------------------------------
 
@@ -273,6 +338,20 @@ CREATE TABLE `auditorias_sumarionc` (
 
 INSERT INTO `auditorias_sumarionc` (`id`, `maior`, `menor`, `followup`, `data_followup`, `duracao`, `atual_followup`, `auditoria_id`) VALUES
 (1, 0, 2, 'N', NULL, NULL, NULL, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `auditorias_sumarionorma`
+--
+
+CREATE TABLE `auditorias_sumarionorma` (
+  `id` int(11) NOT NULL,
+  `numero` decimal(9,2) DEFAULT NULL,
+  `clausula` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `departamento` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auditoria_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -6731,6 +6810,12 @@ ALTER TABLE `auditorias_naoconformidade`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `auditorias_norma`
+--
+ALTER TABLE `auditorias_norma`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `auditorias_notas`
 --
 ALTER TABLE `auditorias_notas`
@@ -6743,6 +6828,12 @@ ALTER TABLE `auditorias_observacoes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `auditorias_recomendacao`
+--
+ALTER TABLE `auditorias_recomendacao`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `auditorias_revisao`
 --
 ALTER TABLE `auditorias_revisao`
@@ -6752,6 +6843,12 @@ ALTER TABLE `auditorias_revisao`
 -- Indexes for table `auditorias_sumarionc`
 --
 ALTER TABLE `auditorias_sumarionc`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `auditorias_sumarionorma`
+--
+ALTER TABLE `auditorias_sumarionorma`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6920,6 +7017,11 @@ ALTER TABLE `auditorias_eficacia`
 ALTER TABLE `auditorias_naoconformidade`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `auditorias_norma`
+--
+ALTER TABLE `auditorias_norma`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `auditorias_notas`
 --
 ALTER TABLE `auditorias_notas`
@@ -6928,6 +7030,11 @@ ALTER TABLE `auditorias_notas`
 -- AUTO_INCREMENT for table `auditorias_observacoes`
 --
 ALTER TABLE `auditorias_observacoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `auditorias_recomendacao`
+--
+ALTER TABLE `auditorias_recomendacao`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `auditorias_revisao`
@@ -6939,6 +7046,11 @@ ALTER TABLE `auditorias_revisao`
 --
 ALTER TABLE `auditorias_sumarionc`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `auditorias_sumarionorma`
+--
+ALTER TABLE `auditorias_sumarionorma`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `cidade`
 --

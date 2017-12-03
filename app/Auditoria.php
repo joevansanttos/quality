@@ -48,4 +48,16 @@ class Auditoria extends Model
   public function observacoes(){
       return $this->hasOne('App\AuditoriaObservacoes');
   }
+
+  public function recomendacao(){
+      return $this->hasMany('App\AuditoriaRecomendacao');
+  } 
+
+  public function planos(){
+      return $this->hasMany('App\AuditoriaPlano');
+  } 
+
+  public function normas(){
+      return $this->hasMany('App\AuditoriaNorma');
+  } 
 }

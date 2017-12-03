@@ -10,7 +10,7 @@
   <tr>
     <th>Cliente</th>
     <th>Código</th>    
-    <th class="col-md-2">Ações</th>    
+    <th class="col-md-1">Ações</th>    
   </tr>
   @foreach ($auditorias as $a)
     
@@ -18,7 +18,7 @@
       <td>{{$a->cliente->nome}}</td>
       <td>{{$a->cod}}</td>         
       <td align="center">
-        <a href="auditorias/{{$a->id}}"><button data-toggle="tooltip" data-placement="top" title="Adicionar no Manual" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>
+        <a href="auditorias/{{$a->id}}"><button data-toggle="tooltip" data-placement="top" title="Adicionar na Auditoria" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>
       </td>
     </tr>
   @endforeach

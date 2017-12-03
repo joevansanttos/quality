@@ -23,7 +23,7 @@ class AuditoriaController extends Controller
 
   public function mostra($id){
   	$auditoria = Auditoria::find($id);
-  	return view ('auditoria-detalhes')->with('a', $auditoria);
+  	return view ('auditoria_detalhes')->with('a', $auditoria);
   }
 
   public function novo(){
