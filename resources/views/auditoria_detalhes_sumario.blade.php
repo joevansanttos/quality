@@ -4,13 +4,22 @@
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" href="#auditoria-conclusoes">5.1 CONCLUSÕES DA AUDITORIA</a>
-        <a href="{{$a->id}}/sumario/conclusoes/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Processo" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
+         @if ($a->conclusoes != null)
+          <a href="{{$a->conclusoes->id}}/sumario/conclusoes/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Contato" class="btn btn-warning btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a> 
+         @else
+           <a href="{{$a->id}}/sumario/conclusoes/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Processo" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>
+         @endif
+                              
         <div class="clearfix"></div>
       </h4>
     </div>
     <div id="auditoria-conclusoes" class="panel-collapse collapse">
-      <div class="panel-body">  
-         {{$a->conclusoes->conclusao}}                         
+      <div class="panel-body"> 
+        <table class="table table-bordered">
+          <tr>
+            <td>Conclusão: {{$a->conclusoes->conclusao}}</td>
+          </tr>
+        </table>                          
       </div>
     </div>
   </div>   

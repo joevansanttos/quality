@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 03-Dez-2017 às 19:52
+-- Generation Time: 04-Dez-2017 às 02:38
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -128,7 +128,7 @@ CREATE TABLE `auditorias_conclusoes` (
 --
 
 INSERT INTO `auditorias_conclusoes` (`id`, `conclusao`, `auditoria_id`) VALUES
-(1, 'A auditoria transcorreu conforme previsto.', 2);
+(1, 'A auditoria transcorreu conforme previstoo.', 2);
 
 -- --------------------------------------------------------
 
@@ -197,15 +197,16 @@ CREATE TABLE `auditorias_naoconformidade` (
   `data_verificacao` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status_verificacao` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `auditor_verificacao` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `auditoria_id` int(11) DEFAULT NULL
+  `auditoria_id` int(11) DEFAULT NULL,
+  `data` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `auditorias_naoconformidade`
 --
 
-INSERT INTO `auditorias_naoconformidade` (`id`, `n_contrato`, `n_relatorio`, `auditoria_tipo`, `processo`, `norma`, `clausula`, `descricao`, `grau`, `auditor_lider`, `auditor_lider_jbc`, `auditor`, `auditor_jbc`, `representante`, `analise`, `correcao`, `data_implementacao`, `data_verificacao`, `status_verificacao`, `auditor_verificacao`, `auditoria_id`) VALUES
-(1, '1235387', 'B44SMJBC01', 'Auditoria Principal', 'Sistema de Gestão: Compras, Recebimento, Vendas.', '14790:2011', '4.4 Venda e comunicação sobre produtos certificados', 'Evidenciado que nas Notas Fiscais de Venda, não constam o percentual de certificação dos produtos gráficos da Romiti', 'Menor', 'Juliana Bueno Colpas', '39779', 'Juliana Bueno Colpas', '39779', 'Antonio Ferreira', NULL, NULL, NULL, '2013-02-06', NULL, NULL, 2);
+INSERT INTO `auditorias_naoconformidade` (`id`, `n_contrato`, `n_relatorio`, `auditoria_tipo`, `processo`, `norma`, `clausula`, `descricao`, `grau`, `auditor_lider`, `auditor_lider_jbc`, `auditor`, `auditor_jbc`, `representante`, `analise`, `correcao`, `data_implementacao`, `data_verificacao`, `status_verificacao`, `auditor_verificacao`, `auditoria_id`, `data`) VALUES
+(1, '1235387', 'B44SMJBC01', 'Auditoria Principal', 'Sistema de Gestão: Compras, Recebimento, Vendas.', '14790:2011', '4.4 Venda e comunicação sobre produtos certificados', 'Evidenciado que nas Notas Fiscais de Venda, não constam o percentual de certificação dos produtos gráficos da Romiti', 'Menor', 'Juliana Bueno Colpas', '39779', 'Juliana Bueno Colpas', '39779', 'Antonio Ferreira', NULL, NULL, NULL, '2013-02-06', NULL, NULL, 2, '2012-12-06');
 
 -- --------------------------------------------------------
 
@@ -282,15 +283,16 @@ CREATE TABLE `auditorias_plano` (
   `processo` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `auditor` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `clausula` varchar(3000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `auditoria_id` int(11) DEFAULT NULL
+  `auditoria_id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `auditorias_plano`
 --
 
-INSERT INTO `auditorias_plano` (`data`, `horario`, `atividade`, `site`, `processo`, `auditor`, `clausula`, `auditoria_id`) VALUES
-('2012-12-06', '09:00', 'Auditoria', 'Cotia - SP SEDE', 'Sistema de Gestão: Compras, Recebimento, Vendas.', 'JBC', '4 Requisitos para o processo de cadeia de custódia -Método de separação física.', 2);
+INSERT INTO `auditorias_plano` (`data`, `horario`, `atividade`, `site`, `processo`, `auditor`, `clausula`, `auditoria_id`, `id`) VALUES
+('2012-12-06', '09:00', 'Auditoria', 'Cotia - SP SEDE', 'Sistema de Gestão: Compras, Recebimento, Vendas.', 'JBC', '4 Requisitos para o processo de cadeia de custódia -Método de separação física. ok', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -6780,7 +6782,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`password`, `name`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `updated_at`, `created_at`, `remember_token`, `image`) VALUES
-('$2y$10$lRjICI53Jk2lrSYBK9kXV.oi65ksqSju/Y9vmycmGohK4h6.WcriS', 'Fábio', 'fabio.martins@projek.com.br', 'masculino', 'BA', '2927408', '(71) 98333-3333', 50, 'Martins', '2017-11-16 20:12:42', '2017-11-06 14:44:39', 'JeZ35iPJMFOPkfqY2VXrkZZ9HOynfKaTB0TNHULxg0vesQ68g9UPPIP8X3TG', '8jqKZs43yj0tnuf9gEkSQXL4tvPjtA6d18Lytj6f.png'),
+('$2y$10$lRjICI53Jk2lrSYBK9kXV.oi65ksqSju/Y9vmycmGohK4h6.WcriS', 'Fábio', 'fabio.martins@projek.com.br', 'masculino', 'BA', '2927408', '(71) 98333-3333', 50, 'Martins', '2017-11-16 20:12:42', '2017-11-06 14:44:39', 'YtXoQyXetmikJvGCrXSffS4yEtYv0H2IdoO4owMnpIdXiiDsRUfpBrEvSDTf', '8jqKZs43yj0tnuf9gEkSQXL4tvPjtA6d18Lytj6f.png'),
 ('$2y$10$3xJmsunou.VPOQ9WDANQGug6NO6xt.UOSJq3Agk2EpHy3dNz0i9fa', 'Juliana', 'juliana.menezes@projek.com.br', 'feminino', 'BA', '2927408', '(71) 99371-5053', 51, 'Menezes', '2017-11-08 17:13:14', '2017-11-08 17:13:14', 'vQi7kTCbB7npFhGzAQPyCamkHSB4yp93gNb1LcJ7k4Zs6k3iELlYoMhFipsf', 'public/PFT1rJnKg04GaXtRzL0BD8mOOxBQLo1ZLu3KgDoD.png'),
 ('$2y$10$eg5.BDJE9dWkf6HFnx7Op.Gfvk/xtQw51J2Eckun1i6PpyHuCXgWe', 'Catharina', 'catharina.ramos@projek.com.br', 'feminino', 'BA', '2927408', '(71) 99915-5505', 52, 'Ramos', '2017-11-10 18:26:22', '2017-11-10 18:26:22', 'XjjdTz52VcFpUYDjgNsgeIGOd425c69NjVQuMxv0g2Wa7Lp9facB8Gzl2quZ', NULL);
 
@@ -6852,6 +6854,12 @@ ALTER TABLE `auditorias_notas`
 -- Indexes for table `auditorias_observacoes`
 --
 ALTER TABLE `auditorias_observacoes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `auditorias_plano`
+--
+ALTER TABLE `auditorias_plano`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -7062,6 +7070,11 @@ ALTER TABLE `auditorias_notas`
 -- AUTO_INCREMENT for table `auditorias_observacoes`
 --
 ALTER TABLE `auditorias_observacoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `auditorias_plano`
+--
+ALTER TABLE `auditorias_plano`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `auditorias_recomendacao`

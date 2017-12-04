@@ -63,4 +63,16 @@ class AuditoriaSumarioController extends Controller
       $auditoria = Auditoria::find($request->auditoria_id);
       return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
     }
+
+    public function encontrar_conclusoes($id){
+      $auditoriaConclusoes = AuditoriaConclusoes::find($id);
+      return view ('auditoria_conclusoes_alterar')->with('a', $auditoriaConclusoes);
+    }
+
+    public function alterar_conclusoes(AuditoriaConclusoesRequest $request){
+      $auditoriaConclusoes = AuditoriaConclusoes::find($request->auditoria_conclusoes_id);
+      $auditoriaConclusoes->update($request->all());
+      $auditoria = Auditoria::find($auditoriaConclusoes->auditoria->id);
+      return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
+    }
 }

@@ -88,4 +88,28 @@ class AuditoriaInformacaoController extends Controller
     $auditoria = Auditoria::find($auditoriaCertificacao->auditoria->id);
     return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
   }
+
+  public function encontrar_auditorinfo($id){
+    $auditoriaAuditorInfo = AuditoriaAuditorInfo::find($id);
+    return view ('auditoria_auditorinfo_alterar')->with('a', $auditoriaAuditorInfo);
+  }
+
+  public function alterar_auditorinfo(AuditoriaAuditorInfoRequest $request){
+    $auditoriaAuditorInfo = AuditoriaAuditorInfo::find($request->auditoria_auditorinfo_id);
+    $auditoriaAuditorInfo->update($request->all());
+    $auditoria = Auditoria::find($auditoriaAuditorInfo->auditoria->id);
+    return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
+  }
+
+  public function encontrar_plano($id){
+    $auditoriaPlano = AuditoriaPlano::find($id);
+    return view ('auditoria_plano_alterar')->with('a', $auditoriaPlano);
+  }
+
+  public function alterar_plano(AuditoriaPlanoRequest $request){
+    $auditoriaPlano = AuditoriaPlano::find($request->auditoria_plano_id);
+    $auditoriaPlano->update($request->all());
+    $auditoria = Auditoria::find($auditoriaPlano->auditoria->id);
+    return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
+  }
 }

@@ -137,23 +137,35 @@ Route::get('/auditorias/{id}/informacoes/certificacao/encontrar', 'AuditoriaInfo
 Route::post('/auditorias/{id}/informacoes/certificacao/alterar', 'AuditoriaInformacaoController@alterar_certificacao');
 Route::get('/auditorias/{id}/informacoes/auditorinfo/novo', 'AuditoriaInformacaoController@novo_auditorinfo');
 Route::post('/auditorias/{id}/informacoes/auditorinfo/adiciona', 'AuditoriaInformacaoController@adiciona_auditorinfo');
+Route::get('/auditorias/{id}/informacoes/auditorinfo/encontrar', 'AuditoriaInformacaoController@encontrar_auditorinfo');
+Route::post('/auditorias/{id}/informacoes/auditorinfo/alterar', 'AuditoriaInformacaoController@alterar_auditorinfo');
 Route::get('/auditorias/{id}/informacoes/plano/novo', 'AuditoriaInformacaoController@novo_plano');
 Route::post('/auditorias/{id}/informacoes/plano/adiciona', 'AuditoriaInformacaoController@adiciona_plano');
+Route::get('/auditorias/{id}/informacoes/plano/encontrar', 'AuditoriaInformacaoController@encontrar_plano');
+Route::post('/auditorias/{id}/informacoes/plano/alterar', 'AuditoriaInformacaoController@alterar_plano');
 
 Route::get('/auditorias/{id}/processo/notas/novo', 'AuditoriaProcessoController@novas_notas');
 Route::post('/auditorias/{id}/processo/notas/adiciona', 'AuditoriaProcessoController@adiciona_notas');
+Route::get('/auditorias/{id}/processo/notas/encontrar', 'AuditoriaProcessoController@encontrar_nota');
+Route::post('/auditorias/{id}/processo/notas/alterar', 'AuditoriaProcessoController@alterar_nota');
 Route::get('/auditorias/{id}/processo/revisao/novo', 'AuditoriaProcessoController@nova_revisao');
 Route::post('/auditorias/{id}/processo/revisao/adiciona', 'AuditoriaProcessoController@adiciona_revisao');
+Route::get('/auditorias/{id}/processo/revisao/encontrar', 'AuditoriaProcessoController@encontrar_revisao');
+Route::post('/auditorias/{id}/processo/revisao/alterar', 'AuditoriaProcessoController@alterar_revisao');
 Route::get('/auditorias/{id}/processo/sumarionorma/novo', 'AuditoriaProcessoController@novo_sumarionorma');
 Route::post('/auditorias/{id}/processo/sumarionorma/adiciona', 'AuditoriaProcessoController@adiciona_sumarionorma');
 Route::get('/auditorias/{id}/processo/naoconformidade/novo', 'AuditoriaProcessoController@nova_naoconformidade');
 Route::post('/auditorias/{id}/processo/naoconformidade/adiciona', 'AuditoriaProcessoController@adiciona_naoconformidade');
+Route::get('/auditorias/{id}/processo/naoconformidade/encontrar', 'AuditoriaProcessoController@encontrar_naoconformidade');
+Route::post('/auditorias/{id}/processo/naoconformidade/alterar', 'AuditoriaProcessoController@alterar_naoconformidade');
 
 Route::get('/auditorias/{id}/desempenho/relatorios/novo', 'AuditoriaDesempenhoController@novo_relatorio');
 Route::post('/auditorias/{id}/desempenho/relatorios/adiciona', 'AuditoriaDesempenhoController@adiciona_relatorio');
 
 Route::get('/auditorias/{id}/sumario/conclusoes/novo', 'AuditoriaSumarioController@novas_conclusoes');
 Route::post('/auditorias/{id}/sumario/conclusoes/adiciona', 'AuditoriaSumarioController@adiciona_conclusoes');
+Route::get('/auditorias/{id}/sumario/conclusoes/encontrar', 'AuditoriaSumarioController@encontrar_conclusoes');
+Route::post('/auditorias/{id}/sumario/conclusoes/alterar', 'AuditoriaSumarioController@alterar_conclusoes');
 Route::get('/auditorias/{id}/sumario/sumarionc/novo', 'AuditoriaSumarioController@novo_sumarionc');
 Route::post('/auditorias/{id}/sumario/sumarionc/adiciona', 'AuditoriaSumarioController@adiciona_sumarionc');
 Route::get('/auditorias/{id}/sumario/eficacia/novo', 'AuditoriaSumarioController@nova_eficacia');

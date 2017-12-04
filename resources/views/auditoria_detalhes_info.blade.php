@@ -99,13 +99,25 @@
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" href="#auditor-informacoes">2.3 INFORMAÇÕES DO AUDITOR</a>
-        <a href="{{$a->id}}/informacoes/auditorinfo/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Processo" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
+        @if ($a->auditorinfo != null)
+          <a href="{{$a->auditorinfo->id}}/informacoes/auditorinfo/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Informações do Auditor" class="btn btn-warning btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>
+        @else
+          <a href="{{$a->id}}/informacoes/auditorinfo/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Informações do Auditor" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>   
+        @endif                    
         <div class="clearfix"></div>
       </h4>
     </div>
     <div id="auditor-informacoes" class="panel-collapse collapse">
-      <div class="panel-body">      
-          {{$a->auditorinfo->auditor}}                                          
+      <div class="panel-body">
+        <table class="table table-bordered">
+          <tr>
+            <td>Nome do Auditor: {{$a->auditorinfo->auditor}} </td>
+          </tr>
+          <tr>
+            <td>Membros da Equipe: {{$a->auditorinfo->membros}} </td>
+          </tr>
+        </table>      
+                                                   
       </div>
     </div>
   </div>   
@@ -118,7 +130,7 @@
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" href="#auditoria-escopo">2.4 ESCOPO DE AUDITORIA</a>
-        <a href="{{$a->id}}/informacoes/plano/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Processo" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
+        <a href="{{$a->id}}/informacoes/plano/novo"><button data-toggle="tooltip" data-placement="top" title="Adicionar Escopo da Auditoria" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
         <div class="clearfix"></div>
       </h4>
     </div>
@@ -133,13 +145,34 @@
             <div class="panel panel-danger">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" href="{{$planoId}}">2.4{{'.' . $planoString}} NOTAS DO AUDITOR</a>                
+                  <a data-toggle="collapse" href="{{$planoId}}">2.4{{'.' . $planoString}} NOTAS DO AUDITOR</a>
+                  <a href="{{$plano->id}}/informacoes/plano/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Informações do Auditor" class="btn btn-danger btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                
                   <div class="clearfix"></div>
                 </h4>
               </div>
               <div id="{{$planoHref}}" class="panel-collapse collapse">
-                <div class="panel-body">      
-                  {{$plano->clausula}}                                    
+                <div class="panel-body"> 
+                  <table class="table table-bordered">
+                    <tr>
+                      <td>Data: {{$plano->data}}   </td>
+                    </tr>
+                    <tr>
+                      <td>Horário: {{$plano->horario}}   </td>
+                    </tr>
+                    <tr>
+                      <td>Atividade: {{$plano->atividade}}   </td>
+                    </tr>
+                    <tr>
+                      <td>Site: {{$plano->site}}   </td>
+                    </tr>
+                    <tr>
+                      <td>Processo: {{$plano->processo}}   </td>
+                    </tr>
+                    <tr>
+                      <td>Claúsula: {{$plano->clausula}}   </td>
+                    </tr>
+                  </table>
+                                             
                 </div>
               </div>
             </div>   

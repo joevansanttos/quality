@@ -4,33 +4,51 @@
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" href="#auditoria-notas">3.1 NOTAS DE AUDITORIA</a>
-        <a href="{{$a->id}}/processo/notas/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Processo" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
+        <a href="{{$a->id}}/processo/notas/novo"><button data-toggle="tooltip" data-placement="top" title="Adicionar Nota da Auditoria" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
         <div class="clearfix"></div>
       </h4>
     </div>
     <div id="auditoria-notas" class="panel-collapse collapse">
       <div class="panel-body">  
-        @php($i = 1)    
-        @foreach ($a->notas as $n)
-          @php($iString = (string)$i)
-          @php($nota = 'auditoria-notas-' . $iString)
-          @php($notaId = '#' . $nota)
+        @php($notasInt = 1)    
+        @foreach ($a->notas as $nota)
+          @php($notaString = (string)$notasInt)
+          @php($notaHref = 'auditoria-nota-' . $notaString)
+          @php($notaId = '#' . $notaHref)
           <div class="panel-group">
             <div class="panel panel-danger">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" href="{{$notaId}}">3.1{{'.' . $iString}} NOTAS DO AUDITOR</a>                
+                  <a data-toggle="collapse" href="{{$notaId}}">3.1{{'.' . $notaString}} NOTAS DO AUDITOR</a>
+                  <a href="{{$nota->id}}/processo/notas/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Nota da Auditoria" class="btn btn-danger btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                                
                   <div class="clearfix"></div>
                 </h4>
               </div>
-              <div id="{{$nota}}" class="panel-collapse collapse">
-                <div class="panel-body">      
-                  {{$n->notas}}                                       
+              <div id="{{$notaHref}}" class="panel-collapse collapse">
+                <div class="panel-body"> 
+                  <table class="table table-bordered">
+                    <tr>
+                      <td>Auditor: {{$nota->auditor}} </td>
+                    </tr>
+                    <tr>
+                      <td>Data: {{$nota->data}} </td>
+                    </tr>
+                    <tr>
+                      <td>Processo: {{$nota->processo}} </td>
+                    </tr>
+                    <tr>
+                      <td>Pessoal: {{$nota->pessoal}} </td>
+                    </tr>
+                    <tr>
+                      <td>Nota: {{$nota->notas}} </td>
+                    </tr>
+                  </table>     
+                                                       
                 </div>
               </div>
             </div>   
           </div> 
-          @php($i++)
+          @php($notasInt++)
         @endforeach                                           
       </div>
     </div>
@@ -50,9 +68,40 @@
     </div>
     <div id="auditoria-revisao" class="panel-collapse collapse">
       <div class="panel-body">  
-        @foreach ($a->revisoes as $r)
-          {{$r->numero}} {{$r->item}}
-        @endforeach                             
+        @php($revisoesInt = 1)    
+        @foreach ($a->revisoes as $revisao)
+          @php($revisoesString = (string)$revisoesInt)
+          @php($revisoesHref = 'auditoria-revisao-' . $revisoesString)
+          @php($revisoesId = '#' . $revisoesHref)
+          <div class="panel-group">
+            <div class="panel panel-danger">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="{{$revisoesId}}">3.2{{'.' . $revisoesString}} REVISÃO</a>
+                  <a href="{{$revisao->id}}/processo/revisao/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Revisão da Auditoria" class="btn btn-danger btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                                
+                  <div class="clearfix"></div>
+                </h4>
+              </div>
+              <div id="{{$revisoesHref}}" class="panel-collapse collapse">
+                <div class="panel-body"> 
+                  <table class="table table-bordered">
+                    <tr>
+                      <td>Item: {{$revisao->item}}</td>
+                    </tr>
+                    <tr>
+                      <td>Verificado: {{$revisao->verificado}}</td>
+                    </tr>
+                    <tr>
+                      <td>Comentários: {{$revisao->comentarios}}</td>
+                    </tr>
+                  </table>
+                                                       
+                </div>
+              </div>
+            </div>   
+          </div> 
+          @php($revisoesInt++)
+        @endforeach                         
       </div>
     </div>
   </div>   
@@ -91,10 +140,55 @@
     </div>
     <div id="auditoria-naoconformidade" class="panel-collapse collapse">
       <div class="panel-body">  
-        @foreach ($a->naoconformidades as $n)
-          {{$n->processo}} 
-          {{$n->descricao}}
-        @endforeach                       
+       @php($naoconformidadeInt = 1)    
+       @foreach ($a->naoconformidades as $naoconformidade)
+         @php($naoconformidadeString = (string)$naoconformidadeInt)
+         @php($naoconformidadeHref = 'auditoria-naoconformidade-' . $naoconformidadeString)
+         @php($naoconformidadeId = '#' . $naoconformidadeHref)
+         <div class="panel-group">
+           <div class="panel panel-danger">
+             <div class="panel-heading">
+               <h4 class="panel-title">
+                 <a data-toggle="collapse" href="{{$naoconformidadeId}}">3.4{{'.' . $naoconformidadeString}} REVISÃO</a>
+                 <a href="{{$naoconformidade->id}}/processo/naoconformidade/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Revisão da Auditoria" class="btn btn-danger btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                                
+                 <div class="clearfix"></div>
+               </h4>
+             </div>
+             <div id="{{$naoconformidadeHref}}" class="panel-collapse collapse">
+               <div class="panel-body"> 
+                 <table class="table table-bordered">
+                   <tr>
+                     <td>Nº Contrato: {{$naoconformidade->n_contrato}}</td>
+                   </tr>
+                   <tr>
+                     <td>Nº Relatório: {{$naoconformidade->n_relatorio}}</td>
+                   </tr>
+                   <tr>
+                     <td>Tipo de Auditoria: {{$naoconformidade->tipo}}</td>
+                   </tr>
+                   <tr>
+                     <td>Processo: {{$naoconformidade->processo}}</td>
+                   </tr>
+                   <tr>
+                     <td>Norma: {{$naoconformidade->norma}}</td>
+                   </tr>
+                   <tr>
+                     <td>Cláusula: {{$naoconformidade->clausula}}</td>
+                   </tr>
+                   <tr>
+                     <td>Descrição: {{$naoconformidade->descricao}}</td>
+                   </tr>
+                    <tr>
+                     <td>Grau: {{$naoconformidade->grau}}</td>
+                   </tr>
+                 </table>
+                                                      
+               </div>
+             </div>
+           </div>   
+         </div> 
+         @php($naoconformidadeInt++)
+       @endforeach                      
       </div>
     </div>
   </div>   
