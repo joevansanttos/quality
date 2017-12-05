@@ -22,6 +22,20 @@
      <input readonly="readonly" value="{{$a->auditoria->cliente->nome}}"   type="text"  required="required" class="form-control col-md-6 col-xs-12">
    </div>
  </div>
+ <div class="form-group">
+   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="analise">Análise<span class="required">*</span>
+   </label>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+      <textarea readonly="readonly" name="analise" class="form-control col-md-12 col-xs-12" rows="6">{{$a->analise}}</textarea>
+   </div>
+ </div>
+ <div class="form-group">
+   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="correcao">Correção<span class="required">*</span>
+   </label>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+      <textarea readonly="readonly" name="correcao" class="form-control col-md-12 col-xs-12" rows="6">{{$a->correcao}}</textarea>
+   </div>
+ </div>
  <div class="item form-group">
    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="data">Data<span class="required">*</span></label>
    <div class="col-sm-2 col-xs-12 col-md-2">
@@ -75,9 +89,9 @@
    </div>
  </div>
  <div class="item form-group">
-   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="data_verificacao">Completado Antes de<span class="required">*</span></label>
+   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="data_completado">Completado Antes de<span class="required">*</span></label>
    <div class="col-sm-2 col-xs-12 col-md-2">
-     <input type="date" id="data_verificacao" name="data_verificacao" value="{{$a->data_verificacao}}" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+     <input type="date" id="data_completado" name="data_completado" value="{{$a->data_completado}}" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
    </div>
    <label class="control-label col-md-1 col-sm-3 col-xs-12" for="grau">Grau</label>
    <div class="col-sm-2 col-xs-12 col-md-3">
@@ -109,6 +123,30 @@
    </label>
    <div class="col-md-6 col-sm-6 col-xs-12">
      <input  type="text"  id="representante" name="representante" value="{{$a->representante}}" required="required" class="form-control col-md-6 col-xs-12">
+   </div>
+ </div>
+ <div class="item form-group">
+   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="data_verificacao">Data de Verificação<span class="required">*</span></label>
+   <div class="col-sm-2 col-xs-12 col-md-2">
+     <input type="date" id="data_verificacao" name="data_verificacao" value="{{$a->data_completado}}" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+   </div>
+   <label class="control-label col-md-1 col-sm-3 col-xs-12" for="status_verificacao">Status</label>
+   <div class="col-sm-2 col-xs-12 col-md-3">
+     <input type="text" id="status_verificacao" name="status_verificacao" required="required" value="{{$a->status_verificacao}}" class="form-control col-md-7 col-xs-12">
+   </div>
+ </div>
+ <div class="form-group">
+   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="auditor_verificacao">Auditor da Verificação<span class="required">*</span>
+   </label>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+     <input  type="text"  id="auditor_verificacao" name="auditor_verificacao" value="{{$a->auditor_verificacao}}" required="required" class="form-control col-md-6 col-xs-12">
+   </div>
+ </div>
+ <div class="form-group">
+   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="comentarios">Comentários<span class="required">*</span>
+   </label>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+      <textarea  name="comentarios" class="form-control col-md-12 col-xs-12" rows="6">{{$a->comentarios}}</textarea>
    </div>
  </div>
  <div class="ln_solid"></div>

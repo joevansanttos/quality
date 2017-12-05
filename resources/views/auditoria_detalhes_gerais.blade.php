@@ -53,6 +53,7 @@
     </div>
     <div id="auditoria-contato" class="panel-collapse collapse">
       <div class="panel-body"> 
+        @if ($a->contato != null)
         <table class="table table-bordered">
           <tr>
             <td>Contato: {{$a->contato->nome}}</td>
@@ -63,7 +64,8 @@
            <tr>
             <td>Email: {{$a->contato->email}}</td>
           </tr>
-        </table>                  
+        </table> 
+        @endif                 
       </div>
     </div>
   </div>   

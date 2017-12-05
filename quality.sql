@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Dez-2017 às 02:38
+-- Generation Time: 05-Dez-2017 às 16:31
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -62,7 +62,8 @@ CREATE TABLE `auditorias` (
 --
 
 INSERT INTO `auditorias` (`id`, `cod`, `cliente_id`, `data`) VALUES
-(2, '1235387', 6, '2012-12-18');
+(2, '1235387', 6, '2012-12-18'),
+(3, '111111', 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -114,6 +115,27 @@ INSERT INTO `auditorias_certificacao` (`id`, `ingles`, `portugues`, `sites`, `fu
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `auditorias_clausula`
+--
+
+CREATE TABLE `auditorias_clausula` (
+  `id` int(11) NOT NULL,
+  `numero` decimal(9,2) DEFAULT NULL,
+  `clausula` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auditoria_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `auditorias_clausula`
+--
+
+INSERT INTO `auditorias_clausula` (`id`, `numero`, `clausula`, `auditoria_id`) VALUES
+(1, '4.00', 'Requisitos para o processo de cadeia de custódia - Método', 2),
+(2, '5.11', 'Aplicação do método baseado em porcentagem', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `auditorias_conclusoes`
 --
 
@@ -154,6 +176,47 @@ INSERT INTO `auditorias_contato` (`id`, `nome`, `email`, `tel`, `auditoria_id`) 
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `auditorias_departamento`
+--
+
+CREATE TABLE `auditorias_departamento` (
+  `id` int(11) NOT NULL,
+  `departamento` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auditoria_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `auditorias_departamento`
+--
+
+INSERT INTO `auditorias_departamento` (`id`, `departamento`, `auditoria_id`) VALUES
+(1, 'Sistema de Gestão de Compras', 2),
+(2, 'Processo Fabril: Almoxarifado, Impressão e', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `auditorias_departamentos_clausulas`
+--
+
+CREATE TABLE `auditorias_departamentos_clausulas` (
+  `id` int(11) NOT NULL,
+  `auditorias_departamento_id` int(11) DEFAULT NULL,
+  `auditorias_clausula_id` int(11) DEFAULT NULL,
+  `auditoria_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `auditorias_departamentos_clausulas`
+--
+
+INSERT INTO `auditorias_departamentos_clausulas` (`id`, `auditorias_departamento_id`, `auditorias_clausula_id`, `auditoria_id`) VALUES
+(1, 1, 1, 2),
+(2, 2, 2, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `auditorias_eficacia`
 --
 
@@ -168,7 +231,7 @@ CREATE TABLE `auditorias_eficacia` (
 --
 
 INSERT INTO `auditorias_eficacia` (`id`, `eficacia`, `auditoria_id`) VALUES
-(1, 'A equipe auditora conduziu um processo de auditoria baseado em evidências objetivas . Os métodos de auditoria\r\nincluem entrevistas, observação de atividades e análise de documentos e registros.\r\n• A documentação do sistema de gestão deve demonstrar conformidade com os requisitos da norma e prover\r\nestrutura suficiente de apoio à implementação e manutenção do sistema de gestão,\r\n• A organização deve demonstrar efetiva implementação, manutenção e melhoria do seu sistema gestão.\r\n• A organização deve demonstrar o estabelecimento e monitoramento adequado dos objetivos do sistema de\r\ngestão.\r\n• A organização deve demonstrar a efetividade do programa de auditoria interna como ferramenta para manter e\r\nmelhorar o sistema de gestão.\r\n• Ao longo de todo o processo de auditoria, o sistema de gestão deve demonstrar conformidade com os requisitos\r\nnormativos', 2);
+(1, 'A equipe auditora conduziu um processo de auditoria baseado em evidências objetivas . Os métodos de auditoria\r\nincluem entrevistas, observação de atividades e análise de documentos e registros.\r\n• A documentação do sistema de gestão deve demonstrar conformidade com os requisitos da norma e prover\r\nestrutura suficiente de apoio à implementação e manutenção do sistema de gestão,\r\n• A organização deve demonstrar efetiva implementação, manutenção e melhoria do seu sistema gestão.\r\n• A organização deve demonstrar o estabelecimento e monitoramento adequado dos objetivos do sistema de\r\ngestão.\r\n• A organização deve demonstrar a efetividade do programa de auditoria interna como ferramenta para manter e\r\nmelhorar o sistema de gestão.\r\n• Ao longo de todo o processo de auditoria, o sistema de gestão deve demonstrar conformidade com os requisitos\r\nnormativos.', 2);
 
 -- --------------------------------------------------------
 
@@ -198,15 +261,18 @@ CREATE TABLE `auditorias_naoconformidade` (
   `status_verificacao` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `auditor_verificacao` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `auditoria_id` int(11) DEFAULT NULL,
-  `data` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `data` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `responsavel` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_completado` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `comentarios` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `auditorias_naoconformidade`
 --
 
-INSERT INTO `auditorias_naoconformidade` (`id`, `n_contrato`, `n_relatorio`, `auditoria_tipo`, `processo`, `norma`, `clausula`, `descricao`, `grau`, `auditor_lider`, `auditor_lider_jbc`, `auditor`, `auditor_jbc`, `representante`, `analise`, `correcao`, `data_implementacao`, `data_verificacao`, `status_verificacao`, `auditor_verificacao`, `auditoria_id`, `data`) VALUES
-(1, '1235387', 'B44SMJBC01', 'Auditoria Principal', 'Sistema de Gestão: Compras, Recebimento, Vendas.', '14790:2011', '4.4 Venda e comunicação sobre produtos certificados', 'Evidenciado que nas Notas Fiscais de Venda, não constam o percentual de certificação dos produtos gráficos da Romiti', 'Menor', 'Juliana Bueno Colpas', '39779', 'Juliana Bueno Colpas', '39779', 'Antonio Ferreira', NULL, NULL, NULL, '2013-02-06', NULL, NULL, 2, '2012-12-06');
+INSERT INTO `auditorias_naoconformidade` (`id`, `n_contrato`, `n_relatorio`, `auditoria_tipo`, `processo`, `norma`, `clausula`, `descricao`, `grau`, `auditor_lider`, `auditor_lider_jbc`, `auditor`, `auditor_jbc`, `representante`, `analise`, `correcao`, `data_implementacao`, `data_verificacao`, `status_verificacao`, `auditor_verificacao`, `auditoria_id`, `data`, `responsavel`, `data_completado`, `comentarios`) VALUES
+(1, '1235387', 'B44SMJBC01', 'Auditoria Principal', 'Sistema de Gestão: Compras, Recebimento, Vendas.', '14790:2011', '4.4 Venda e comunicação sobre produtos certificados', 'Evidenciado que nas Notas Fiscais de Venda, não constam o percentual de certificação dos produtos gráficos da Romiti', 'Menor', 'Juliana Bueno Colpas', '39779', 'Juliana Bueno Colpas', '39779', 'Antonio Ferreira', 'Falha no entendimento da empresa, uma vez que o sistema é de tranferência e logo não haveria a necessidade de\r\nmencionar o percentual.', 'Parametrizar o sistema visando a inclusão do percentual - 70%.', '2012-12-06', '2013-02-06', 'Aceita', 'Juliana Bueno Colpas', 2, '2012-12-06', 'Antônio', '2013-02-06', NULL);
 
 -- --------------------------------------------------------
 
@@ -267,7 +333,7 @@ CREATE TABLE `auditorias_observacoes` (
 --
 
 INSERT INTO `auditorias_observacoes` (`id`, `observacoes`, `auditoria_id`) VALUES
-(1, '1.', 2);
+(1, '1.Observações', 2);
 
 -- --------------------------------------------------------
 
@@ -297,6 +363,27 @@ INSERT INTO `auditorias_plano` (`data`, `horario`, `atividade`, `site`, `process
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `auditorias_programa`
+--
+
+CREATE TABLE `auditorias_programa` (
+  `id` int(11) NOT NULL,
+  `auditor` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `comentarios` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auditoria_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `auditorias_programa`
+--
+
+INSERT INTO `auditorias_programa` (`id`, `auditor`, `data`, `comentarios`, `auditoria_id`) VALUES
+(1, 'Juliana Bueno Colpas', '2012-02-06', 'A ser elaborado no início de cada ciclo de auditoria.', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `auditorias_recomendacao`
 --
 
@@ -314,7 +401,27 @@ CREATE TABLE `auditorias_recomendacao` (
 --
 
 INSERT INTO `auditorias_recomendacao` (`id`, `norma`, `acreditacao`, `copias`, `idioma`, `auditoria_id`) VALUES
-(1, '14790:2011', 'UKAS', 0, 'Português (Brasil)', 2);
+(1, '14790:2011', 'UKAS', 1, 'Português (Brasil)', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `auditorias_relatorio`
+--
+
+CREATE TABLE `auditorias_relatorio` (
+  `id` int(11) NOT NULL,
+  `data` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auditoria_id` int(11) DEFAULT NULL,
+  `auditorias_naoconformidade_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `auditorias_relatorio`
+--
+
+INSERT INTO `auditorias_relatorio` (`id`, `data`, `auditoria_id`, `auditorias_naoconformidade_id`) VALUES
+(1, '2012-12-06', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -6815,6 +6922,12 @@ ALTER TABLE `auditorias_certificacao`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `auditorias_clausula`
+--
+ALTER TABLE `auditorias_clausula`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `auditorias_conclusoes`
 --
 ALTER TABLE `auditorias_conclusoes`
@@ -6824,6 +6937,18 @@ ALTER TABLE `auditorias_conclusoes`
 -- Indexes for table `auditorias_contato`
 --
 ALTER TABLE `auditorias_contato`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `auditorias_departamento`
+--
+ALTER TABLE `auditorias_departamento`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `auditorias_departamentos_clausulas`
+--
+ALTER TABLE `auditorias_departamentos_clausulas`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6863,9 +6988,21 @@ ALTER TABLE `auditorias_plano`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `auditorias_programa`
+--
+ALTER TABLE `auditorias_programa`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `auditorias_recomendacao`
 --
 ALTER TABLE `auditorias_recomendacao`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `auditorias_relatorio`
+--
+ALTER TABLE `auditorias_relatorio`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -7025,7 +7162,7 @@ ALTER TABLE `aplicacoes`
 -- AUTO_INCREMENT for table `auditorias`
 --
 ALTER TABLE `auditorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `auditorias_auditorinfo`
 --
@@ -7037,6 +7174,11 @@ ALTER TABLE `auditorias_auditorinfo`
 ALTER TABLE `auditorias_certificacao`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `auditorias_clausula`
+--
+ALTER TABLE `auditorias_clausula`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `auditorias_conclusoes`
 --
 ALTER TABLE `auditorias_conclusoes`
@@ -7046,6 +7188,16 @@ ALTER TABLE `auditorias_conclusoes`
 --
 ALTER TABLE `auditorias_contato`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `auditorias_departamento`
+--
+ALTER TABLE `auditorias_departamento`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `auditorias_departamentos_clausulas`
+--
+ALTER TABLE `auditorias_departamentos_clausulas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `auditorias_eficacia`
 --
@@ -7077,9 +7229,19 @@ ALTER TABLE `auditorias_observacoes`
 ALTER TABLE `auditorias_plano`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `auditorias_programa`
+--
+ALTER TABLE `auditorias_programa`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `auditorias_recomendacao`
 --
 ALTER TABLE `auditorias_recomendacao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `auditorias_relatorio`
+--
+ALTER TABLE `auditorias_relatorio`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `auditorias_revisao`

@@ -4,7 +4,7 @@
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" href="#auditoria-recomendacoes">6.1 RECOMENDAÇÕES</a>
-        <a href="{{$a->id}}/recomendacoes/recomendacao/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Processo" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
+        <a href="{{$a->id}}/recomendacoes/recomendacao/novo"><button data-toggle="tooltip" data-placement="top" title="Adicionar Recomendação" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
         <div class="clearfix"></div>
       </h4>
     </div>
@@ -19,13 +19,28 @@
             <div class="panel panel-danger">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" href="{{$notaRecomendacaoId}}">6{{'.' . $recomendacaoString}} RECOMENDAÇÃO DO AUDITOR</a>                
+                  <a data-toggle="collapse" href="{{$notaRecomendacaoId}}">6.1{{'.' . $recomendacaoString}} RECOMENDAÇÃO DO AUDITOR</a>
+                  <a href="{{$recomendacao->id}}/recomendacoes/recomendacao/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Recomendação" class="btn btn-danger btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                                                
                   <div class="clearfix"></div>
                 </h4>
               </div>
               <div id="{{$notaRecomendacao}}" class="panel-collapse collapse">
-                <div class="panel-body">      
-                  {{$recomendacao->norma}}                                       
+                <div class="panel-body"> 
+                  <table class="table table-bordered">
+                    <tr>
+                      <td>Norma: {{$recomendacao->norma}}  </td>
+                    </tr>
+                    <tr>
+                      <td>Acreditação: {{$recomendacao->acreditacao}}  </td>
+                    </tr>
+                    <tr>
+                      <td>Cópias: {{$recomendacao->copias}}  </td>
+                    </tr>
+                    <tr>
+                      <td>Idioma: {{$recomendacao->idioma}}  </td>
+                    </tr>
+                  </table>     
+                                                        
                 </div>
               </div>
             </div>   

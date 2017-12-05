@@ -19,6 +19,7 @@
       <td>{{$a->cod}}</td>         
       <td align="center">
         <a href="auditorias/{{$a->id}}"><button data-toggle="tooltip" data-placement="top" title="Adicionar na Auditoria" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>
+        <a href="auditorias/naoconformidades/{{$a->id}}"><button data-toggle="tooltip" data-placement="top" title="Alterar Não Conformidades pela Organização" class="btn btn-info btn-xs"><i class="fa fa-plus"></i></button></a>
         <a href="auditorias/imprimir/{{$a->id}}"><button data-toggle="tooltip" data-placement="top" title="Imprimir Auditoria" class="btn btn-success btn-xs"><i class="fa fa-print"></i></button></a>
         <a href="auditorias/encontrar/{{$a->id}}"><button data-toggle="tooltip" data-placement="top" title="Alterar Auditoria" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
         <a href=""><button data-toggle="tooltip" data-placement="top" title="Remover Manual" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>

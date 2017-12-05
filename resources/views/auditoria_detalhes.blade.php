@@ -121,13 +121,13 @@
   <div class="panel panel-info">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" href="#auditoria-programa">7. PROGRAMA DE AUDITORIAS</a>                              
+          <a data-toggle="collapse" href="#auditoria-programas">7. PROGRAMA DE AUDITORIAS</a>                              
           <div class="clearfix"></div>
         </h4>
       </div>
-      <div id="auditoria-programa" class="panel-collapse collapse">
+      <div id="auditoria-programas" class="panel-collapse collapse">
         <div class="panel-body"> 
-         
+          @include('auditoria_detalhes_programa')
         </div>
       </div>
     </div>   

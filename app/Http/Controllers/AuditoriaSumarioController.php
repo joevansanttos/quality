@@ -75,4 +75,40 @@ class AuditoriaSumarioController extends Controller
       $auditoria = Auditoria::find($auditoriaConclusoes->auditoria->id);
       return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
     }
+
+    public function encontrar_sumarionc($id){
+      $auditoriaSumarioNC = AuditoriaSumarioNC::find($id);
+      return view ('auditoria_sumarionc_alterar')->with('a', $auditoriaSumarioNC);
+    }
+
+    public function alterar_sumarionc(AuditoriaSumarioNCRequest $request){
+      $auditoriaSumarioNC = AuditoriaSumarioNC::find($request->auditoria_sumarionc_id);
+      $auditoriaSumarioNC->update($request->all());
+      $auditoria = Auditoria::find($auditoriaSumarioNC->auditoria->id);
+      return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
+    }
+
+    public function encontrar_eficacia($id){
+      $auditoriaEficacia = AuditoriaEficacia::find($id);
+      return view ('auditoria_eficacia_alterar')->with('a', $auditoriaEficacia);
+    }
+
+    public function alterar_eficacia(AuditoriaEficaciaRequest $request){
+      $auditoriaEficacia = AuditoriaEficacia::find($request->auditoria_eficacia_id);
+      $auditoriaEficacia->update($request->all());
+      $auditoria = Auditoria::find($auditoriaEficacia->auditoria->id);
+      return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
+    }
+
+    public function encontrar_observacoes($id){
+      $auditoriaObservacoes = AuditoriaObservacoes::find($id);
+      return view ('auditoria_observacoes_alterar')->with('a', $auditoriaObservacoes);
+    }
+
+    public function alterar_observacoes(AuditoriaObservacoesRequest $request){
+      $auditoriaObservacoes = AuditoriaObservacoes::find($request->auditoria_observacoes_id);
+      $auditoriaObservacoes->update($request->all());
+      $auditoria = Auditoria::find($auditoriaObservacoes->auditoria->id);
+      return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
+    }
 }

@@ -61,6 +61,7 @@
     </div>
     <div id="certificacao-escopo" class="panel-collapse collapse">
       <div class="panel-body">
+        @if ($a->certificacao != null)
         <table class="table table-bordered">
           <tr>
             <td>Inglês: {{$a->certificacao->ingles}}</td>
@@ -86,7 +87,8 @@
           <tr>
             <td>Data de Término: {{$a->certificacao->termino}}</td>
           </tr>
-        </table>                                         
+        </table> 
+        @endif                                        
       </div>
     </div>
   </div>   
@@ -109,6 +111,7 @@
     </div>
     <div id="auditor-informacoes" class="panel-collapse collapse">
       <div class="panel-body">
+        @if ($a->auditorinfo != null)
         <table class="table table-bordered">
           <tr>
             <td>Nome do Auditor: {{$a->auditorinfo->auditor}} </td>
@@ -117,7 +120,7 @@
             <td>Membros da Equipe: {{$a->auditorinfo->membros}} </td>
           </tr>
         </table>      
-                                                   
+        @endif                                           
       </div>
     </div>
   </div>   

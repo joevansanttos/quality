@@ -7,11 +7,17 @@ use App\Http\Requests\AuditoriaNotasRequest;
 use App\Http\Requests\AuditoriaRevisaoRequest;
 use App\Http\Requests\AuditoriaSumarioNormaRequest;
 use App\Http\Requests\AuditoriaNaoConformidadeRequest;
+use App\Http\Requests\AuditoriaDepartamentoRequest;
+use App\Http\Requests\AuditoriaClausulaRequest;
+use App\Http\Requests\AuditoriaDepartamentoClausulaRequest;
 use App\Auditoria;
 use App\AuditoriaNotas;
 use App\AuditoriaRevisao;
 use App\AuditoriaSumarioNorma;
 use App\AuditoriaNaoConformidade;
+use App\AuditoriaDepartamento;
+use App\AuditoriaClausula;
+use App\AuditoriaDepartamentoClausula;
 
 
 class AuditoriaProcessoController extends Controller
@@ -50,6 +56,39 @@ class AuditoriaProcessoController extends Controller
 
   public function adiciona_sumarionorma(AuditoriaSumarioNormaRequest $request){
     AuditoriaSumarioNorma::create($request->all());
+    $auditoria = Auditoria::find($request->auditoria_id);
+    return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
+  }
+
+  public function novo_departamento($id){
+    $auditoria = Auditoria::find($id);
+    return view ('auditoria_departamento_form')->with('a', $auditoria);
+  }
+
+  public function adiciona_departamento(AuditoriaDepartamentoRequest $request){
+    AuditoriaDepartamento::create($request->all());
+    $auditoria = Auditoria::find($request->auditoria_id);
+    return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
+  }
+
+  public function nova_clausula($id){
+    $auditoria = Auditoria::find($id);
+    return view ('auditoria_clausula_form')->with('a', $auditoria);
+  }
+
+  public function adiciona_clausula(AuditoriaClausulaRequest $request){
+    AuditoriaClausula::create($request->all());
+    $auditoria = Auditoria::find($request->auditoria_id);
+    return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
+  }
+
+  public function novo_departamentoclausula($id){
+    $auditoria = Auditoria::find($id);
+    return view ('auditoria_departamentoclausula_form')->with('a', $auditoria)->with('departamentos', AuditoriaDepartamento::all())->with('clausulas', AuditoriaClausula::all());
+  }
+
+  public function adiciona_departamentoclausula(AuditoriaDepartamentoClausulaRequest $request){
+    AuditoriaDepartamentoClausula::create($request->all());
     $auditoria = Auditoria::find($request->auditoria_id);
     return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
   }

@@ -115,13 +115,131 @@
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" href="#auditoria-sumarionorma">3.3 RELATÓRIO SUMÁRIO POR NORMA</a>
-        <a href="{{$a->id}}/processo/sumarionorma/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Revisão" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
+        <a href="{{$a->id}}/processo/sumarionorma/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Revisão" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                        
         <div class="clearfix"></div>
       </h4>
     </div>
     <div id="auditoria-sumarionorma" class="panel-collapse collapse">
       <div class="panel-body">  
-                      
+          <div class="panel-group">
+            <div class="panel panel-danger">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#departamentos">DEPARTAMENTOS</a>
+                  <a href="{{$a->id}}/processo/departamento/novo"><button data-toggle="tooltip" data-placement="top" title="Adicionar Departamento" class="btn btn-danger btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>
+                  <div class="clearfix"></div>
+                </h4>
+              </div>
+              <div id="departamentos" class="panel-collapse collapse">
+                <div class="panel-body">  
+                  @php($departamentoInt = 1)    
+                  @foreach ($a->departamentos as $departamento)
+                    @php($departamentoString = (string)$departamentoInt)
+                    @php($departamentoHref = 'auditoria-departamento-' . $departamentoString)
+                    @php($departamentoId = '#' . $departamentoHref)
+                    <div class="panel-group">
+                      <div class="panel panel-success">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" href="{{$departamentoId}}">3.3{{'.' . $departamentoString}} DEPARTAMENTO</a>
+                            <a href="{{$departamento->id}}/processo/departamento/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Departamento" class="btn btn-success btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                                
+                            <div class="clearfix"></div>
+                          </h4>
+                        </div>
+                        <div id="{{$departamentoHref}}" class="panel-collapse collapse">
+                          <div class="panel-body"> 
+                            <table class="table table-bordered">
+                              <tr>
+                                <td>Departamento: {{$departamento->departamento}}</td>                                
+                              </tr>
+                            </table>
+                                                                 
+                          </div>
+                        </div>
+                      </div>   
+                    </div> 
+                    @php($departamentoInt++)
+                  @endforeach             
+                </div>
+              </div>
+            </div>   
+          </div>
+
+          <div class="panel-group">
+            <div class="panel panel-danger">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#clausulas">CLÁUSULAS</a>
+                  <a href="{{$a->id}}/processo/clausula/novo"><button data-toggle="tooltip" data-placement="top" title="Adicionar Cláusula" class="btn btn-danger btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>
+                  <div class="clearfix"></div>
+                </h4>
+              </div>
+              <div id="clausulas" class="panel-collapse collapse">
+                <div class="panel-body">  
+                  @php($clausulaInt = 1)    
+                  @foreach ($a->clausulas as $clausula)
+                    @php($clausulaString = (string)$clausulaInt)
+                    @php($clausulaHref = 'auditoria-clausula-' . $clausulaString)
+                    @php($clausulaId = '#' . $clausulaHref)
+                    <div class="panel-group">
+                      <div class="panel panel-success">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" href="{{$clausulaId}}">3.3{{'.' . $clausulaString}} CLÁUSULA</a>
+                            <a href="{{$clausula->id}}/processo/clausula/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Cláusula" class="btn btn-success btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                                
+                            <div class="clearfix"></div>
+                          </h4>
+                        </div>
+                        <div id="{{$clausulaHref}}" class="panel-collapse collapse">
+                          <div class="panel-body"> 
+                            <table class="table table-bordered">
+                              <tr>
+                                <td>Cláusula: {{$clausula->clausula}}</td>
+                              </tr>
+                            </table>
+                                                                 
+                          </div>
+                        </div>
+                      </div>   
+                    </div> 
+                    @php($clausulaInt++)
+                  @endforeach             
+                </div>
+              </div>
+            </div>   
+          </div>
+
+          <div class="panel-group">
+            <div class="panel panel-danger">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#departamentosclausulas">CLÁUSULAS COM DEPARTAMENTOS</a>
+                  <a href="{{$a->id}}/processo/departamentoclausula/novo"><button data-toggle="tooltip" data-placement="top" title="Adicionar Cláusula a Departamento" class="btn btn-danger btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>
+                  <div class="clearfix"></div>
+                </h4>
+              </div>
+              <div id="departamentosclausulas" class="panel-collapse collapse">
+                <div class="panel-body">  
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Cláusula</th>
+                        <th>Departamento</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($a->departamentosclausulas as $departamentoclausula)  
+                      <tr>
+                        <td>{{$departamentoclausula->clausula->clausula}}</td>
+                        <td>{{$departamentoclausula->departamento->departamento}}</td>
+                      </tr>
+                    @endforeach  
+                    </tbody>
+                  </table>               
+                </div>
+              </div>
+            </div>   
+          </div>          
       </div>
     </div>
   </div>   
@@ -149,7 +267,7 @@
            <div class="panel panel-danger">
              <div class="panel-heading">
                <h4 class="panel-title">
-                 <a data-toggle="collapse" href="{{$naoconformidadeId}}">3.4{{'.' . $naoconformidadeString}} REVISÃO</a>
+                 <a data-toggle="collapse" href="{{$naoconformidadeId}}">3.4{{'.' . $naoconformidadeString}} NÃO CONFORMIDADE</a>
                  <a href="{{$naoconformidade->id}}/processo/naoconformidade/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Revisão da Auditoria" class="btn btn-danger btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                                
                  <div class="clearfix"></div>
                </h4>
@@ -180,6 +298,27 @@
                    </tr>
                     <tr>
                      <td>Grau: {{$naoconformidade->grau}}</td>
+                   </tr>
+                    <tr>
+                     <td>Análise: {{$naoconformidade->analise}}</td>
+                   </tr>
+                    <tr>
+                     <td>Correção: {{$naoconformidade->correcao}}</td>
+                   </tr>
+                    <tr>
+                     <td>Data de Implementação: {{$naoconformidade->data_implementacao}}</td>
+                   </tr>
+                    <tr>
+                     <td>Responsável : {{$naoconformidade->responsavel}}</td>
+                   </tr>
+                    <tr>
+                     <td>Análise : {{$naoconformidade->analise}}</td>
+                   </tr>
+                    <tr>
+                     <td>Correção : {{$naoconformidade->correcao}}</td>
+                   </tr>
+                    <tr>
+                     <td>Status : {{$naoconformidade->status_verificacao}}</td>
                    </tr>
                  </table>
                                                       

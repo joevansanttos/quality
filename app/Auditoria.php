@@ -64,4 +64,25 @@ class Auditoria extends Model
   public function auditorinfo(){
       return $this->hasOne('App\AuditoriaAuditorInfo');
   } 
+
+  public function departamentos(){
+      return $this->hasMany('App\AuditoriaDepartamento');
+  } 
+
+  public function clausulas(){
+      return $this->hasMany('App\AuditoriaClausula');
+  }
+
+  public function departamentosclausulas(){
+      return $this->hasMany('App\AuditoriaDepartamentoClausula');
+  }
+
+  public function relatorios(){
+      return $this->hasMany('App\AuditoriaRelatorio');
+  }
+
+  public function programa(){
+      return $this->hasOne('App\AuditoriaPrograma');
+  } 
+
 }
