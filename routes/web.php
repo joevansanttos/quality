@@ -143,6 +143,8 @@ Route::get('/auditorias/{id}/informacoes/auditorinfo/novo', 'AuditoriaInformacao
 Route::post('/auditorias/{id}/informacoes/auditorinfo/adiciona', 'AuditoriaInformacaoController@adiciona_auditorinfo');
 Route::get('/auditorias/{id}/informacoes/auditorinfo/encontrar', 'AuditoriaInformacaoController@encontrar_auditorinfo');
 Route::post('/auditorias/{id}/informacoes/auditorinfo/alterar', 'AuditoriaInformacaoController@alterar_auditorinfo');
+Route::get('/auditorias/{id}/informacoes/escopo/novo', 'AuditoriaInformacaoController@novo_escopo');
+Route::post('/auditorias/{id}/informacoes/escopo/adiciona', 'AuditoriaInformacaoController@adiciona_escopo');
 Route::get('/auditorias/{id}/informacoes/plano/novo', 'AuditoriaInformacaoController@novo_plano');
 Route::post('/auditorias/{id}/informacoes/plano/adiciona', 'AuditoriaInformacaoController@adiciona_plano');
 Route::get('/auditorias/{id}/informacoes/plano/encontrar', 'AuditoriaInformacaoController@encontrar_plano');

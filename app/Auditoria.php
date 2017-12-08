@@ -21,8 +21,8 @@ class Auditoria extends Model
       return $this->hasMany('App\AuditoriaNotas');
   } 
 
-  public function contato(){
-      return $this->hasOne('App\AuditoriaContato');
+  public function contatos(){
+      return $this->hasMany('App\AuditoriaContato');
   } 
 
   public function revisoes(){
@@ -83,6 +83,10 @@ class Auditoria extends Model
 
   public function programa(){
       return $this->hasOne('App\AuditoriaPrograma');
+  } 
+
+  public function escopo(){
+      return $this->hasOne('App\AuditoriaEscopo');
   } 
 
 }

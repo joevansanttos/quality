@@ -19,7 +19,7 @@
             <div class="panel panel-danger">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" href="{{$notaId}}">3.1{{'.' . $notaString}} NOTAS DO AUDITOR</a>
+                  <a data-toggle="collapse" href="{{$notaId}}">{{$notaString}}. NOTA DO AUDITOR</a>
                   <a href="{{$nota->id}}/processo/notas/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Nota da Auditoria" class="btn btn-danger btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                                
                   <div class="clearfix"></div>
                 </h4>
@@ -77,7 +77,7 @@
             <div class="panel panel-danger">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" href="{{$revisoesId}}">3.2{{'.' . $revisoesString}} REVISÃO</a>
+                  <a data-toggle="collapse" href="{{$revisoesId}}">{{$revisoesString}}. ITEM DA REVISÃO</a>
                   <a href="{{$revisao->id}}/processo/revisao/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Revisão da Auditoria" class="btn btn-danger btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                                
                   <div class="clearfix"></div>
                 </h4>
@@ -141,7 +141,7 @@
                       <div class="panel panel-success">
                         <div class="panel-heading">
                           <h4 class="panel-title">
-                            <a data-toggle="collapse" href="{{$departamentoId}}">3.3{{'.' . $departamentoString}} DEPARTAMENTO</a>
+                            <a data-toggle="collapse" href="{{$departamentoId}}">{{$departamentoString}}. DEPARTAMENTO</a>
                             <a href="{{$departamento->id}}/processo/departamento/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Departamento" class="btn btn-success btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                                
                             <div class="clearfix"></div>
                           </h4>
@@ -181,11 +181,12 @@
                     @php($clausulaString = (string)$clausulaInt)
                     @php($clausulaHref = 'auditoria-clausula-' . $clausulaString)
                     @php($clausulaId = '#' . $clausulaHref)
+                    @php($clausulaFloat = floatval($clausula->numero))
                     <div class="panel-group">
                       <div class="panel panel-success">
                         <div class="panel-heading">
                           <h4 class="panel-title">
-                            <a data-toggle="collapse" href="{{$clausulaId}}">3.3{{'.' . $clausulaString}} CLÁUSULA</a>
+                            <a data-toggle="collapse" href="{{$clausulaId}}">CLÁUSULA Nº {{$clausulaFloat}}</a>
                             <a href="{{$clausula->id}}/processo/clausula/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Cláusula" class="btn btn-success btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                                
                             <div class="clearfix"></div>
                           </h4>
@@ -223,6 +224,7 @@
                   <table class="table table-bordered">
                     <thead>
                       <tr>
+                        <th>Nº</th>
                         <th>Cláusula</th>
                         <th>Departamento</th>
                       </tr>
@@ -230,6 +232,7 @@
                     <tbody>
                     @foreach ($a->departamentosclausulas as $departamentoclausula)  
                       <tr>
+                        <td>{{$departamentoclausula->clausula->numero}}</td>
                         <td>{{$departamentoclausula->clausula->clausula}}</td>
                         <td>{{$departamentoclausula->departamento->departamento}}</td>
                       </tr>
@@ -257,77 +260,129 @@
       </h4>
     </div>
     <div id="auditoria-naoconformidade" class="panel-collapse collapse">
-      <div class="panel-body">  
-       @php($naoconformidadeInt = 1)    
-       @foreach ($a->naoconformidades as $naoconformidade)
-         @php($naoconformidadeString = (string)$naoconformidadeInt)
-         @php($naoconformidadeHref = 'auditoria-naoconformidade-' . $naoconformidadeString)
-         @php($naoconformidadeId = '#' . $naoconformidadeHref)
-         <div class="panel-group">
-           <div class="panel panel-danger">
-             <div class="panel-heading">
-               <h4 class="panel-title">
-                 <a data-toggle="collapse" href="{{$naoconformidadeId}}">3.4{{'.' . $naoconformidadeString}} NÃO CONFORMIDADE</a>
-                 <a href="{{$naoconformidade->id}}/processo/naoconformidade/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Revisão da Auditoria" class="btn btn-danger btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                                
-                 <div class="clearfix"></div>
-               </h4>
-             </div>
-             <div id="{{$naoconformidadeHref}}" class="panel-collapse collapse">
-               <div class="panel-body"> 
-                 <table class="table table-bordered">
-                   <tr>
-                     <td>Nº Contrato: {{$naoconformidade->n_contrato}}</td>
-                   </tr>
-                   <tr>
-                     <td>Nº Relatório: {{$naoconformidade->n_relatorio}}</td>
-                   </tr>
-                   <tr>
-                     <td>Tipo de Auditoria: {{$naoconformidade->tipo}}</td>
-                   </tr>
-                   <tr>
-                     <td>Processo: {{$naoconformidade->processo}}</td>
-                   </tr>
-                   <tr>
-                     <td>Norma: {{$naoconformidade->norma}}</td>
-                   </tr>
-                   <tr>
-                     <td>Cláusula: {{$naoconformidade->clausula}}</td>
-                   </tr>
-                   <tr>
-                     <td>Descrição: {{$naoconformidade->descricao}}</td>
-                   </tr>
-                    <tr>
-                     <td>Grau: {{$naoconformidade->grau}}</td>
-                   </tr>
-                    <tr>
-                     <td>Análise: {{$naoconformidade->analise}}</td>
-                   </tr>
-                    <tr>
-                     <td>Correção: {{$naoconformidade->correcao}}</td>
-                   </tr>
-                    <tr>
-                     <td>Data de Implementação: {{$naoconformidade->data_implementacao}}</td>
-                   </tr>
-                    <tr>
-                     <td>Responsável : {{$naoconformidade->responsavel}}</td>
-                   </tr>
-                    <tr>
-                     <td>Análise : {{$naoconformidade->analise}}</td>
-                   </tr>
-                    <tr>
-                     <td>Correção : {{$naoconformidade->correcao}}</td>
-                   </tr>
-                    <tr>
-                     <td>Status : {{$naoconformidade->status_verificacao}}</td>
-                   </tr>
-                 </table>
-                                                      
-               </div>
-             </div>
-           </div>   
-         </div> 
-         @php($naoconformidadeInt++)
-       @endforeach                      
+      <div class="panel-body"> 
+
+        <!-- PANEL NÃO CONFORMIDADES-->
+        <div class="panel-group">
+          <div class="panel panel-danger">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#naoconformidades">NÃO CONFORMIDADES</a>
+                <a href="{{$a->id}}/processo/naoconformidade/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Revisão" class="btn btn-danger btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
+                <div class="clearfix"></div>
+              </h4>
+            </div>
+            <div id="naoconformidades" class="panel-collapse collapse">
+              <div class="panel-body">  
+                @php($naoconformidadeInt = 1)    
+                @foreach ($a->naoconformidades as $naoconformidade)
+                  @php($naoconformidadeString = (string)$naoconformidadeInt)
+                  @php($naoconformidadeHref = 'auditoria-naoconformidade-' . $naoconformidadeString)
+                  @php($naoconformidadeId = '#' . $naoconformidadeHref)
+                  <div class="panel-group">
+                    <div class="panel panel-success">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" href="{{$naoconformidadeId}}">{{$naoconformidadeString}}. NÃO CONFORMIDADE</a>
+                          <a href="{{$naoconformidade->id}}/processo/naoconformidade/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Revisão da Auditoria" class="btn btn-success btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                                
+                          <div class="clearfix"></div>
+                        </h4>
+                      </div>
+                      <div id="{{$naoconformidadeHref}}" class="panel-collapse collapse">
+                        <div class="panel-body"> 
+
+                          <table class="table table-bordered">
+                            <tr >
+                              <td class="bg-info" align="center">COMPLETADO PELA PROJEK</td>
+                            </tr>
+                            <tr>
+                              <td>Nº Contrato: {{$naoconformidade->n_contrato}}</td>
+                            </tr>
+                            <tr>
+                              <td>Nº Relatório: {{$naoconformidade->n_relatorio}}</td>
+                            </tr>
+                            <tr>
+                              <td>Tipo de Auditoria: {{$naoconformidade->tipo}}</td>
+                            </tr>
+                            <tr>
+                              <td>Processo: {{$naoconformidade->processo}}</td>
+                            </tr>
+                            <tr>
+                              <td>Norma: {{$naoconformidade->norma}}</td>
+                            </tr>
+                            <tr>
+                              <td>Cláusula: {{$naoconformidade->clausula}}</td>
+                            </tr>
+                            <tr>
+                              <td>Descrição: {{$naoconformidade->descricao}}</td>
+                            </tr>
+                             <tr>
+                              <td>Grau: {{$naoconformidade->grau}}</td>
+                            </tr>
+                             <tr>
+                              <td>Análise: {{$naoconformidade->analise}}</td>
+                            </tr>
+                             <tr>
+                              <td>Correção: {{$naoconformidade->correcao}}</td>
+                            </tr>
+                             <tr>
+                              <td>Data de Implementação: {{$naoconformidade->data_implementacao}}</td>
+                            </tr>
+                             <tr>
+                              <td>Responsável : {{$naoconformidade->responsavel}}</td>
+                            </tr>
+                             <tr>
+                              <td>Análise : {{$naoconformidade->analise}}</td>
+                            </tr>
+                             <tr>
+                              <td>Correção : {{$naoconformidade->correcao}}</td>
+                            </tr>
+                             <tr>
+                              <td>Status : {{$naoconformidade->status_verificacao}}</td>
+                            </tr>
+                          </table>
+                          <br>
+
+                          <table class="table table-bordered">
+                            <tr>
+                              <td class="bg-info" align="center" style="text-transform: uppercase;">COMPLETADO POR {{$a->cliente->nome}}</td>
+                            </tr>
+                            <tr>
+                              <td>Análise: {{$naoconformidade->analise}}</td>
+                            </tr>
+                            <tr>
+                              <td>Correção: {{$naoconformidade->correcao}}</td>
+                            </tr>
+                            <tr>
+                              <td>Data de Implementação: {{$naoconformidade->data_implementacao}}</td>
+                            </tr>
+                            <tr>
+                              <td>Responsável : {{$naoconformidade->responsavel}}</td>
+                            </tr>
+                          </table>
+                          <br>
+
+                          <table class="table table-bordered">
+                            <tr>
+                              <td class="bg-info" align="center" >SERÁ COMPLETADO PELA PROJEK</td>
+                            </tr>
+                            <tr>
+                              <td>Status : {{$naoconformidade->status_verificacao}}</td>
+                            </tr>
+                          </table>
+                                                               
+                        </div>
+                      </div>
+                    </div>   
+                  </div> 
+                  @php($naoconformidadeInt++)
+                @endforeach              
+              </div>
+            </div>
+          </div>   
+        </div> 
+        <!-- FiM NÃO CONFORMIDADES--> 
+                
       </div>
     </div>
   </div>   

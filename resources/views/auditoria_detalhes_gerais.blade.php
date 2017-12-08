@@ -37,37 +37,61 @@
 </div> 
 <!-- FiM PANEL INFORMAÇÕES DA ORGANIZAÇÃO-->
 
-<!-- PANEL INFORMAÇÕES DO CONTATO-->
+<!-- PANEL INFORMAÇÕES DO CONTATOS-->
 <div class="panel-group">
   <div class="panel panel-warning">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" href="#auditoria-contato">1.2 INFORMAÇÕES DO CONTATO</a>
-      @if ($a->contato != null)
-        <a href="{{$a->contato->id}}/gerais/contato/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Contato" class="btn btn-warning btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a> 
-      @else
+        <a data-toggle="collapse" href="#auditoria-contato">1.2 INFORMAÇÕES DOS CONTATOS</a>
         <a href="{{$a->id}}/gerais/contato/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Contato" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a> 
-      @endif                     
         <div class="clearfix"></div>
       </h4>
     </div>
     <div id="auditoria-contato" class="panel-collapse collapse">
+
+      <!-- PANEL DO CONTATO-->
       <div class="panel-body"> 
-        @if ($a->contato != null)
-        <table class="table table-bordered">
-          <tr>
-            <td>Contato: {{$a->contato->nome}}</td>
-          </tr>
-           <tr>
-            <td>Telefone: {{$a->contato->tel}}</td>
-          </tr>
-           <tr>
-            <td>Email: {{$a->contato->email}}</td>
-          </tr>
-        </table> 
-        @endif                 
+        @php($contatoInt = 1)    
+        @foreach ($a->contatos as $contato)
+          @php($contatoString = (string)$contatoInt)
+          @php($contatoHref = 'auditoria-contatos-' . $contatoString)
+          @php($contatoId = '#' . $contatoHref)
+          <div class="panel-group">
+            <div class="panel panel-danger">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="{{$contatoId}}">{{$contatoString}}. CONTATO</a>
+                  <a href="{{$contato->id}}/gerais/contato/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Contato" class="btn btn-danger btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>              
+                  <div class="clearfix"></div>
+                </h4>
+              </div>
+              <div id="{{$contatoHref}}" class="panel-collapse collapse">
+                <div class="panel-body"> 
+                  <table class="table table-bordered">
+                    <tr>
+                      <tr>
+                        <td>Contato: {{$contato->nome}}</td>
+                      </tr>
+                       <tr>
+                        <td>Telefone: {{$contato->tel}}</td>
+                      </tr>
+                       <tr>
+                        <td>Email: {{$contato->email}}</td>
+                      </tr>
+                    </tr>
+                  </table>     
+                                                         
+                </div>
+              </div>
+            </div>   
+          </div> 
+          @php($contatoInt++)
+        @endforeach      
+
       </div>
+      <!-- FiM PANEL DO CONTATO-->
+
     </div>
   </div>   
 </div> 
-<!-- FiM PANEL INFORMAÇÕES DO CONTATO-->
+<!-- FiM PANEL INFORMAÇÕES DO CONTATOS-->

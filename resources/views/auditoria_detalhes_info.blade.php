@@ -1,10 +1,11 @@
+
 <!-- PANEL NORMAS DA AUDITORIA-->
 <div class="panel-group">
   <div class="panel panel-warning">
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" href="#auditoria-normas">2.1 NORMAS DA AUDITORIA</a>
-        <a href="{{$a->id}}/informacoes/norma/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Processo" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
+        <a href="{{$a->id}}/informacoes/norma/novo"><button data-toggle="tooltip" data-placement="top" title="Adicionar Norma da Auditoria" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
         <div class="clearfix"></div>
       </h4>
     </div>
@@ -19,7 +20,7 @@
             <div class="panel panel-danger">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" href="{{$normaId}}">2.1{{'.' . $normaString}} NORMA</a>
+                  <a data-toggle="collapse" href="{{$normaId}}">{{$normaString}}. NORMA</a>
                    <a href="{{$norma->id}}/informacoes/norma/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Norma" class="btn btn-danger btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                 
                   <div class="clearfix"></div>
                 </h4>
@@ -132,56 +133,122 @@
   <div class="panel panel-warning">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" href="#auditoria-escopo">2.4 ESCOPO DE AUDITORIA</a>
-        <a href="{{$a->id}}/informacoes/plano/novo"><button data-toggle="tooltip" data-placement="top" title="Adicionar Escopo da Auditoria" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
+        <a data-toggle="collapse" href="#auditoria-escopo">2.4 ESCOPO DE AUDITORIA</a>                            
         <div class="clearfix"></div>
       </h4>
     </div>
     <div id="auditoria-escopo" class="panel-collapse collapse">
-      <div class="panel-body">      
-        @php($planoInt = 1)    
-        @foreach ($a->planos as $plano)
-          @php($planoString = (string)$planoInt)
-          @php($planoHref = 'auditoria-plano-' . $planoString)
-          @php($planoId = '#' . $planoHref)
-          <div class="panel-group">
-            <div class="panel panel-danger">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" href="{{$planoId}}">2.4{{'.' . $planoString}} NOTAS DO AUDITOR</a>
-                  <a href="{{$plano->id}}/informacoes/plano/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Informações do Auditor" class="btn btn-danger btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                
-                  <div class="clearfix"></div>
-                </h4>
+      <div class="panel-body"> 
+
+        <!-- OBJETIVO DA AUDITORIA-->
+        <div class="panel-group">
+          <div class="panel panel-danger">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#escopo">DETALHES DO ESCOPO DA AUDITORIA</a>
+                <a href="{{$a->id}}/informacoes/escopo/novo"><button data-toggle="tooltip" data-placement="top" title="Adicionar Detalhes do Escopo da  Auditoria" class="btn btn-danger btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>      
+                <div class="clearfix"></div>
+              </h4>
+            </div>
+            <div id="escopo" class="panel-collapse collapse">
+              <div class="panel-body"> 
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <td>Objetivos</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{$a->escopo->objetivos}}</td>
+                    </tr>
+                  </tbody>
+                  
+                </table>
+
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <td>Data</td>
+                      <td>Comentários</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{$a->escopo->data}}</td>
+                      <td>{{$a->escopo->comentarios}}</td>
+                    </tr>
+                  </tbody>
+                  
+                </table>
+                                           
               </div>
-              <div id="{{$planoHref}}" class="panel-collapse collapse">
-                <div class="panel-body"> 
-                  <table class="table table-bordered">
-                    <tr>
-                      <td>Data: {{$plano->data}}   </td>
-                    </tr>
-                    <tr>
-                      <td>Horário: {{$plano->horario}}   </td>
-                    </tr>
-                    <tr>
-                      <td>Atividade: {{$plano->atividade}}   </td>
-                    </tr>
-                    <tr>
-                      <td>Site: {{$plano->site}}   </td>
-                    </tr>
-                    <tr>
-                      <td>Processo: {{$plano->processo}}   </td>
-                    </tr>
-                    <tr>
-                      <td>Claúsula: {{$plano->clausula}}   </td>
-                    </tr>
-                  </table>
-                                             
-                </div>
+            </div>
+          </div>   
+        </div>
+        <!-- FiM OBJETIVO DA AUDITORIA-->
+
+        <!-- PLANOS DA AUDITORIA-->
+        <div class="panel-group">
+          <div class="panel panel-danger">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#planos">PLANOS</a>
+                <a href="{{$a->id}}/informacoes/plano/novo"><button data-toggle="tooltip" data-placement="top" title="Adicionar Plano" class="btn btn-danger btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a> 
+                <div class="clearfix"></div>
+              </h4>
+            </div>
+            <div id="planos" class="panel-collapse collapse">
+              <div class="panel-body"> 
+                @php($planoInt = 1)    
+                @foreach ($a->planos as $plano)
+                  @php($planoString = (string)$planoInt)
+                  @php($planoHref = 'auditoria-plano-' . $planoString)
+                  @php($planoId = '#' . $planoHref)
+                  <div class="panel-group">
+                    <div class="panel panel-success">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" href="{{$planoId}}"> {{$planoString}}. PLANO DA AUDITORIA</a>
+                          <a href="{{$plano->id}}/informacoes/plano/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Informações do Auditor" class="btn btn-success btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                
+                          <div class="clearfix"></div>
+                        </h4>
+                      </div>
+                      <div id="{{$planoHref}}" class="panel-collapse collapse">
+                        <div class="panel-body"> 
+                          <table class="table table-bordered">
+                            <tr>
+                              <td>Data: {{$plano->data}}   </td>
+                            </tr>
+                            <tr>
+                              <td>Horário: {{$plano->horario}}   </td>
+                            </tr>
+                            <tr>
+                              <td>Atividade: {{$plano->atividade}}   </td>
+                            </tr>
+                            <tr>
+                              <td>Site: {{$plano->site}}   </td>
+                            </tr>
+                            <tr>
+                              <td>Processo: {{$plano->processo}}   </td>
+                            </tr>
+                            <tr>
+                              <td>Claúsula: {{$plano->clausula}}   </td>
+                            </tr>
+                          </table>
+                                                     
+                        </div>
+                      </div>
+                    </div>   
+                  </div> 
+                  @php($planoInt++)
+                @endforeach                
               </div>
-            </div>   
-          </div> 
-          @php($planoInt++)
-        @endforeach                                              
+            </div>
+          </div>   
+        </div>
+        <!-- FiM PLANOS DA AUDITORIA-->
+
       </div>
     </div>
   </div>   

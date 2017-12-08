@@ -103,9 +103,9 @@
    <div class="col-sm-2 col-xs-12 col-md-4">
      <input type="text" id="auditor_lider" name="auditor_lider" value="{{$a->auditor_lider}}" required="required"  class="form-control col-md-7 col-xs-12">
    </div>
-   <label class="control-label col-md-1 col-sm-3 col-xs-12" for="auditor_lider_jbc">JBC</label>
+   <label class="control-label col-md-1 col-sm-3 col-xs-12" for="auditor_lider_iniciais">Iniciais do Auditor Líder</label>
    <div class="col-sm-2 col-xs-12 col-md-1">
-     <input type="text" id="auditor_lider_jbc" name="auditor_lider_jbc" value="{{$a->auditor_lider_jbc}}" required="required" class="form-control col-md-7 col-xs-12">
+     <input type="text" id="auditor_lider_iniciais" name="auditor_lider_iniciais" value="{{$a->auditor_lider_iniciais}}" required="required" class="form-control col-md-7 col-xs-12">
    </div>
  </div>
  <div class="item form-group">
@@ -113,9 +113,9 @@
    <div class="col-sm-2 col-xs-12 col-md-4">
      <input type="text" id="auditor" name="auditor" required="required" value="{{$a->auditor}}" class="form-control col-md-7 col-xs-12">
    </div>
-   <label class="control-label col-md-1 col-sm-3 col-xs-12" for="auditor_jbc">JBC</label>
+   <label class="control-label col-md-1 col-sm-3 col-xs-12" for="auditor_iniciais">Iniciais do Auditor</label>
    <div class="col-sm-2 col-xs-12 col-md-1">
-     <input type="text" id="auditor_jbc" name="auditor_jbc" required="required" value="{{$a->auditor_jbc}}" class="form-control col-md-7 col-xs-12">
+     <input type="text" id="auditor_iniciais" name="auditor_iniciais" required="required" value="{{$a->auditor_iniciais}}" class="form-control col-md-7 col-xs-12">
    </div>
  </div>
  <div class="form-group">

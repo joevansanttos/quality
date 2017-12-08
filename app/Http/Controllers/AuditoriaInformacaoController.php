@@ -7,11 +7,13 @@ use App\Http\Requests\AuditoriaCertificacaoRequest;
 use App\Http\Requests\AuditoriaPlanoRequest;
 use App\Http\Requests\AuditoriaNormaRequest;
 use App\Http\Requests\AuditoriaAuditorInfoRequest;
+use App\Http\Requests\AuditoriaEscopoRequest;
 use App\Auditoria;
 use App\AuditoriaCertificacao;
 use App\AuditoriaPlano;
 use App\AuditoriaNorma;
 use App\AuditoriaAuditorInfo;
+use App\AuditoriaEscopo;
 
 
 class AuditoriaInformacaoController extends Controller
@@ -23,7 +25,7 @@ class AuditoriaInformacaoController extends Controller
 
   public function informacoes_certificacao_novo($id){
     $auditoria = Auditoria::find($id);
-    return view ('auditoria-informacao-certificacao-form')->with('a', $auditoria);
+    return view ('auditoria_certificacao_form')->with('a', $auditoria);
   }
 
   public function adiciona_certificacao(AuditoriaCertificacaoRequest $request){
@@ -39,6 +41,17 @@ class AuditoriaInformacaoController extends Controller
 
   public function adiciona_norma(AuditoriaNormaRequest $request){
     AuditoriaNorma::create($request->all());
+    $auditoria = Auditoria::find($request->auditoria_id);
+    return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
+  }
+
+  public function novo_escopo($id){
+    $auditoria = Auditoria::find($id);
+    return view ('auditoria_escopo_form')->with('a', $auditoria);
+  }
+
+  public function adiciona_escopo(AuditoriaEscopoRequest $request){
+    AuditoriaEscopo::create($request->all());
     $auditoria = Auditoria::find($request->auditoria_id);
     return redirect()->action('AuditoriaController@mostra', ['id' => $auditoria->id ]);
   }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 05-Dez-2017 às 16:31
+-- Generation Time: 08-Dez-2017 às 11:14
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -236,6 +236,27 @@ INSERT INTO `auditorias_eficacia` (`id`, `eficacia`, `auditoria_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `auditorias_escopo`
+--
+
+CREATE TABLE `auditorias_escopo` (
+  `id` int(11) NOT NULL,
+  `objetivos` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `comentarios` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auditoria_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `auditorias_escopo`
+--
+
+INSERT INTO `auditorias_escopo` (`id`, `objetivos`, `data`, `comentarios`, `auditoria_id`) VALUES
+(2, '1. Confirmar que o sistema de gestão está em conformidade com os requisitos normativos;\r\n2. Confirmar que a organização fez um planejamento adequado do seu sistema de gestão e implementou de forma\r\neficaz as providências planejadas;\r\n3. Confirmar que o sistema de gestão é capaz de atingir as políticas e objetivos da organização, e avaliar a\r\ncapacidade do sistema de gestão garante o atendimento dos requisitos legais, regulamentares e contratuais\r\naplicáveis;\r\n4. Identificar áreas com potencial de melhoria do sistema de gestão, quando aplicável.\r\n5. O objetivo da auditoria de Estágio 2 é avaliar a implementação, incluindo a eficácia, do sistema de gestão do\r\ncliente.\r\nEsta auditoria deve incluir ao menos os seguintes itens:\r\na) informação e evidência sobre a conformidade dos requisitos aplicáveis, da norma ou outros documentos\r\nnormativos, ao sistema de gestão.\r\nb) monitoramento de desempenho: medição, relatórios e análises em relação aos objetivos e metas de desempenho\r\n(coerênte com a expectativa da norma ou de outros documentos normativos).\r\nc) desempenho do sistema de gestão em relação à conformidade legal.\r\nd) controle operacional dos processos do cliente.\r\ne) auditoria interna e análise crítica pela direção.\r\nf) responsabilidade da direção para com as políticas de seus clientes;\r\ng) ligação entre requisitos normativos, política, objetivos e metas de desempenho (coerente com a expectativa da\r\nnorma ou de outros documentos normativos), quaisquer requisitos legais aplicáveis, responsabilidades, competência\r\nde pessoal, operações, procedimentos, resultados de desempenho, conclusões de auditorias internas.', '2012-12-06', NULL, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `auditorias_naoconformidade`
 --
 
@@ -250,9 +271,9 @@ CREATE TABLE `auditorias_naoconformidade` (
   `descricao` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `grau` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `auditor_lider` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `auditor_lider_jbc` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auditor_lider_iniciais` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `auditor` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `auditor_jbc` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auditor_iniciais` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `representante` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `analise` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `correcao` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -271,7 +292,7 @@ CREATE TABLE `auditorias_naoconformidade` (
 -- Extraindo dados da tabela `auditorias_naoconformidade`
 --
 
-INSERT INTO `auditorias_naoconformidade` (`id`, `n_contrato`, `n_relatorio`, `auditoria_tipo`, `processo`, `norma`, `clausula`, `descricao`, `grau`, `auditor_lider`, `auditor_lider_jbc`, `auditor`, `auditor_jbc`, `representante`, `analise`, `correcao`, `data_implementacao`, `data_verificacao`, `status_verificacao`, `auditor_verificacao`, `auditoria_id`, `data`, `responsavel`, `data_completado`, `comentarios`) VALUES
+INSERT INTO `auditorias_naoconformidade` (`id`, `n_contrato`, `n_relatorio`, `auditoria_tipo`, `processo`, `norma`, `clausula`, `descricao`, `grau`, `auditor_lider`, `auditor_lider_iniciais`, `auditor`, `auditor_iniciais`, `representante`, `analise`, `correcao`, `data_implementacao`, `data_verificacao`, `status_verificacao`, `auditor_verificacao`, `auditoria_id`, `data`, `responsavel`, `data_completado`, `comentarios`) VALUES
 (1, '1235387', 'B44SMJBC01', 'Auditoria Principal', 'Sistema de Gestão: Compras, Recebimento, Vendas.', '14790:2011', '4.4 Venda e comunicação sobre produtos certificados', 'Evidenciado que nas Notas Fiscais de Venda, não constam o percentual de certificação dos produtos gráficos da Romiti', 'Menor', 'Juliana Bueno Colpas', '39779', 'Juliana Bueno Colpas', '39779', 'Antonio Ferreira', 'Falha no entendimento da empresa, uma vez que o sistema é de tranferência e logo não haveria a necessidade de\r\nmencionar o percentual.', 'Parametrizar o sistema visando a inclusão do percentual - 70%.', '2012-12-06', '2013-02-06', 'Aceita', 'Juliana Bueno Colpas', 2, '2012-12-06', 'Antônio', '2013-02-06', NULL);
 
 -- --------------------------------------------------------
@@ -282,7 +303,7 @@ INSERT INTO `auditorias_naoconformidade` (`id`, `n_contrato`, `n_relatorio`, `au
 
 CREATE TABLE `auditorias_norma` (
   `id` int(11) NOT NULL,
-  `norma` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `norma` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `auditoria_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -6958,6 +6979,12 @@ ALTER TABLE `auditorias_eficacia`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `auditorias_escopo`
+--
+ALTER TABLE `auditorias_escopo`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `auditorias_naoconformidade`
 --
 ALTER TABLE `auditorias_naoconformidade`
@@ -7203,6 +7230,11 @@ ALTER TABLE `auditorias_departamentos_clausulas`
 --
 ALTER TABLE `auditorias_eficacia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `auditorias_escopo`
+--
+ALTER TABLE `auditorias_escopo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `auditorias_naoconformidade`
 --
