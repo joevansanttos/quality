@@ -26,4 +26,16 @@ class Macroprocesso extends Model
         return $this->hasMany('App\StakeholderMacro');
     } 
 
+    public function classificacao(){
+      return $this->belongsTo('App\Classificacao', 'classificacao_id');
+    } 
+
+    public function periodicidade(){
+      return $this->belongsTo('App\Periodicidade', 'periodicidade_id');
+    } 
+
+    public function maturidade(){
+      return $this->belongsTo('App\Maturidade', 'maturidade_id');
+    } 
+
 }

@@ -14,7 +14,11 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    @if (Auth::user()){
+                        redirect('/dashboard')
+                    }
+                    @endif
+                    
                 </div>
             </div>
         </div>

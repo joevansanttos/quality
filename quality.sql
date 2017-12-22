@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Dez-2017 às 11:14
+-- Generation Time: 22-Dez-2017 às 15:59
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -63,7 +63,7 @@ CREATE TABLE `auditorias` (
 
 INSERT INTO `auditorias` (`id`, `cod`, `cliente_id`, `data`) VALUES
 (2, '1235387', 6, '2012-12-18'),
-(3, '111111', 3, NULL);
+(3, '111111', 3, '2017-12-10');
 
 -- --------------------------------------------------------
 
@@ -253,6 +253,25 @@ CREATE TABLE `auditorias_escopo` (
 
 INSERT INTO `auditorias_escopo` (`id`, `objetivos`, `data`, `comentarios`, `auditoria_id`) VALUES
 (2, '1. Confirmar que o sistema de gestão está em conformidade com os requisitos normativos;\r\n2. Confirmar que a organização fez um planejamento adequado do seu sistema de gestão e implementou de forma\r\neficaz as providências planejadas;\r\n3. Confirmar que o sistema de gestão é capaz de atingir as políticas e objetivos da organização, e avaliar a\r\ncapacidade do sistema de gestão garante o atendimento dos requisitos legais, regulamentares e contratuais\r\naplicáveis;\r\n4. Identificar áreas com potencial de melhoria do sistema de gestão, quando aplicável.\r\n5. O objetivo da auditoria de Estágio 2 é avaliar a implementação, incluindo a eficácia, do sistema de gestão do\r\ncliente.\r\nEsta auditoria deve incluir ao menos os seguintes itens:\r\na) informação e evidência sobre a conformidade dos requisitos aplicáveis, da norma ou outros documentos\r\nnormativos, ao sistema de gestão.\r\nb) monitoramento de desempenho: medição, relatórios e análises em relação aos objetivos e metas de desempenho\r\n(coerênte com a expectativa da norma ou de outros documentos normativos).\r\nc) desempenho do sistema de gestão em relação à conformidade legal.\r\nd) controle operacional dos processos do cliente.\r\ne) auditoria interna e análise crítica pela direção.\r\nf) responsabilidade da direção para com as políticas de seus clientes;\r\ng) ligação entre requisitos normativos, política, objetivos e metas de desempenho (coerente com a expectativa da\r\nnorma ou de outros documentos normativos), quaisquer requisitos legais aplicáveis, responsabilidades, competência\r\nde pessoal, operações, procedimentos, resultados de desempenho, conclusões de auditorias internas.', '2012-12-06', NULL, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `auditorias_gestores`
+--
+
+CREATE TABLE `auditorias_gestores` (
+  `id` int(11) NOT NULL,
+  `auditoria_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `auditorias_gestores`
+--
+
+INSERT INTO `auditorias_gestores` (`id`, `auditoria_id`, `user_id`) VALUES
+(11, 2, 53);
 
 -- --------------------------------------------------------
 
@@ -6722,6 +6741,50 @@ INSERT INTO `pis` (`departamento_id`, `id`, `data_revisado`, `id_consultor`, `ge
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `profissao`
+--
+
+CREATE TABLE `profissao` (
+  `id` int(11) NOT NULL,
+  `descricao` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `profissao`
+--
+
+INSERT INTO `profissao` (`id`, `descricao`) VALUES
+(1, 'Consultor de Negócios'),
+(2, 'Analista TI'),
+(3, 'Consultor de Projetos'),
+(4, 'Partner'),
+(5, 'Gerente Financeiro');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `profissoes`
+--
+
+CREATE TABLE `profissoes` (
+  `id` int(11) NOT NULL,
+  `descricao` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `profissoes`
+--
+
+INSERT INTO `profissoes` (`id`, `descricao`) VALUES
+(1, 'Consultor de Negócios'),
+(2, 'Analista TI'),
+(3, 'Consultor de Projetos'),
+(4, 'Gestor de Empresa'),
+(5, 'Gerente Financeiro');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `stakeholders_macro`
 --
 
@@ -6902,17 +6965,20 @@ CREATE TABLE `users` (
   `updated_at` varchar(50) DEFAULT NULL,
   `created_at` varchar(50) DEFAULT NULL,
   `remember_token` varchar(1000) DEFAULT NULL,
-  `image` varchar(2000) DEFAULT NULL
+  `image` varchar(2000) DEFAULT NULL,
+  `profissao_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`password`, `name`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `updated_at`, `created_at`, `remember_token`, `image`) VALUES
-('$2y$10$lRjICI53Jk2lrSYBK9kXV.oi65ksqSju/Y9vmycmGohK4h6.WcriS', 'Fábio', 'fabio.martins@projek.com.br', 'masculino', 'BA', '2927408', '(71) 98333-3333', 50, 'Martins', '2017-11-16 20:12:42', '2017-11-06 14:44:39', 'YtXoQyXetmikJvGCrXSffS4yEtYv0H2IdoO4owMnpIdXiiDsRUfpBrEvSDTf', '8jqKZs43yj0tnuf9gEkSQXL4tvPjtA6d18Lytj6f.png'),
-('$2y$10$3xJmsunou.VPOQ9WDANQGug6NO6xt.UOSJq3Agk2EpHy3dNz0i9fa', 'Juliana', 'juliana.menezes@projek.com.br', 'feminino', 'BA', '2927408', '(71) 99371-5053', 51, 'Menezes', '2017-11-08 17:13:14', '2017-11-08 17:13:14', 'vQi7kTCbB7npFhGzAQPyCamkHSB4yp93gNb1LcJ7k4Zs6k3iELlYoMhFipsf', 'public/PFT1rJnKg04GaXtRzL0BD8mOOxBQLo1ZLu3KgDoD.png'),
-('$2y$10$eg5.BDJE9dWkf6HFnx7Op.Gfvk/xtQw51J2Eckun1i6PpyHuCXgWe', 'Catharina', 'catharina.ramos@projek.com.br', 'feminino', 'BA', '2927408', '(71) 99915-5505', 52, 'Ramos', '2017-11-10 18:26:22', '2017-11-10 18:26:22', 'XjjdTz52VcFpUYDjgNsgeIGOd425c69NjVQuMxv0g2Wa7Lp9facB8Gzl2quZ', NULL);
+INSERT INTO `users` (`password`, `name`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `updated_at`, `created_at`, `remember_token`, `image`, `profissao_id`) VALUES
+('$2y$10$lRjICI53Jk2lrSYBK9kXV.oi65ksqSju/Y9vmycmGohK4h6.WcriS', 'Fábio', 'fabio.martins@projek.com.br', 'masculino', 'BA', '2927408', '(71) 98333-3333', 50, 'Martins', '2017-11-16 20:12:42', '2017-11-06 14:44:39', '9tweXbbD03BVf2TcqjmssTGi2GkGZzrdw4ElMHgEOpn2J4LJzkFyniUp45mi', '8jqKZs43yj0tnuf9gEkSQXL4tvPjtA6d18Lytj6f.png', 1),
+('$2y$10$3xJmsunou.VPOQ9WDANQGug6NO6xt.UOSJq3Agk2EpHy3dNz0i9fa', 'Juliana', 'juliana.menezes@projek.com.br', 'feminino', 'BA', '2927408', '(71) 99371-5053', 51, 'Menezes', '2017-11-08 17:13:14', '2017-11-08 17:13:14', 'vQi7kTCbB7npFhGzAQPyCamkHSB4yp93gNb1LcJ7k4Zs6k3iELlYoMhFipsf', 'public/PFT1rJnKg04GaXtRzL0BD8mOOxBQLo1ZLu3KgDoD.png', 1),
+('$2y$10$eg5.BDJE9dWkf6HFnx7Op.Gfvk/xtQw51J2Eckun1i6PpyHuCXgWe', 'Catharina', 'catharina.ramos@projek.com.br', 'feminino', 'BA', '2927408', '(71) 99915-5505', 52, 'Ramos', '2017-11-10 18:26:22', '2017-11-10 18:26:22', 'XjjdTz52VcFpUYDjgNsgeIGOd425c69NjVQuMxv0g2Wa7Lp9facB8Gzl2quZ', NULL, 1),
+('$2y$10$3OkHybEkW4bNeG/2SIFAxeP/1khLI5Wd/9XFNY3bKrIR9Ax3wmaDq', 'José', 'jose.gujao@gmail.com', 'masculino', 'PA', '1501204', '(71) 98333-3333', 53, 'Gujão Oliveira', '2017-12-15 12:52:38', '2017-12-15 12:35:37', 'p8qNGx3EYEFEDvaJ1JFmOCccqkmTQIRxo3QmJ4kQDojNYUyO4zqdCpMXoz9I', NULL, 4),
+('$2y$10$AY79oLIFLSn5kZ5FFqEjReCkoCFAi2T6WcADBIIAwM2tnCVxuJ5iq', 'Fábio', 'fabio@gujao.com.br', 'masculino', 'PE', '2601409', '(71) 98333-3333', 54, 'Gujão', '2017-12-19 02:29:40', '2017-12-19 02:29:40', NULL, NULL, 4);
 
 --
 -- Indexes for dumped tables
@@ -6983,6 +7049,13 @@ ALTER TABLE `auditorias_eficacia`
 --
 ALTER TABLE `auditorias_escopo`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `auditorias_gestores`
+--
+ALTER TABLE `auditorias_gestores`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `auditorias_naoconformidade`
@@ -7147,6 +7220,18 @@ ALTER TABLE `pis`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `profissao`
+--
+ALTER TABLE `profissao`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `profissoes`
+--
+ALTER TABLE `profissoes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `stakeholders_macro`
 --
 ALTER TABLE `stakeholders_macro`
@@ -7235,6 +7320,11 @@ ALTER TABLE `auditorias_eficacia`
 --
 ALTER TABLE `auditorias_escopo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `auditorias_gestores`
+--
+ALTER TABLE `auditorias_gestores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `auditorias_naoconformidade`
 --
@@ -7371,6 +7461,16 @@ ALTER TABLE `periodicidade`
 ALTER TABLE `pis`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
+-- AUTO_INCREMENT for table `profissao`
+--
+ALTER TABLE `profissao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `profissoes`
+--
+ALTER TABLE `profissoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `stakeholders_macro`
 --
 ALTER TABLE `stakeholders_macro`
@@ -7394,7 +7494,7 @@ ALTER TABLE `subprocessos`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

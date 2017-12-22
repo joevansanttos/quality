@@ -2,7 +2,7 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index');
 Route::resource('dashboard','LoginController');
 Route::post('/login', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout');
@@ -14,8 +14,10 @@ Route::post('/users/adiciona', 'UserController@adiciona');
 Route::get('/users/perfis', 'UserController@perfis');
 Route::resource('user-editar-formulario','UserController');
 Route::get('/users/encontrar/{id}', 'UserController@encontrar');
-Route::post('/users/alterar', 'UserController@alterar');
+Route::post('/users/encontrar/alterar', 'UserController@alterar');
 Route::get('/users/remover/{id}', 'UserController@remover');
+Route::get('/users/gestores', 'UserController@lista_gestores');
+
 
 Route::get('/clientes', 'ClienteController@lista');
 Route::get('/clientes/novo', 'ClienteController@novo');
@@ -124,6 +126,9 @@ Route::post('/auditorias/encontrar/alterar', 'AuditoriaController@alterar');
 Route::get('/auditorias/naoconformidades/{id}', 'AuditoriaController@naoconformidades');
 Route::get('/auditorias/naoconformidades/encontrar/{id}', 'AuditoriaController@encontrar_naoconformidade');
 Route::post('/auditorias/naoconformidades/encontrar/alterar', 'AuditoriaController@alterar_naoconformidade');
+Route::get('/auditorias/imprimir/{id}', 'AuditoriaController@imprimir');
+Route::get('/auditorias/gestores/{id}', 'AuditoriaController@gestores');
+Route::post('/auditorias/gestores/adiciona', 'AuditoriaController@adiciona_gestor');
 
 
 Route::get('/auditorias/{id}/gerais/contato/novo', 'AuditoriaGeraisController@novo_contato');

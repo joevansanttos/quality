@@ -45,11 +45,14 @@ page[size="A5"][layout="portrait"] {
   }
 }
 
-h3 , h2, h4{
-  color: #999999;
+h3 , h2{
+  color: #1c1c1c;
   text-align: center;
 }
 
+h4{
+  color: #1c1c1c;
+}
 
 hr{
   border-top: 1px solid #73879C;

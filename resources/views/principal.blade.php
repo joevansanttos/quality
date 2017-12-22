@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="{{ URL::asset('vendors/bootstrap-daterangepicker/daterangepicker.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('vendors/select2/dist/css/select2.min.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('vendors/iCheck/skins/flat/green.css') }}" />
-   
+    <link rel="stylesheet" href="{{ URL::asset('vendors/lou-multi-select/css/multi-select.css') }}" />
+
     <!-- Custom styling plus plugins -->
     <link rel="stylesheet" href="{{ URL::asset('vendors/build/css/custom.min.css') }}" />
     
@@ -62,6 +63,7 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
+                @if (Auth::user()->profissao->id != 4)
                   <li><a><i class="fa fa-home"></i> Home<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="/dashboard">Dashboard</a></li>
@@ -69,7 +71,8 @@
                   </li>
                   <li><a><i class="fa fa-users"></i> Usuários<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/users">Consultores</a></li>
+                      <li><a href="/users">Todos os Usuários</a></li>
+                      <li><a href="/users/gestores">Gestores de Clientes</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-briefcase"></i> Clientes<span class="fa fa-chevron-down"></span></a>
@@ -83,16 +86,18 @@
                       <li><a href="/pis">Manuais de Processos</a></li>  
                     </ul>
                   </li>
+                @endif
                   <li><a><i class="fa fa-line-chart"></i> Auditoria<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="/auditorias">Auditoria de Processos</a></li>
                     </ul>
-                  </li>   
+                  </li>
+                @if (Auth::user()->profissao->id != 4)   
                   <li><a><i class="fa fa-graduation-cap"></i> Universidade<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      
                     </ul>
-                  </li>              
+                  </li> 
+                @endif             
                 </ul>
               </div>
             </div>

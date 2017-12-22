@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\AuditoriaRequest;
 use App\Http\Requests\AuditoriaNaoConformidadeRequest;
+use App\Http\Requests\AuditoriaGestorRequest;
 use App\Auditoria;
 use App\Cliente;
+use App\AuditoriaGestor;
+use App\User;
 use App\AuditoriaNaoConformidade;
+
 
 
 
@@ -15,7 +19,7 @@ class AuditoriaController extends Controller
 {
   public function __construct()
   {
-      $this->middleware('auth');
+    $this->middleware('auth');
   }
 
   public function lista(){
@@ -65,6 +69,34 @@ class AuditoriaController extends Controller
     $auditoriaNaoConformidade->update($request->all());
     $auditoria = Auditoria::find($auditoriaNaoConformidade->auditoria->id);
     return redirect()->action('AuditoriaController@naoconformidades', ['id' => $auditoria->id ]);
+  }
+
+  public function imprimir($id){
+    $auditoria = Auditoria::find($id);
+    return view ('auditoria')->with('a', $auditoria);
+  }
+
+  public function gestores($id){
+    $auditoria = Auditoria::find($id);
+    $gestores = User::where('profissao_id', 4)->get();
+    $selects = AuditoriaGestor::where('auditoria_id', $auditoria->id)->get();
+    return view ('auditoria_gestores')->with('a', $auditoria)->with('gs', $gestores)->with('selects', $selects);
+  }
+
+  public function adiciona_gestor(AuditoriaGestorRequest $request){
+    $gestores = $request->gestores;
+    $auditoria_id = $request->auditoria_id;
+    $selects = AuditoriaGestor::where('auditoria_id', $auditoria_id)->get();
+    foreach ($selects as $s) {
+     $s->delete();
+    }
+    foreach ($gestores as $g) {
+      $array = [];
+      $array['user_id'] = $g;
+      $array['auditoria_id'] = $auditoria_id;
+      AuditoriaGestor::create($array);
+    }
+      return redirect()->action('AuditoriaController@lista');
   }
 
   

@@ -1,17 +1,39 @@
 @extends('principal')
 
 @section("cabecalho")
-<h3>Manuais de Processos</h3>
+<h3>Mapeamento</h3>
+@stop
+
+
+@section("titulo")
+<div class="x_title">
+  <h2>Lista de Manuais de Processos Cadastrados</h2>
+  <ul class="nav navbar-right panel_toolbox">
+    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Settings 1</a>
+        </li>
+        <li><a href="#">Settings 2</a>
+        </li>
+      </ul>
+    </li>
+    <li><a class="close-link"><i class="fa fa-close"></i></a>
+    </li>
+  </ul>
+  <div class="clearfix"></div>
+</div>
 @stop
 
 @section("conteudo")
-
 <table class="table table-bordered">
   <tr>
     <th>Empresa</th>
     <th>Departamento</th>  
     <th>Código</th>    
-    <th class="col-md-2">Ações</th>    
+    <th style="width: 15%;">Ações</th>    
   </tr>
   @foreach ($pis as $p)
     

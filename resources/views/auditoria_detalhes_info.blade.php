@@ -83,10 +83,10 @@
             <td>Tipo de Auditoria: {{$a->certificacao->tipo}}</td>
           </tr>
           <tr>
-            <td>Data de Inicio: {{$a->certificacao->inicio}}</td>
+            <td>Data de Inicio: {{date("d/m/Y", strtotime($a->certificacao->inicio))}}</td>
           </tr>
           <tr>
-            <td>Data de Término: {{$a->certificacao->termino}}</td>
+            <td>Data de Término: {{date("d/m/Y", strtotime($a->certificacao->termino))}}</td>
           </tr>
         </table> 
         @endif                                        
@@ -152,6 +152,7 @@
             </div>
             <div id="escopo" class="panel-collapse collapse">
               <div class="panel-body"> 
+            @if ($a->escopo != null)
                 <table class="table table-bordered">
                   <thead>
                     <tr>
@@ -181,7 +182,7 @@
                   </tbody>
                   
                 </table>
-                                           
+            @endif                               
               </div>
             </div>
           </div>   
