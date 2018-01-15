@@ -1,0 +1,104 @@
+* {
+background:transparent !important;
+text-shadow:none !important;
+filter:none !important;
+-ms-filter:none !important;
+}
+
+nav, footer, video, audio, object, embed { 
+display:none; 
+}
+
+page {
+  background: white;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+
+page[size="A4"] {  
+  width: 21cm;
+  padding: 1cm;
+  page-break-before: always; 
+}
+
+
+@media print {
+  body, page {
+    margin: 0;
+    box-shadow: 0;
+  }
+}
+
+.print {
+  display:block;
+}
+
+.no-print { 
+  display:none; 
+}
+
+img {
+  max-width: 100%;
+}
+
+
+
+p{
+  color: #1c1c1c;
+  font-size: 12pt;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+td, th{
+  color: #1c1c1c;
+}
+
+.data td { 
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+hr{
+  border-top: 1px solid #404040;
+}
+
+.page-break { 
+page-break-before: always; 
+}
+
+
+body {
+font: 12pt "Arial", "Times New Roman", Times, serif;
+color: #404040;
+}
+
+h1 {
+font-size: 24pt;
+}
+
+h2 {
+font-size: 14pt;
+}
+
+h3 {
+font-size: 12pt;
+}
+
+.capa{
+  text-align: left;
+}
+
+#titulo{
+  color: green;
+}
+
+table{
+  font-size: 10pt;
+}
+
+.break{
+  
+}
