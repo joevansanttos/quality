@@ -7,7 +7,7 @@
 
 @section("titulo")
 <div class="x_title">
-  <h2>Lista de Manuais de Processos Cadastrados</h2>
+  <h2>Lista de Todos os Manuais de Processos Cadastrados</h2>
   <ul class="nav navbar-right panel_toolbox">
     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
     </li>
@@ -28,26 +28,48 @@
 @stop
 
 @section("conteudo")
-<table class="table table-bordered">
-  <tr>
-    <th>Empresa</th>
-    <th>Departamento</th>  
-    <th>Código</th>    
-    <th style="width: 15%;">Ações</th>    
-  </tr>
+<table id="tabela" class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Empresa</th>
+      <th>Departamento</th>  
+      <th>Código</th>  
+      <th>Status</th>  
+      <th style="width: 10%;">Ações</th>    
+    </tr>
+  </thead>
+  
   @foreach ($pis as $p)
     
     <tr>
       <td>{{$p->departamento->cliente->nome}}</td>
       <td>{{$p->departamento->nome}}</td>
-      <td>{{$p->cod}}</td>         
+      <td>{{$p->cod}}</td> 
+      <td>{{$p->status->descricao}}</td> 
       <td align="center">
-        <a href="pis/{{$p->id}}"><button data-toggle="tooltip" data-placement="top" title="Adicionar no Manual" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>
-        <a href="pis/imprimir/{{$p->id}}"><button data-toggle="tooltip" data-placement="top" title="Ver Manual" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
-        <a href="pis/encontrar/{{$p->id}}"><button data-toggle="tooltip" data-placement="top" title="Alterar Manual" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-        <a href="pis/remover/{{$p->id}}"><button data-toggle="tooltip" data-placement="top" title="Remover Manual" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+        <a href="/pis/encontrar/{{$p->id}}"><button data-toggle="tooltip" data-placement="top" title="Alterar Manual" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+        <a href="/pis/remover/{{$p->id}}"><button data-toggle="tooltip" data-placement="top" title="Remover Manual" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
       </td>
     </tr>
   @endforeach
 </table>
+@stop
+
+@section ("script")
+
+<!-- Datatables -->
+
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>
+
+<script type="text/javascript" src="{{URL::asset('vendors/datatable/datatable.js')}}"></script>
 @stop

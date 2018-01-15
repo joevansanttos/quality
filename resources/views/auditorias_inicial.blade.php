@@ -7,7 +7,7 @@
 
 @section("titulo")
 <div class="x_title">
-  <h2>Lista de Todas as Auditorias Cadastradas</h2>
+  <h2>Lista de Todas as Auditorias Cadastradas em Estado Inicial</h2>
   <ul class="nav navbar-right panel_toolbox">
     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
     </li>

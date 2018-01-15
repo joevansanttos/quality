@@ -1,13 +1,13 @@
 @extends('principal')
 
 @section("cabecalho")
-<h3>Auditorias</h3>
+<h3>Clientes</h3>
 @stop
 
 
 @section("titulo")
 <div class="x_title">
-  <h2>Lista de Todas as Auditorias Cadastradas</h2>
+  <h2>Lista de Clientes com Relatórios Cadastrados</h2>
   <ul class="nav navbar-right panel_toolbox">
     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
     </li>
@@ -32,38 +32,31 @@
 <table id="tabela" class="table table-bordered">
   <thead>
     <tr>
-      <th>Cliente</th>
-      <th style="width: 12%;">Código</th> 
-      <th style="width: 12%;">Data</th>    
-      <th style="width: 20%;">Ações</th>    
+      <th>Nome</th>
+      <th class="col-md-1">Dept.</th> 
+      <th class="col-md-1">Manuais</th>
+      <th class="col-md-1">Processos</th>
+      <th class="col-md-1">Stakeholders</th>
+      <th style="width: 13%;">Ações</th>
     </tr>
   </thead>
   
-  @foreach ($auditorias as $a)
-    
+  @foreach ($clientes as $c)
     <tr>
-      <td>{{$a->cliente->nome}}</td>
-      <td>{{$a->cod}}</td> 
-
-      <td>{{ date("d/m/Y", strtotime($a->data))}}</td>        
-      <td align="center">        
-    @if(Auth::user()->profissao_id == 4)
-        <a href="/auditorias/naoconformidades/{{$a->id}}"><button data-toggle="tooltip" data-placement="top" title="Alterar Não Conformidades pela Organização" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>
-    @endif
-
-    @if(Auth::user()->profissao_id != 4)
-        <a href="/auditorias/{{$a->id}}"><button data-toggle="tooltip" data-placement="top" title="Adicionar na Auditoria" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>
-        <a href="/auditorias/gestores/{{$a->id}}"><button data-toggle="tooltip" data-placement="top" title="Adicionar Gestor" class="btn btn-info btn-xs"><i class="fa fa-users"></i></button></a>
-        <a href="/auditorias/imprimir/{{$a->id}}"><button data-toggle="tooltip" data-placement="top" title="Imprimir Auditoria" class="btn btn-success btn-xs"><i class="fa fa-print"></i></button></a>
-        <a href="/auditorias/encontrar/{{$a->id}}"><button data-toggle="tooltip" data-placement="top" title="Alterar Auditoria" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-        <a href=""><button data-toggle="tooltip" data-placement="top" title="Remover Manual" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
-    @endif
+      <td>{{$c->nome}}</td>
+      <td>{{count($c->departamentos)}}</td>
+      <td>{{count($c->departamentos)}}</td>
+      <td>{{$c->size}}</td> 
+      <td>0</td>
+      <td align="center">
+        <a href="/relatorios/ver/{{$c->id}}"><button data-toggle="tooltip" data-placement="top" title="Ver Relatório" class="btn btn-success btn-xs"><i class="fa fa-search"></i></button></a>
+        <a href="/relatorios/imprime/{{$c->id}}"><button data-toggle="tooltip" data-placement="top" title="Imprime Relatório" class="btn btn-info btn-xs"><i class="fa fa-print"></i></button></a>         
       </td>
     </tr>
   @endforeach
 </table>
 <div class="ln_solid"></div> 
-<a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Nova Auditoria" href="/auditorias/novo"><i class="fa fa-plus"></i></a>
+<a class="btn btn-default"  href="clientes/novo"><i class="fa fa-plus"></i></a>
 @stop
 
 @section ("script")

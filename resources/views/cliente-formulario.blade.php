@@ -72,10 +72,10 @@
    <div class="col-sm-6 col-xs-12 col-md-2">
      <input type="text" id="tel" name="tel" data-inputmask="'mask' : '(99) 9999[9]-9999'" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
    </div>
-   <label class="control-label col-md-2 col-sm-3 col-xs-12" for="fax">Fax <span class="required">*</span>
+   <label class="control-label col-md-2 col-sm-3 col-xs-12" for="fax">Fax
    </label>
    <div class="col-sm-6 col-xs-12 col-md-2">
-     <input type="text" id="fax" name="fax" data-inputmask="'mask' : '(99) 9999[9]-9999'" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+     <input type="text" id="fax" name="fax" data-inputmask="'mask' : '(99) 9999[9]-9999'"  data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
    </div> 
  </div> 
  <div class="item form-group">
@@ -83,6 +83,12 @@
    </label>
    <div class="col-md-6 col-sm-6 col-xs-12">
      <input type="text" id="n_contrato" name="n_contrato" required="required"  class="form-control col-md-7 col-xs-12">
+   </div>
+ </div>
+ <div class="form-group">
+   <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="image">Imagem</label>
+   <div class="col-md-3 col-sm-6 col-xs-12">
+     <input type="file" name="image">
    </div>
  </div>                                         
  <div class="ln_solid"></div>

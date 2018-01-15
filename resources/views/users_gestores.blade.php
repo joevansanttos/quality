@@ -30,18 +30,19 @@
 
 @section("conteudo")
 
-<table class="table table-bordered">
-  <tr>
-    <thead style="text-align:center">
+@if(count($gestores) > 0)
+
+<table id="tabela" class="table table-bordered">
+  <thead>
+    <tr>
       <th>Nome</th>
       <th>Email</th>
       <th>Profissão</th>
       <th>Telefone</th>
       <th>Estado</th>
       <th>Ações</th>
-    </thead>
-    
-  </tr>
+    </tr>
+  </thead>
   @foreach ($gestores as $g)
   <tr>
     <td>{{$g->name}} {{$g->sobrenome}}</td>
@@ -57,5 +58,7 @@
   @endforeach
 </table>
 <div class="ln_solid"></div> 
+
+@endif
 <a class="btn btn-default"  href="/users/novo"><i class="fa fa-plus"></i></a>
 @stop

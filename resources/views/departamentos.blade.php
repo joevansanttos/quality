@@ -29,15 +29,18 @@
 
 @section("conteudo")
 
-<table class="table table-bordered">
-  <tr>
-    <th>Empresa</th>
-    <th>Departamento</th>
-    <th>Nome do Resp.</th>
-    <th>Telefone do Resp.</th>
-    <th>Cargo</th>    
-    <th style="width: 11%;">Ações</th>    
-  </tr>
+<table id="tabela" class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Empresa</th>
+      <th>Departamento</th>
+      <th>Nome do Resp.</th>
+      <th>Tel do Resp.</th>
+      <th class="col-md-1">Cargo</th>    
+      <th style="width: 13%;">Ações</th>    
+    </tr>
+  </thead>
+  
   @foreach ($departamentos as $d)
     
     <tr>
@@ -54,4 +57,23 @@
     </tr>
   @endforeach
 </table>
+@stop
+
+@section ("script")
+
+<!-- Datatables -->
+
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>
+
+<script type="text/javascript" src="{{URL::asset('vendors/datatable/datatable.js')}}"></script>
 @stop

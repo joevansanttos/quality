@@ -8,6 +8,7 @@ use App\Http\Requests\AuditoriaNaoConformidadeRequest;
 use App\Http\Requests\AuditoriaGestorRequest;
 use App\Auditoria;
 use App\Cliente;
+use App\StatusPi;
 use App\AuditoriaGestor;
 use App\User;
 use App\AuditoriaNaoConformidade;
@@ -22,10 +23,25 @@ class AuditoriaController extends Controller
     $this->middleware('auth');
   }
 
-  public function lista(){
+  public function lista_todos(){
     $auditorias = Auditoria::all();
     return view('auditorias')->with('auditorias', $auditorias);
   }	
+
+  public function lista_inicial(){
+    $auditorias = Auditoria::all()->where('status_pi_id', '1');
+    return view('auditorias_inicial')->with('auditorias', $auditorias);
+  } 
+
+  public function lista_andamento(){
+    $auditorias = Auditoria::all()->where('status_pi_id', '2');
+    return view('auditorias_andamento')->with('auditorias', $auditorias);
+  } 
+
+  public function lista_finalizado(){
+    $auditorias = Auditoria::all()->where('status_pi_id', '3');
+    return view('auditorias_finalizado')->with('auditorias', $auditorias);
+  } 
 
   public function mostra($id){
   	$auditoria = Auditoria::find($id);
@@ -34,24 +50,28 @@ class AuditoriaController extends Controller
 
   public function novo(){
   	$clientes = Cliente::all();
-    return view('auditoria-formulario')->with('clientes', $clientes);
+    $auditorias = Auditoria::all();
+    $auditoria = Auditoria::orderBy('cod', 'desc')->first();
+    $codigo =  $auditoria->cod + 1;
+    return view('auditoria-formulario')->with('clientes', $clientes)->with('codigo', $codigo);
   }
 
   public function adiciona(AuditoriaRequest $request){
     Auditoria::create($request->all());
-    return redirect()->action('AuditoriaController@lista');
+    return redirect()->action('AuditoriaController@lista_inicial');
   }
 
   public function encontrar($id){
     $auditoria = Auditoria::find($id);
+    $status = StatusPi::all();
     $clientes = Cliente::all();
-    return view ('auditoria_alterar_form')->with('a', $auditoria)->with('clientes', $clientes);
+    return view ('auditoria_alterar_form')->with('a', $auditoria)->with('clientes', $clientes)->with('status', $status);
   }
 
   public function alterar(AuditoriaRequest $request){
     $auditoria = Auditoria::find($request->auditoria_id);
     $auditoria->update($request->all());
-    return redirect('/auditorias')->withInput();
+    return redirect('/auditorias/todos')->withInput();
   }
 
   public function naoconformidades($id){
@@ -96,7 +116,7 @@ class AuditoriaController extends Controller
       $array['auditoria_id'] = $auditoria_id;
       AuditoriaGestor::create($array);
     }
-      return redirect()->action('AuditoriaController@lista');
+      return redirect()->action('AuditoriaController@lista_todos');
   }
 
   

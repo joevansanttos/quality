@@ -21,7 +21,12 @@
 
     <!-- Custom styling plus plugins -->
     <link rel="stylesheet" href="{{ URL::asset('vendors/build/css/custom.min.css') }}" />
-    
+
+    <link rel="stylesheet" href="{{ URL::asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" />
     
     <style type="text/css">
       .carousel-control.left, .carousel-control.right {
@@ -78,18 +83,25 @@
                   <li><a><i class="fa fa-briefcase"></i> Clientes<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="/clientes">Clientes</a></li>
-                      <li><a href="/departamentos">Departamentos</a></li>                        
+                      <li><a href="/departamentos">Departamentos</a></li> 
+                      <li><a href="/relatorios">Relatórios</a></li>                       
                     </ul>
                   </li>
                   <li><a><i class="fa fa-wrench"></i> Mapeamento<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/pis">Manuais de Processos</a></li>  
+                      <li><a href="/pis/todos">Todos os Manuais</a></li> 
+                      <li><a href="/pis/inicial">Manuais em Estado Inicial</a></li> 
+                      <li><a href="/pis/andamento">Manuais em Andamento</a></li>
+                      <li><a href="/pis/finalizado">Manuais Finalizados</a></li> 
                     </ul>
                   </li>
                 @endif
                   <li><a><i class="fa fa-line-chart"></i> Auditoria<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/auditorias">Auditoria de Processos</a></li>
+                      <li><a href="/auditorias/todos">Todas as Auditorias</a></li> 
+                      <li><a href="/auditorias/inicial">Auditorias em Estado Inicial</a></li> 
+                      <li><a href="/auditorias/andamento">Auditorias em Andamento</a></li>
+                      <li><a href="/auditorias/finalizado">Auditorias Finalizadas</a></li> 
                     </ul>
                   </li>
                 @if (Auth::user()->profissao->id != 4)   
