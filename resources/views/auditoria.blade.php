@@ -150,39 +150,75 @@
         <table class="table table-bordered">
           <tr>
             <td>Inglês</td>
-            <td>{{$a->certificacao->ingles}}</td>
+            @if($a->certificacao != null)
+              <td>{{$a->certificacao->ingles}}</td>
+            @else
+              <td></td>
+            @endif
           </tr>
           <tr>
             <td>Português (Brazil)</td>
+          @if($a->certificacao != null)
             <td>{{$a->certificacao->portugues}}</td>
+          @else
+            <td></td>
+          @endif
           </tr>
           <tr>
             <td>Nº de Sites</td>
+          @if($a->certificacao != null)
             <td>{{$a->certificacao->sites}}</td>
+          @else
+            <td></td>
+          @endif
           </tr>
           <tr>
             <td>Nº de Funcionários</td>
+            @if($a->certificacao != null)
             <td>{{$a->certificacao->funcionarios}}</td>
+            @else
+              <td></td>
+            @endif
           </tr>
           <tr>
             <td>Escritório Central</td>
+            @if($a->certificacao != null)
             <td>{{$a->certificacao->escritorio}}</td>
+            @else
+              <td></td>
+            @endif
           </tr>
           <tr>
             <td>Tipo de Auditoria</td>
+            @if($a->certificacao != null)
             <td>{{$a->certificacao->tipo}}</td>
+            @else
+              <td></td>
+            @endif
           </tr>
           <tr>
             <td>Ínicio</td>
+            @if($a->certificacao != null)
             <td>{{$a->certificacao->inicio}}</td>
+            @else
+              <td></td>
+            @endif
           </tr>
           <tr>           
             <td>Término</td>
+            @if($a->certificacao != null)
             <td>{{$a->certificacao->termino}}</td>
+            @else
+              <td></td>
+            @endif
           </tr>
           <tr>           
             <td>Duração</td>
+            @if($a->certificacao != null)
             <td>{{$a->certificacao->duracao}}</td>
+            @else
+              <td></td>
+            @endif
           </tr>
         </table>
         <br>
@@ -190,11 +226,19 @@
         <table class="table table-bordered">
           <tr>
             <td>Líder da Equipe</td>
+            @if($a->auditorinfo != null)
             <td>{{$a->auditorinfo->auditor}}</td>
+            @else
+              <td></td>
+            @endif
           </tr>
           <tr>
             <td>Membros da Equipe</td>
+            @if($a->auditorinfo != null)
             <td>{{$a->auditorinfo->membros}}</td>
+            @else
+              <td></td>
+            @endif
           </tr>
         </table>
       </div>

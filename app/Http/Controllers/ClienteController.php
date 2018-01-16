@@ -104,13 +104,115 @@ class ClienteController extends Controller
    }
 
    public function relatorio($id){
-     $cliente = Cliente::find($id);
-    return view ('cliente-relatorio')->with('c', $cliente);
+    $c = Cliente::find($id);
+    $departamentos = [];
+    foreach ($c->departamentos as $d){
+     array_push($departamentos, $d->nome);
+    }
+    $processos = $this->gerar_processo($c);
+    $operacoes = $this->gerar_array($c, 1);
+    $gestoes = $this->gerar_array($c, 2);
+    $suportes = $this->gerar_array($c, 3);
+    $inicial = $this->gerar_maturidade($c, 1); 
+    $repetitivo = $this->gerar_maturidade($c, 2);
+    $definido = $this->gerar_maturidade($c, 3);
+    $gerenciado = $this->gerar_maturidade($c, 4);
+    $otimizado = $this->gerar_maturidade($c, 5);
+    return view ('cliente_graficos')->with('c', $c)->with('departamentos', $departamentos)->with('operacoes', $operacoes)->with('processos', $processos)->with('gestoes', $gestoes)->with('suportes', $suportes)->with('inicial', $inicial)->with('repetitivo', $repetitivo)->with('definido', $definido)->with('gerenciado', $gerenciado)->with('otimizado', $otimizado);
+   }
+
+   public function gerar_array($c, $num){
+    $array = [];
+    foreach ($c->departamentos as $d){
+      $size = 0;
+      foreach($d->pi->macroprocessos as $macro){
+        if ($macro->classificacao_id == $num){
+          $size++;
+        }
+        $subprocessos = $macro->subprocessos;
+        foreach($subprocessos as $sub){
+          if ($sub->classificacao_id == $num){
+            $size++;
+          }
+          $microprocessos = $sub->microprocessos;
+          foreach($microprocessos as $micro){
+            if ($micro->classificacao_id == $num){
+              $size++;
+            }
+          }
+        }
+      }
+      array_push($array, $size);
+    }
+    return $array;
+   }
+
+   public function gerar_processo($c){
+    $array = [];
+    foreach ($c->departamentos as $d){
+      $size = 0;
+      foreach($d->pi->macroprocessos as $macro){
+        $size++;
+        $subprocessos = $macro->subprocessos;
+        foreach($subprocessos as $sub){
+          $size++;
+          $microprocessos = $sub->microprocessos;
+          foreach($microprocessos as $micro){
+            $size++;
+          }
+        }
+      }
+      array_push($array, $size);
+    }
+    return $array;
+   }
+
+   public function gerar_maturidade($c, $num){
+    $array = [];
+    foreach ($c->departamentos as $d){
+      $size = 0;
+      foreach($d->pi->macroprocessos as $macro){
+        if ($macro->maturidade_id == $num){
+          $size++;
+        }
+        $subprocessos = $macro->subprocessos;
+        foreach($subprocessos as $sub){
+          if ($sub->maturidade_id == $num){
+            $size++;
+          }
+          $microprocessos = $sub->microprocessos;
+          foreach($microprocessos as $micro){
+            if ($micro->maturidade_id == $num){
+              $size++;
+            }
+          }
+        }
+      }
+      array_push($array, $size);
+    }
+    return $array;
    }
 
    public function imprime($id){
-     $cliente = Cliente::find($id);
-    return view ('relatorio-imprimir')->with('c', $cliente);
+    $c = Cliente::find($id);
+    $departamentos = [];
+
+    foreach ($c->departamentos as $d){
+     array_push($departamentos, $d->nome);
+    }
+
+    
+    $processos = $this->gerar_processo($c);
+    $operacoes = $this->gerar_array($c, 1);
+    $gestoes = $this->gerar_array($c, 2);
+    $suportes = $this->gerar_array($c, 3);
+    $inicial = $this->gerar_maturidade($c, 1); 
+    $repetitivo = $this->gerar_maturidade($c, 2);
+    $definido = $this->gerar_maturidade($c, 3);
+    $gerenciado = $this->gerar_maturidade($c, 4);
+    $otimizado = $this->gerar_maturidade($c, 5);
+
+    return view ('cliente_pdf')->with('c', $c)->with('departamentos', $departamentos)->with('operacoes', $operacoes)->with('processos', $processos)->with('gestoes', $gestoes)->with('suportes', $suportes)->with('inicial', $inicial)->with('repetitivo', $repetitivo)->with('definido', $definido)->with('gerenciado', $gerenciado)->with('otimizado', $otimizado);
    }
 
    public function ver($id){
