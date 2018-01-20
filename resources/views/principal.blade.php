@@ -90,7 +90,7 @@
                   <li><a><i class="fa fa-wrench"></i> Mapeamento<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="/pis/todos">Todos os Manuais</a></li> 
-                      <li><a href="/pis/inicial">Manuais em Estado Inicial</a></li> 
+                      <li><a href="/pis/inicial">Manuais Iniciados</a></li> 
                       <li><a href="/pis/andamento">Manuais em Andamento</a></li>
                       <li><a href="/pis/finalizado">Manuais Finalizados</a></li> 
                     </ul>
@@ -99,7 +99,7 @@
                   <li><a><i class="fa fa-line-chart"></i> Auditoria<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="/auditorias/todos">Todas as Auditorias</a></li> 
-                      <li><a href="/auditorias/inicial">Auditorias em Estado Inicial</a></li> 
+                      <li><a href="/auditorias/inicial">Auditorias Iniciadas</a></li> 
                       <li><a href="/auditorias/andamento">Auditorias em Andamento</a></li>
                       <li><a href="/auditorias/finalizado">Auditorias Finalizadas</a></li> 
                     </ul>

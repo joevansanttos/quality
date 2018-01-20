@@ -1,8 +1,33 @@
 @extends('principal')
 
 @section("cabecalho")
-<h3>Novo Subprocesso</h3>
+<h3>Mapeamento</h3>
 @stop
+
+
+@section("titulo")
+<div class="x_title">
+  <h2>Novo Processo</small></h2>
+  <ul class="nav navbar-right panel_toolbox">
+    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Settings 1</a>
+        </li>
+        <li><a href="#">Settings 2</a>
+        </li>
+      </ul>
+    </li>
+    <li><a class="close-link"><i class="fa fa-close"></i></a>
+    </li>
+  </ul>
+  <div class="clearfix"></div>
+</div>
+@stop
+
+
 
 @section("conteudo")
 
@@ -10,14 +35,14 @@
 <form action="adiciona" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 	<input type="hidden" name="_token" value="{{csrf_token()}}">
 	<div class="form-group">
-		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nº do SubProcesso<span class="required">*</span>
+		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nº do Processo<span class="required">*</span>
 		</label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<input  data-inputmask="'mask' : '9{1,2}'" type="text"  id="n_processo" name="numero" required="required" class="form-control col-md-6 col-xs-12">
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Título do SubProcesso<span class="required">*</span>
+		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Título do Processo<span class="required">*</span>
 		</label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<input type="text"  id="t_processo" name="titulo" required="required" class="form-control col-md-7 col-xs-12">
@@ -32,7 +57,7 @@
 		<label for="horas" class="control-label col-md-1">Horas <span class="required">*</span>
 		</label>
 		<div class="col-md-2 col-sm-6 col-xs-12">
-			<input type="text" data-inputmask="'mask' : '9{1,5}'" id="horas" name="horas" required="required" class="form-control">
+			<input type="number"  data-parsley-type="number" step=".01"	 id="horas" name="horas" required="required" class="form-control">
 		</div>		            	  	  
 	</div>
 	<div class="form-group">
@@ -62,8 +87,8 @@
 		</label>
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<select class="form-control col-md-3"  id="id_periodicidade" name="maturidade_id" required="required" >
-				@foreach ($maturidade as $mat)
-				<option value="{{$mat->id}}">{{$mat->descricao}}</option>
+				@foreach ($maturidade as $m)
+				<option value="{{$m->id}}">{{$m->descricao}}</option>
 				@endforeach
 			</select>  
 		</div>
@@ -97,7 +122,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 			<button type="reset" name="reset" class="btn btn-primary">Resetar</button>
 			<button id="send" type="submit" name="enviar" class="btn btn-success">Cadastrar</button>
-			<input type="hidden" name="subprocesso_id" value="{{$s->id}}">
+			<input type="hidden" name="pi_id" value="{{$p->id}}">
 		</div>
 	</div>
 </form>

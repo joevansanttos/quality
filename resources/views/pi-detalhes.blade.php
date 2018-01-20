@@ -29,9 +29,9 @@
 
 @section("conteudo")
 
-@include('pi-cabecalho')
+@include('pi_cabecalho')
 
-@include('macroprocessos')
+@include('pi_macroprocessos')
 
 
 

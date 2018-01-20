@@ -19,7 +19,7 @@
             <div class="panel panel-danger">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a data-toggle="collapse" href="{{$notaId}}">{{$notaString}}. NOTA DO AUDITOR</a>
+                  <a data-toggle="collapse" href="{{$notaId}}">{{$notaString}}. {{$nota->processo}}</a>
                   <a href="{{$nota->id}}/processo/notas/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Nota da Auditoria" class="btn btn-danger btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                                
                   <div class="clearfix"></div>
                 </h4>

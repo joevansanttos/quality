@@ -36,19 +36,19 @@ class SubController extends Controller
 
     public function subprocesso($id){
     	$macroprocesso = Macroprocesso::find($id);
-    	return view ('subprocesso-formulario')->with('m', $macroprocesso)->with('classificacoes', Classificacao::all())->with('periodicidade', Periodicidade::all())->with('maturidade', Maturidade::all());
+    	return view ('pi_subprocesso_formulario')->with('m', $macroprocesso)->with('classificacoes', Classificacao::all())->with('periodicidade', Periodicidade::all())->with('maturidade', Maturidade::all());
     }
 
     public function mostra($id){
         $s = Subprocesso::find($id);
         $g = $s->gestor;
         $ks = $s->stakeholders;
-        return view ('subprocesso-detalhes')->with('s', $s)->with('c', Classificacao::find($s->classificacao_id))->with('p', Periodicidade::find($s->periodicidade_id))->with('t', Maturidade::find($s->maturidade_id))->with('g',($g))->with('ks',($ks));
+        return view ('pi_subprocesso_detalhes')->with('s', $s)->with('c', Classificacao::find($s->classificacao_id))->with('p', Periodicidade::find($s->periodicidade_id))->with('t', Maturidade::find($s->maturidade_id))->with('g',($g))->with('ks',($ks));
     }
 
     public function stakeholder($id){
       $s = Subprocesso::find($id);
-      return view ('stakeholder-sub-formulario')->with('s', $s);
+      return view ('pi_stakeholder_sub_formulario')->with('s', $s);
     }
 
     public function adiciona_stakeholder(StakeholderRequest $request){
@@ -83,7 +83,7 @@ class SubController extends Controller
      public function encontrar($id){
       $s = Subprocesso::find($id);
       $g = $s->gestor;
-      return view ('sub-editar-formulario')->with('s', $s)->with('classificacoes', Classificacao::all())->with('periodicidade', Periodicidade::all())->with('maturidade', Maturidade::all())->with('g',($g));
+      return view ('pi_sub_editar_formulario')->with('s', $s)->with('classificacoes', Classificacao::all())->with('periodicidade', Periodicidade::all())->with('maturidade', Maturidade::all())->with('g',($g));
      }
 
      public function alterar(SubRequest $request){

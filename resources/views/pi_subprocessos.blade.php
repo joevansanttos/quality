@@ -43,7 +43,7 @@
         </div>
         <div id="<?=$panel2?>" class="panel-collapse collapse">
 
-           @include('microprocessos') 
+           @include('pi_microprocessos') 
                                                                        
         </div>
       </div>                                            

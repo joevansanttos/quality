@@ -61,69 +61,69 @@ Route::get('/pis/ver/{id}', 'PiController@ver');
 Route::get('/pis/imprimir/{id}', 'PiController@imprimir');
 
 
-Route::resource('objetivo-formulario','PiController');
+Route::resource('pi_objetivo_formulario','PiController');
 Route::get('/pis/mostra/objetivo/{id}', 'PiController@objetivo');
 Route::post('/pis/mostra/objetivo/adiciona', 'PiController@adiciona_objetivo');
-Route::resource('objeto-alterar-formulario','PiController');
+Route::resource('pi_objeto_alterar_formulario','PiController');
 Route::get('/pis/mostra/objetivo/encontrar/{id}', 'PiController@encontrar_objetivo');
 Route::post('/pis/mostra/objetivo/encontrar/alterar', 'PiController@alterar_objetivo');
 
-Route::resource('aplicacao-formulario','PiController');
+Route::resource('pi_aplicacao_formulario','PiController');
 Route::get('/pis/mostra/aplicacao/{id}', 'PiController@aplicacao');
 Route::post('/pis/mostra/aplicacao/adiciona', 'PiController@adiciona_aplicacao');
-Route::resource('aplicacao-alterar-formulario','PiController');
+Route::resource('pi_aplicacao_alterar_formulario','PiController');
 Route::get('/pis/mostra/aplicacao/encontrar/{id}', 'PiController@encontrar_aplicacao');
 Route::post('/pis/mostra/aplicacao/encontrar/alterar', 'PiController@alterar_aplicacao');
 
-Route::resource('definicao-formulario','PiController');
+Route::resource('pi_definicao_formulario','PiController');
 Route::get('/pis/mostra/definicao/{id}', 'PiController@definicao');
 Route::post('/pis/mostra/definicao/adiciona', 'PiController@adiciona_definicao');
-Route::resource('definicao-alterar-formulario','PiController');
+Route::resource('pi_definicao_alterar_formulario','PiController');
 Route::get('/pis/mostra/definicao/encontrar/{id}', 'PiController@encontrar_definicao');
 Route::post('/pis/mostra/definicao/encontrar/alterar', 'PiController@alterar_definicao');
 
-Route::resource('informacao-formulario','PiController');
+Route::resource('pi_informacao_formulario','PiController');
 Route::get('/pis/mostra/informacao/{id}', 'PiController@informacao');
 Route::post('/pis/mostra/informacao/adiciona', 'PiController@adiciona_informacao');
-Route::resource('informacao-alterar-formulario','PiController');
+Route::resource('pi_informacao_alterar_formulario','PiController');
 Route::get('/pis/mostra/informacao/encontrar/{id}', 'PiController@encontrar_informacao');
 Route::post('/pis/mostra/informacao/encontrar/alterar', 'PiController@alterar_informacao');
 
-Route::resource('macroprocesso-formulario','MacroController');
+Route::resource('pi_macroprocesso_formulario','MacroController');
 Route::get('/pis/mostra/macroprocesso/{id}', 'MacroController@macroprocesso');
 Route::post('/pis/mostra/macroprocesso/adiciona', 'MacroController@adiciona_macroprocesso');
 Route::get('/pis/mostra/macroprocessos/{id}', 'MacroController@mostra');
-Route::resource('stakeholder-macro-formulario','MacroController');
+Route::resource('pi_stakeholder_macro_formulario','MacroController');
 Route::get('/pis/mostra/macroprocessos/stakeholder/{id}', 'MacroController@stakeholder');
 Route::post('/pis/mostra/macroprocessos/stakeholder/adiciona', 'MacroController@adiciona_stakeholder');
 Route::get('/pis/mostra/macroprocessos/remover/{id}', 'MacroController@remover');
-Route::resource('macro-editar-formulario','MacroController');
+Route::resource('pi_macro_editar_formulario','MacroController');
 Route::get('/pis/mostra/macroprocessos/encontrar/{id}', 'MacroController@encontrar');
 Route::post('/pis/mostra/macroprocessos/encontrar/alterar', 'MacroController@alterar');
 
-Route::resource('subprocesso-formulario','SubController');
+Route::resource('pi_subprocesso_formulario','SubController');
 Route::get('/pis/mostra/subprocesso/{id}', 'SubController@subprocesso');
 Route::post('/pis/mostra/subprocesso/adiciona', 'SubController@adiciona_subprocesso');
 Route::get('/pis/mostra/subprocessos/{id}', 'SubController@mostra');
-Route::resource('stakeholder-sub-formulario','SubController');
+Route::resource('pi_stakeholder_sub_formulario','SubController');
 Route::get('/pis/mostra/subprocessos/stakeholder/{id}', 'SubController@stakeholder');
 Route::post('/pis/mostra/subprocessos/stakeholder/adiciona', 'SubController@adiciona_stakeholder');
 Route::get('/pis/mostra/subprocessos/remover/{id}', 'SubController@remover');
-Route::resource('sub-editar-formulario','SubController');
+Route::resource('pi_sub_editar_formulario','SubController');
 Route::get('/pis/mostra/subprocessos/encontrar/{id}', 'SubController@encontrar');
 Route::post('/pis/mostra/subprocessos/encontrar/alterar', 'SubController@alterar');
 
 
 
-Route::resource('microprocesso-formulario','MicroController');
+Route::resource('pi_microprocesso_formulario','MicroController');
 Route::get('/pis/mostra/microprocesso/{id}', 'MicroController@microprocesso');
 Route::post('/pis/mostra/microprocesso/adiciona', 'MicroController@adiciona_microprocesso');
 Route::get('/pis/mostra/microprocessos/{id}', 'MicroController@mostra');
-Route::resource('stakeholder-micro-formulario','MicroController');
+Route::resource('pi_stakeholder_micro_formulario','MicroController');
 Route::get('/pis/mostra/microprocessos/stakeholder/{id}', 'MicroController@stakeholder');
 Route::post('/pis/mostra/microprocessos/stakeholder/{id}', 'MicroController@adiciona_stakeholder');
 Route::get('/pis/mostra/microprocessos/remover/{id}', 'MicroController@remover');
-Route::resource('micro-editar-formulario','MicroController');
+Route::resource('pi_micro_editar_formulario','MicroController');
 Route::get('/pis/mostra/microprocessos/encontrar/{id}', 'MicroController@encontrar');
 Route::post('/pis/mostra/microprocessos/encontrar/alterar', 'MicroController@alterar');
 

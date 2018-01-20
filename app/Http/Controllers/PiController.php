@@ -82,7 +82,7 @@ class PiController extends Controller
 
 	public function objetivo($id){
 		$pi = Pi::find($id);
-		return view ('objetivo-formulario')->with('p', $pi);
+		return view ('pi_objetivo_formulario')->with('p', $pi);
 	}
 
 	public function adiciona_informacao(InformacaoRequest $request){
@@ -93,7 +93,7 @@ class PiController extends Controller
 
 	public function informacao($id){
 		$pi = Pi::find($id);
-		return view ('informacao-formulario')->with('p', $pi);
+		return view ('pi_informacao_formulario')->with('p', $pi);
 	}
 
 	public function adiciona_aplicacao(AplicacaoRequest $request){
@@ -104,7 +104,7 @@ class PiController extends Controller
 
 	public function aplicacao($id){
 		$pi = Pi::find($id);
-		return view ('aplicacao-formulario')->with('p', $pi);
+		return view ('pi_aplicacao_formulario')->with('p', $pi);
 	}
 
 	public function adiciona_definicao(DefinicaoRequest $request){
@@ -115,13 +115,13 @@ class PiController extends Controller
 
 	public function definicao($id){
 		$pi = Pi::find($id);
-		return view ('definicao-formulario')->with('p', $pi);
+		return view ('pi_definicao_formulario')->with('p', $pi);
 	}
 
 	public function encontrar_objetivo($id){
 		$objetivo = Objetivo::find($id);
 		$pi = $objetivo->pi;
-		return view ('objetivo-alterar-formulario')->with('o', $objetivo)->with('p', $pi);
+		return view ('pi_objetivo_alterar_formulario')->with('o', $objetivo)->with('p', $pi);
 	}
 
 	public function alterar_objetivo(ObjetivoRequest $request){
@@ -135,7 +135,7 @@ class PiController extends Controller
 	public function encontrar_aplicacao($id){
 		$aplicacao = Aplicacao::find($id);
 		$pi = $aplicacao->pi;
-		return view ('aplicacao-alterar-formulario')->with('a', $aplicacao)->with('p', $pi);
+		return view ('pi_aplicacao_alterar_formulario')->with('a', $aplicacao)->with('p', $pi);
 	}
 
 	public function alterar_aplicacao(AplicacaoRequest $request){
@@ -149,7 +149,7 @@ class PiController extends Controller
 	public function encontrar_definicao($id){
 		$definicao = Definicao::find($id);
 		$pi = $definicao->pi;
-		return view ('definicao-alterar-formulario')->with('d', $definicao)->with('p', $pi);
+		return view ('pi_definicao_alterar_formulario')->with('d', $definicao)->with('p', $pi);
 	}
 
 	public function alterar_definicao(DefinicaoRequest $request){
@@ -163,7 +163,7 @@ class PiController extends Controller
 	public function encontrar_informacao($id){
 		$informacao = Informacao::find($id);
 		$pi = $informacao->pi;
-		return view ('informacao-alterar-formulario')->with('i', $informacao)->with('p', $pi);
+		return view ('pi_informacao_alterar_formulario')->with('i', $informacao)->with('p', $pi);
 	}
 
 	public function alterar_informacao(InformacaoRequest $request){

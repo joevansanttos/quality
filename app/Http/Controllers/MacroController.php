@@ -24,7 +24,7 @@ class MacroController extends Controller
     $m = Macroprocesso::find($id);
     $g = $m->gestor;
     $ks = $m->stakeholders;
-    return view ('macroprocesso-detalhes')->with('m', $m)->with('c', Classificacao::find($m->classificacao_id))->with('p', Periodicidade::find($m->periodicidade_id))->with('t', Maturidade::find($m->maturidade_id))->with('g',($g))->with('ks',($ks));
+    return view ('pi_macroprocesso_detalhes')->with('m', $m)->with('c', Classificacao::find($m->classificacao_id))->with('p', Periodicidade::find($m->periodicidade_id))->with('t', Maturidade::find($m->maturidade_id))->with('g',($g))->with('ks',($ks));
   }
 
   public function adiciona_macroprocesso(MacroprocessoRequest $request){
@@ -38,12 +38,12 @@ class MacroController extends Controller
 
   public function macroprocesso($id){
     $pi = Pi::find($id);
-    return view ('macroprocesso-formulario')->with('p', $pi)->with('classificacoes', Classificacao::all())->with('periodicidade', Periodicidade::all())->with('maturidade', Maturidade::all());
+    return view ('pi_macroprocesso_formulario')->with('p', $pi)->with('classificacoes', Classificacao::all())->with('periodicidade', Periodicidade::all())->with('maturidade', Maturidade::all());
   }
 
   public function stakeholder($id){
     $m = Macroprocesso::find($id);
-    return view ('stakeholder-macro-formulario')->with('m', $m);
+    return view ('pi_stakeholder_macro_formulario')->with('m', $m);
   }
 
   public function adiciona_stakeholder(StakeholderRequest $request){
@@ -76,7 +76,7 @@ class MacroController extends Controller
   public function encontrar($id){
    $m = Macroprocesso::find($id);
    $g = $m->gestor;
-   return view ('macro-editar-formulario')->with('m', $m)->with('classificacoes', Classificacao::all())->with('periodicidade', Periodicidade::all())->with('maturidade', Maturidade::all())->with('g',($g));
+   return view ('pi_macro_editar_formulario')->with('m', $m)->with('classificacoes', Classificacao::all())->with('periodicidade', Periodicidade::all())->with('maturidade', Maturidade::all())->with('g',($g));
   }
 
   public function alterar(MacroprocessoRequest $request){

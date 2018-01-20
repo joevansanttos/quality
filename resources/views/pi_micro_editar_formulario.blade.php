@@ -1,9 +1,30 @@
 @extends('principal')
 
 @section("cabecalho")
+<h3>Mapeamento</h3>
+@stop
 
-<h3>Editar Subprocesso</h3>
 
+@section("titulo")
+<div class="x_title">
+  <h2>Alterar Subprocesso</small></h2>
+  <ul class="nav navbar-right panel_toolbox">
+    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Settings 1</a>
+        </li>
+        <li><a href="#">Settings 2</a>
+        </li>
+      </ul>
+    </li>
+    <li><a class="close-link"><i class="fa fa-close"></i></a>
+    </li>
+  </ul>
+  <div class="clearfix"></div>
+</div>
 @stop
 
 @section("conteudo")
@@ -29,12 +50,12 @@
     </label>
     <div class="col-md-3 col-sm-6 col-xs-12">
       <input type="text" data-inputmask="'mask' : '9{1,5}'"  value="{{$m->pessoas}}" id="pessoas" name="pessoas" required="required" class="form-control">
-    </div>         
+    </div> 
     <label for="horas" class="control-label col-md-1">Horas <span class="required">*</span>
     </label>
     <div class="col-md-2 col-sm-6 col-xs-12">
-      <input type="text" data-inputmask="'mask' : '9{1,5}'"  value="{{$m->horas}}" id="horas" name="horas" required="required" class="form-control">
-    </div>                        
+      <input type="number"  data-parsley-type="number" step=".01" value="{{$m->horas}}" id="horas" name="horas" required="required" class="form-control">
+    </div>                                        
   </div>
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_classificacao">Classificação<span class="required">*</span>
