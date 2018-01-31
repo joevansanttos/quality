@@ -28,12 +28,11 @@
 <div class="x_content">     
   <div class="profile_img">
     <div id="crop-avatar">
-      
       @php($exists = Storage::disk('public')->exists($c->image))
       @if($exists == false )
        <img class="img-responsive avatar-view" src="{{asset('storage/user.png')}}" alt="...." title="Change the avatar">
       @else
-        <img src="{{asset('storage/' . $c->image)}}" alt="..." class="img-responsive avatar-view" >
+        <img src="{{asset('storage/' . $c->image )}}" alt="..." class="img-responsive avatar-view" >
       @endif
       
     </div>

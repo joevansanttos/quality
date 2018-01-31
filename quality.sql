@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 20/01/2018 às 13:48
+-- Tempo de geração: 31/01/2018 às 21:08
 -- Versão do servidor: 10.1.29-MariaDB
 -- Versão do PHP: 7.2.0
 
@@ -81,7 +81,7 @@ CREATE TABLE `auditorias` (
 --
 
 INSERT INTO `auditorias` (`id`, `cod`, `cliente_id`, `data`, `status_pi_id`) VALUES
-(1, '000003', 6, NULL, 2),
+(1, '000003', 6, '2017-01-31', 2),
 (2, '000001', 3, NULL, 2),
 (3, '000002', 4, '2018-01-17', 1),
 (4, '000004', 3, '2018-01-17', 1);
@@ -159,6 +159,13 @@ CREATE TABLE `auditorias_conclusoes` (
   `auditoria_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Fazendo dump de dados para tabela `auditorias_conclusoes`
+--
+
+INSERT INTO `auditorias_conclusoes` (`id`, `conclusao`, `auditoria_id`) VALUES
+(1, 'A auditoria transcorreu conforme previsto.', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -216,6 +223,25 @@ CREATE TABLE `auditorias_departamentos_clausulas` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `auditorias_detalhenaoconformidade`
+--
+
+CREATE TABLE `auditorias_detalhenaoconformidade` (
+  `id` int(11) NOT NULL,
+  `descricao` varchar(10000) DEFAULT NULL,
+  `auditoria_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Fazendo dump de dados para tabela `auditorias_detalhenaoconformidade`
+--
+
+INSERT INTO `auditorias_detalhenaoconformidade` (`id`, `descricao`, `auditoria_id`) VALUES
+(1, 'As não conformidades aqui detalhadas serão tratadas pelo processo de ação corretiva da organização, de acordo com os requisitos normativos relativos à ação corretiva.\r\nAbaixo você encontrará os requisitos do Bureau Veritas Certification para:\r\nprazos para tratamento de não conformidades (a)\r\nconteúdo esperado na resposta da organização às não conformidades (b)\r\nPrazos para tratamento de não conformidades (a)\r\nAs ações corretivas para tratamento de não conformidades maiores devem ser realizadas imediatamente. Correção, análise de\r\ncausa raiz e plano de ação corretiva, juntamente com evidências satisfatórias de implementação, devem ser apresentados em até\r\n90 dias após o último dia da auditoria, a menos que o Bureau Veritas Certification e o cliente acordarem um período mais\r\nlongo para resposta.\r\nA análise da adequação da resposta às não conformidades é realizada remotamente pelo auditor designado. No entanto,\r\ndependendo da gravidade da não conformidade, poderá ser requerida uma visita follow up à organização para verificação da\r\nimplementação e da eficácia das ações tomadas, e para chegar a uma conclusão de recomendação da certificação ou da\r\ncontinuidade da certificação.\r\nPara não conformidades menores, correção, análise de causa raiz e plano de ação corretiva devem ser aprovados pelo líder da\r\nequipe e a verificação da implementação e eficácia das ações corretivas tomadas serão realizadas na próxima visita.\r\nRecomenda-se que o cliente responda rapidamente às não conformidades para que haja tempo hábil para novas revisões das\r\nrespostas pela organização, quando necessário.\r\nDurante auditorias de recertificação, o prazo limite para tratamento de não-conformidades será definido pelo líder da equipe, a fim\r\nde que o plano de ação esteja implementado antes do vencimento do certificado.\r\nAs não conformidades devem ser respondidas pela organização no formulário de não conformidade fornecido pelo auditor líder\r\ndo evento, e devem ser encaminhadas ao auditor.\r\nConteúdo esperado na resposta da organização às não conformidades (b)\r\nO auditor líder irá analisar as três partes da resposta da organização à não conformidade: correção, análise de causa raiz e\r\nações corretivas. Ao avaliar estes três pontos, o auditor procura por um plano e por evidências de que o plano está sendo\r\nimplementado\r\nA resposta do cliente a NCR deve ser revista pelo auditor líder em três pontos: correção, análise de causa raiz e ações corretivas.\r\nCorreção\r\n1. A extensão da não conformidade foi determinada (a não conformidade foi corrigida e a organização examinou o sistema para\r\nver se existem outros exemplos que também precisam ser corrigidos). Certifique-se de estar dando uma abrangência adequada à\r\ncorreção, respondendo a pergunta: \"\"Este caso é isolado ou não?\"\", em outras palavras: \"\"Há risco de que isto possa ocorrer um\r\noutro local ou departamento?\"\".\r\n2. Se a correção não puder ser imediata, um plano de ação para corrigir a não conformidade pode ser estruturado (incluindo\r\nresponsáveis e datas).\r\n3. Evidência de que a correção foi implementada ou evidência de que o plano está sendo implementado.\r\nAnálise de Causa Raiz\r\n1. A causa-raiz não é simplesmente repetir a constatação de não conformidade e na maioria das vezes não é a causa direta do\r\nproblema.\r\n2. Exemplo de uma boa análise para determinação da verdadeira causa raiz: alguém que não segue um processo seria causa\r\ndireta; a determinação do porquê que este alguém não segue um processo leva a descoberta da verdadeira causa-raiz.\r\n3. A declaração da causa-raiz deve focar sobre um único problema, sem deixar nenhum possível porquê não respondido. Se, ao\r\nfim da análise da causa-raiz, algum porquê ainda puder ser razoavelmente respondido, a análise realizada não teve uma\r\nprofundidade adequada e deve ser retomada.\r\n4. Certifique-se de que a causa raiz responde a questão: \"\"Qual foi a falha no sistema que permitiu a acorrencia do problema?\"\"\r\n5. Responsabilizar um funcionário pela falha não será aceito como única causa raiz.\r\n6. A organização deve identificar e tratar os problemas nos seus processos, bem como identificar e tratar a sistemática de\r\nmonitoramento que falhou.\r\nAção Corretiva\r\n1. A ação corretiva ou o plano de ação corretiva remete à(s) causas(s)-raiz(es) determinadas durante a análise de causa-raiz.Se\r\na verdadeira causa raiz não foi determinada, o plano de ação não será adequado para impedir a reocorrência do problema.\r\n2. Para que o plano de ação seja aceito, este deve incluir:\r\n- ações que se remetam à(s) causa(s)-raiz(es)', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `auditorias_eficacia`
 --
 
@@ -224,6 +250,13 @@ CREATE TABLE `auditorias_eficacia` (
   `eficacia` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `auditoria_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Fazendo dump de dados para tabela `auditorias_eficacia`
+--
+
+INSERT INTO `auditorias_eficacia` (`id`, `eficacia`, `auditoria_id`) VALUES
+(1, 'A equipe auditora conduziu um processo de auditoria baseado em evidências objetivas . Os métodos de auditoria\r\nincluem entrevistas, observação de atividades e análise de documentos e registros.\r\n• A documentação do sistema de gestão deve demonstrar conformidade com os requisitos da norma e prover\r\nestrutura suficiente de apoio à implementação e manutenção do sistema de gestão,\r\n• A organização deve demonstrar efetiva implementação , manutenção e melhoria do seu sistema gestão.\r\n• A organização deve demonstrar o estabelecimento e monitoramento adequado dos objetivos do sistema de\r\ngestão.\r\n• A organização deve demonstrar a efetividade do programa de auditoria interna como ferramenta para manter e\r\nmelhorar o sistema de gestão.\r\n• Ao longo de todo o processo de auditoria, o sistema de gestão deve demonstrar conformidade com os requisitos\r\nnormativos.', 1);
 
 -- --------------------------------------------------------
 
@@ -282,9 +315,9 @@ CREATE TABLE `auditorias_naoconformidade` (
   `descricao` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `grau` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `auditor_lider` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `auditor_lider_jbc` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auditor_lider_iniciais` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `auditor` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `auditor_jbc` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `auditor_iniciais` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `representante` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `analise` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `correcao` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -298,6 +331,13 @@ CREATE TABLE `auditorias_naoconformidade` (
   `data_completado` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `comentarios` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Fazendo dump de dados para tabela `auditorias_naoconformidade`
+--
+
+INSERT INTO `auditorias_naoconformidade` (`id`, `n_contrato`, `n_relatorio`, `auditoria_tipo`, `processo`, `norma`, `clausula`, `descricao`, `grau`, `auditor_lider`, `auditor_lider_iniciais`, `auditor`, `auditor_iniciais`, `representante`, `analise`, `correcao`, `data_implementacao`, `data_verificacao`, `status_verificacao`, `auditor_verificacao`, `auditoria_id`, `data`, `responsavel`, `data_completado`, `comentarios`) VALUES
+(1, '1235387', 'B44SMJBC01', 'Auditoria Principal', 'Sistema de Gestão: Compras, Recebimento, Vendas.', '14790:2011', '4.4 Venda e comunicação sobre produtos certificados', 'Evidenciado que nas Notas Fiscais de Venda, não constam o percentual de certificação dos produtos gráficos da Romiti', 'Menor', 'Juliana Bueno Colpas', 'JBC', 'Juliana Bueno Colpas', 'JBC', 'Antonio Ferreira', NULL, NULL, NULL, '2013-12-06', NULL, NULL, 1, '2012-12-06', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -363,6 +403,13 @@ CREATE TABLE `auditorias_observacoes` (
   `auditoria_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Fazendo dump de dados para tabela `auditorias_observacoes`
+--
+
+INSERT INTO `auditorias_observacoes` (`id`, `observacoes`, `auditoria_id`) VALUES
+(1, '1.', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -419,6 +466,14 @@ CREATE TABLE `auditorias_recomendacao` (
   `auditoria_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Fazendo dump de dados para tabela `auditorias_recomendacao`
+--
+
+INSERT INTO `auditorias_recomendacao` (`id`, `norma`, `acreditacao`, `copias`, `idioma`, `auditoria_id`) VALUES
+(1, '14790:2011', 'UKAS', 0, 'Português (Brasil)', 1),
+(2, '14790:2011', 'INMETRO', 1, 'Português (Brasil)', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -431,6 +486,13 @@ CREATE TABLE `auditorias_relatorio` (
   `auditoria_id` int(11) DEFAULT NULL,
   `auditorias_naoconformidade_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Fazendo dump de dados para tabela `auditorias_relatorio`
+--
+
+INSERT INTO `auditorias_relatorio` (`id`, `data`, `auditoria_id`, `auditorias_naoconformidade_id`) VALUES
+(1, '2012-12-06', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -470,6 +532,13 @@ CREATE TABLE `auditorias_sumarionc` (
   `atual_followup` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `auditoria_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Fazendo dump de dados para tabela `auditorias_sumarionc`
+--
+
+INSERT INTO `auditorias_sumarionc` (`id`, `maior`, `menor`, `followup`, `data_followup`, `duracao`, `atual_followup`, `auditoria_id`) VALUES
+(1, 0, 2, 'N', NULL, 0, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -6137,21 +6206,23 @@ CREATE TABLE `clientes` (
   `tel` varchar(20) DEFAULT NULL,
   `cep` varchar(20) DEFAULT NULL,
   `fax` varchar(20) DEFAULT NULL,
-  `n_contrato` varchar(25) DEFAULT NULL
+  `n_contrato` varchar(25) DEFAULT NULL,
+  `image` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Fazendo dump de dados para tabela `clientes`
 --
 
-INSERT INTO `clientes` (`id`, `nome`, `endereco`, `estado`, `cidade`, `tel`, `cep`, `fax`, `n_contrato`) VALUES
-(2, 'PROJEK CONSULTORIA', 'Parque Tecnológico da Bahia', 'BA', '2927408', '(71) 98841-9093', NULL, NULL, NULL),
-(3, 'GUJÃO ALIMENTOS S/A', 'Rodovia BA 502, KM 27,8', 'BA', '2910800', '(75) 36224-196_', NULL, NULL, NULL),
-(4, 'ATACADÃO BAHIA', 'R. Barão de Mauá, 51C', 'BA', '2910800', '(75) 2101-0080', '44002-552', NULL, '009.2017'),
-(5, 'GRUPO GEVAN - PRAIA GRANDE', 'Av. Afrânio Peixoto, 901', 'BA', '2927408', '(71) 3521-1344', NULL, NULL, NULL),
-(6, 'Grafica Romiti Ltda', 'Rua Iris Memberg, 302', 'SP', '3513009', '(11) 3229-2000', '06705-150', '(11) 4148-6762', '1235387'),
-(7, 'ASSIS ENGENHARIA', 'Rua Alceu Amoroso Lima, 668 – Sala 813 – Ed. America Towers - Caminho das Árvores', 'BA', '2927408', '(71) 4103-7202', '41820-770', '(00) 00000-0000', '0001'),
-(8, 'ASSIS TECNOLOGIA', 'Rua Alceo Amoroso Lima, 172, Edf Salvador Office & Pool, Sala 1109 e 1110', 'BA', '2927408', '(71) 30142-811_', '41820-770', '(00) 00000-0000', '000000000');
+INSERT INTO `clientes` (`id`, `nome`, `endereco`, `estado`, `cidade`, `tel`, `cep`, `fax`, `n_contrato`, `image`) VALUES
+(2, 'PROJEK CONSULTORIA', 'Parque Tecnológico da Bahia', 'BA', '2927408', '(71) 98841-9093', NULL, NULL, NULL, NULL),
+(3, 'GUJÃO ALIMENTOS S/A', 'Rodovia BA 502, KM 27,8', 'BA', '2910800', '(75) 36224-196_', NULL, NULL, NULL, NULL),
+(4, 'ATACADÃO BAHIA', 'R. Barão de Mauá, 51C', 'BA', '2910800', '(75) 2101-0080', '44002-552', NULL, '009.2017', NULL),
+(5, 'GRUPO GEVAN - PRAIA GRANDE', 'Av. Afrânio Peixoto, 901', 'BA', '2927408', '(71) 3521-1344', NULL, NULL, NULL, NULL),
+(6, 'Grafica Romiti Ltda', 'Rua Iris Memberg, 302', 'SP', '3513009', '(11) 3229-2000', '06705-150', '(11) 4148-6762', '1235387', 'GfYGxL4ylEQY5RwtepuSVpTlmFaTilL6xxnfFccp.jpeg'),
+(7, 'ASSIS ENGENHARIA', 'Rua Alceu Amoroso Lima, 668 – Sala 813 – Ed. America Towers - Caminho das Árvores', 'BA', '2927408', '(71) 4103-7202', '41820-770', '(00) 00000-0000', '0001', NULL),
+(8, 'ASSIS TECNOLOGIA', 'Rua Alceo Amoroso Lima, 172, Edf Salvador Office & Pool, Sala 1109 e 1110', 'BA', '2927408', '(71) 30142-811_', '41820-770', '(00) 00000-0000', '000000000', NULL),
+(10, 'Petrobras', 'Rua da Petrobras', 'RJ', '3301207', '(71) 98333-3333', '98666-666', '(71) 98333-3333', '1233224', 'aO5JAKN5eB0rMgaYegNUvNv7yKHMnY4N6MlT4UkX.png');
 
 -- --------------------------------------------------------
 
@@ -7923,7 +7994,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`password`, `name`, `email`, `sexo`, `estado`, `cidade`, `telefone`, `id`, `sobrenome`, `updated_at`, `created_at`, `remember_token`, `image`, `profissao_id`) VALUES
-('$2y$10$lRjICI53Jk2lrSYBK9kXV.oi65ksqSju/Y9vmycmGohK4h6.WcriS', 'Fábio', 'fabio.martins@projek.com.br', 'masculino', 'BA', '2927408', '(71) 98841-9093', 50, 'Martins', '2018-01-09 00:25:07', '2017-11-06 14:44:39', 'MFETqif0WLKbgHPk0ahzaQoIXwSTIzhvcEFgFYx6tBZTRHQRNEmSfevWHJi2', 'n0t8pmssrQWnVqf1Wj6ud8iv570cOrvRSmCoKdUT.png', 1),
+('$2y$10$lRjICI53Jk2lrSYBK9kXV.oi65ksqSju/Y9vmycmGohK4h6.WcriS', 'Fábio', 'fabio.martins@projek.com.br', 'masculino', 'BA', '2927408', '(71) 98841-9093', 50, 'Martins', '2018-01-31 14:21:19', '2017-11-06 14:44:39', 'wAnNRVJXlwKMWYuZp7MeQXwmIETgpsjemMt3g0dPIcwe1soCaNOUWRn8Hdm0', 'VwRSFCRosMYx0WcoNi75KBR9y2pJN1APpp2WHRWR.jpeg', 1),
 ('$2y$10$lRjICI53Jk2lrSYBK9kXV.oi65ksqSju/Y9vmycmGohK4h6.WcriS', 'Juliana', 'juliana.menezes@projek.com.br', 'feminino', 'BA', '2927408', '(71) 99371-5053', 51, 'Menezes', '2018-01-17 17:44:43', '2017-11-08 17:13:14', 'Sco9ElSmz0pcjpe5Br922oZITWWNE3okg0l5wuzYb5rvxVGzselhZq1lF63r', 'R1rZz04brNRHXoBroHJ7MuM3wrOe2pJIqqh61L4b.png', 1),
 ('$2y$10$eg5.BDJE9dWkf6HFnx7Op.Gfvk/xtQw51J2Eckun1i6PpyHuCXgWe', 'Catharina', 'catharina.ramos@projek.com.br', 'feminino', 'BA', '2927408', '(71) 99915-5505', 52, 'Ramos', '2017-11-10 18:26:22', '2017-11-10 18:26:22', 'XjjdTz52VcFpUYDjgNsgeIGOd425c69NjVQuMxv0g2Wa7Lp9facB8Gzl2quZ', NULL, 1);
 
@@ -7983,6 +8054,12 @@ ALTER TABLE `auditorias_departamento`
 -- Índices de tabela `auditorias_departamentos_clausulas`
 --
 ALTER TABLE `auditorias_departamentos_clausulas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `auditorias_detalhenaoconformidade`
+--
+ALTER TABLE `auditorias_detalhenaoconformidade`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -8246,7 +8323,7 @@ ALTER TABLE `auditorias_clausula`
 -- AUTO_INCREMENT de tabela `auditorias_conclusoes`
 --
 ALTER TABLE `auditorias_conclusoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `auditorias_contato`
@@ -8267,10 +8344,16 @@ ALTER TABLE `auditorias_departamentos_clausulas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `auditorias_detalhenaoconformidade`
+--
+ALTER TABLE `auditorias_detalhenaoconformidade`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `auditorias_eficacia`
 --
 ALTER TABLE `auditorias_eficacia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `auditorias_escopo`
@@ -8288,7 +8371,7 @@ ALTER TABLE `auditorias_gestores`
 -- AUTO_INCREMENT de tabela `auditorias_naoconformidade`
 --
 ALTER TABLE `auditorias_naoconformidade`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `auditorias_norma`
@@ -8306,7 +8389,7 @@ ALTER TABLE `auditorias_notas`
 -- AUTO_INCREMENT de tabela `auditorias_observacoes`
 --
 ALTER TABLE `auditorias_observacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `auditorias_plano`
@@ -8324,13 +8407,13 @@ ALTER TABLE `auditorias_programa`
 -- AUTO_INCREMENT de tabela `auditorias_recomendacao`
 --
 ALTER TABLE `auditorias_recomendacao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `auditorias_relatorio`
 --
 ALTER TABLE `auditorias_relatorio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `auditorias_revisao`
@@ -8342,7 +8425,7 @@ ALTER TABLE `auditorias_revisao`
 -- AUTO_INCREMENT de tabela `auditorias_sumarionc`
 --
 ALTER TABLE `auditorias_sumarionc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `auditorias_sumarionorma`
@@ -8366,7 +8449,7 @@ ALTER TABLE `classificacoes`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `definicoes`

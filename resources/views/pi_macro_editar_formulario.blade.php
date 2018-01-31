@@ -54,8 +54,8 @@
     <label for="horas" class="control-label col-md-1">Horas <span class="required">*</span>
     </label>
     <div class="col-md-2 col-sm-6 col-xs-12">
-      <input type="text" data-inputmask="'mask' : '9{1,5}'"  value="{{$m->horas}}" id="horas" name="horas" required="required" class="form-control">
-    </div>                        
+      <input type="number" value="{{$m->horas}}" data-parsley-type="number" step=".01"  id="horas" name="horas" required="required" class="form-control">
+    </div>                     
   </div>
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_classificacao">Classificação<span class="required">*</span>

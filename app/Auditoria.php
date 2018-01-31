@@ -29,6 +29,10 @@ class Auditoria extends Model
       return $this->hasMany('App\AuditoriaRevisao');
   } 
 
+  public function detalhenaoconformidade(){
+      return $this->hasOne('App\AuditoriaDetalheNaoConformidade');
+  } 
+
   public function naoconformidades(){
       return $this->hasMany('App\AuditoriaNaoConformidade');
   } 

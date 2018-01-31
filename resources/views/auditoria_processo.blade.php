@@ -254,20 +254,46 @@
   <div class="panel panel-warning">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" href="#auditoria-naoconformidade">3.4 RELATÓRIO DE NÃO CONFORMIDADE</a>
-        <a href="{{$a->id}}/processo/naoconformidade/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Revisão" class="btn btn-warning btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
+        <a data-toggle="collapse" href="#auditoria-naoconformidade">3.4 RELATÓRIO DE NÃO CONFORMIDADE</a>                       
         <div class="clearfix"></div>
       </h4>
     </div>
     <div id="auditoria-naoconformidade" class="panel-collapse collapse">
       <div class="panel-body"> 
 
+        <!-- PANEL NÃO CONFORMIDADES DETALHES-->
+        <div class="panel-group">
+          <div class="panel panel-danger">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#detalhenaoconformidade">3.4.1 DESCRIÇÃO DO RELATÓRIO DE NÃO CONFORMIDADE</a>
+                @if($a->detalhenaoconformidade != null)
+                  <a href="{{$a->id}}/processo/detalhenaoconformidade/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Revisão" class="btn btn-danger btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a> 
+                @else
+                  <a href="{{$a->id}}/processo/detalhenaoconformidade/novo"><button data-toggle="tooltip" data-placement="top" title="Adicionar Revisão" class="btn btn-danger btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a> 
+                @endif                      
+                <div class="clearfix"></div>
+              </h4>
+            </div>
+            <div id="detalhenaoconformidade" class="panel-collapse collapse">
+              <div class="panel-body">
+                @if($a->detalhenaoconformidade != null)
+                  <div style="white-space: pre-line; word-break: break-word;">
+                  {{$a->detalhenaoconformidade->descricao}}
+                </div>
+                @endif
+              </div> 
+            </div>
+          </div>   
+        </div> 
+        <!-- FiM NÃO CONFORMIDADES DETALHES--> 
+
         <!-- PANEL NÃO CONFORMIDADES-->
         <div class="panel-group">
           <div class="panel panel-danger">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" href="#naoconformidades">NÃO CONFORMIDADES</a>
+                <a data-toggle="collapse" href="#naoconformidades">3.4.2 NÃO CONFORMIDADES</a>
                 <a href="{{$a->id}}/processo/naoconformidade/novo"><button data-toggle="tooltip" data-placement="top" title="Adiciona Revisão" class="btn btn-danger btn-xs pull-right"><i class="fa fa-plus"></i></button></a> </a>                       
                 <div class="clearfix"></div>
               </h4>
@@ -283,7 +309,7 @@
                     <div class="panel panel-success">
                       <div class="panel-heading">
                         <h4 class="panel-title">
-                          <a data-toggle="collapse" href="{{$naoconformidadeId}}">{{$naoconformidadeString}}. NÃO CONFORMIDADE</a>
+                          <a data-toggle="collapse" href="{{$naoconformidadeId}}">{{$naoconformidadeString}}. {{$naoconformidade->processo}}</a>
                           <a href="{{$naoconformidade->id}}/processo/naoconformidade/encontrar"><button data-toggle="tooltip" data-placement="top" title="Alterar Revisão da Auditoria" class="btn btn-success btn-xs pull-right"><i class="fa fa-pencil"></i></button></a> </a>                                
                           <div class="clearfix"></div>
                         </h4>

@@ -82,8 +82,8 @@
         <td>{{$k->email}}</td>
         <td>{{$k->cargo}}</td>
         <td align="center">
-          <a href=""><button data-toggle="tooltip" data-placement="top" title="Novo Departamento" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-          <a href=""><button data-toggle="tooltip" data-placement="top" title="Novo Departamento" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+          <a href=""><button data-toggle="tooltip" data-placement="top" title="Alterar Stakeholder" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+          <a href=""><button data-toggle="tooltip" data-placement="top" title="Remover Stakeholder" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
         </td>
       </tr>
     @endforeach

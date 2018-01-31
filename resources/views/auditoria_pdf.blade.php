@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/auditoria.css') }}" />
   </head>
   <body>
-  	<page size="A4" class="break">
+  	<page size="A4">
       <div>
         <img src="{{ URL::asset('imagens/logo.png') }}">
       </div>
@@ -28,11 +28,9 @@
         <h2 class="capa">Auditoria Principal/</h2>
   		</div>
   	</page>
-
-    <page size="A4" class="break">
+    <page size="A4">
       <h2 id="title">ÍNDICE</h2>
       <hr>
-      <br>
       <p><strong>1. INFORMAÇÕES GERAIS</strong></p>
       <p>1.1 INFORMAÇÕES DA ORGANIZAÇÃO</p>
       <p>1.2 INFORMAÇÕES DO CONTRATO</p>
@@ -62,11 +60,9 @@
       <br>
       <p><strong>7. PROGRAMA DE AUDITORIAS</strong></p>
     </page>
-
     <page size="A4">
       <h2 id="title">1. INFORMAÇÕES GERAIS</h2>
       <hr>
-      <br>
       <div>
         <h3 id="title">1.1 INFORMAÇÕES DA ORGANIZAÇÃO</h3>
         <table class="table table-bordered">
@@ -130,11 +126,9 @@
         </table>
       </div>
     </page> 
-
     <page size="A4">
       <h2 id="title">2. INFORMAÇÕES DA AUDITORIA</h2>
       <hr>
-      <br>
       <div>
         <h3 id="title">2.1 NORMAS DA AUDITORIA</h3>
         <table class="table table-bordered">
@@ -243,9 +237,7 @@
         </table>
       </div>
     </page> 
-
     <page size="A4">
-      <br>
       <h3 id="title">2.4 ESCOPO DA AUDITORIA</h3>
       <table class="table table-bordered">
         <tr>
@@ -259,7 +251,6 @@
         </tr>
         @endif
       </table>
-      <br>
       <table class="table table-bordered">
         <tr>
           <td style="width: 10%;">Data</td>
@@ -283,11 +274,9 @@
         @endforeach
       </table>
     </page> 
-
-    <page size="A4">
+    <page size="A4" class="break" style="height: 100%;">
       <h2 id="title">3. PROCESSO DA AUDITORIA</h2>
       <hr>
-      <br>
       <div>
         <h3 id="title">3.1 NOTAS DA AUDITORIA</h3>
         <table class="table table-bordered">
@@ -341,9 +330,208 @@
             @endforeach
           </tbody>
         </table>
+        <br>
+        <h3 id="title">3.4 RELATÓRIO DE NÃO CONFORMIDADE</h3>
+        <table class="table table-bordered">
+          @if($a->detalhenaoconformidade != null)
+          <tr class="data">
+            <td>
+                {{$a->detalhenaoconformidade->descricao}}
+            </td>
+          </tr>
+          @endif
+        </table>
+        <br>
+        @foreach ($a->naoconformidades as $naoconformidade)
+          <h3>Será completado pela Projek</h3>
+          <table class="table table-bordered" style="margin: 0">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Organização</th>
+                <th>Número do Contrato</th>
+                <th>Relatório n°</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{$naoconformidade->data}}</td>
+                <td>{{$a->cliente->nome}}</td>
+                <td>{{$naoconformidade->n_contrato}}</td>
+                <td>{{$naoconformidade->n_relatorio}}</td>
+              </tr>
+            </tbody>
+          </table>      
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Não conformidades observadas durante</th>
+                <td>{{$naoconformidade->auditoria_tipo}}</td>
+              </tr>
+              <tr>
+                <th>Processo</th>
+                <td>{{$naoconformidade->processo}}</td>
+              </tr>
+              <tr>
+                <th>Norma</th>
+                <td>{{$naoconformidade->norma}}</td>
+              </tr>
+              <tr>
+                <th>Cláusula</th>
+                <td>{{$naoconformidade->clausula}}</td>
+              </tr>
+            </thead>
+          </table>
+          <br>
+          <h3>Completado pela Organização:</h3>
+          <table class="table table-bordered" style="margin: 0">
+            <tr>
+              <th>Análise de causa raiz (O que falhou no sistema para permitir que esta NC ocorra.)</th>
+            </tr>
+            <tr>
+              <td></td>
+            </tr>
+          </table>
+          <table class="table table-bordered" style="margin: 0">
+            <tr>
+              <th>Correção e Ação Corretiva (O que é feito para solucionar este problema e prevenir reincidência?)</th>
+            </tr>
+            <tr>
+              <td></td>
+            </tr>
+          </table>
+        @endforeach
       </div>
     </page>
-
+    <page size="A4">
+      <h2 id="title">4. DESEMPENHO</h2>
+      <hr>
+      <table class="table table-bordered">
+        @foreach ($a->relatorios as $relatorio)
+          <tr>
+            <th>Relatório n°</th>
+            <td>{{$relatorio->naoconformidade->n_relatorio}}</td>
+          </tr>
+          <tr>
+            <th>Não Conformidade</th>
+            <td>{{$relatorio->naoconformidade->descricao}}</td>
+          </tr>
+          <tr>
+            <th>Processo</th>
+            <td>{{$relatorio->naoconformidade->processo}}</td>
+          </tr>
+          <tr>
+            <th>Norma</th>
+            <td>{{$relatorio->naoconformidade->norma}}</td>
+          </tr>
+          <tr>
+            <th>Cláusula</th>
+            <td>{{$relatorio->naoconformidade->clausula}}</td>
+          </tr>
+          <tr>
+            <th>Grau da NC</th>
+            <td>{{$relatorio->naoconformidade->grau}}</td>
+          </tr>
+          <tr>
+            <th>Data</th>
+            <td>{{$relatorio->naoconformidade->data}}</td>
+          </tr>
+          <tr>
+            <th>Completado antes de</th>
+            <td>{{$relatorio->naoconformidade->data}}</td>
+          </tr>
+          <tr>
+            <th>Verificação das Ações Corretivas e Eficácia</th>
+            <td>{{$relatorio->naoconformidade->data}}</td>
+          </tr>
+        @endforeach
+      </table>
+    </page>
+    <page size="A4">
+      <h2 id="title">5. SUMÁRIO EXECUTIVO</h2>
+      <hr>
+      <div>
+        <h3 id="title">5.1 CONCLUSÕES DA AUDITORIA</h3>
+        <table>
+          @if($a->conclusoes != null)
+            <td>{{$a->conclusoes->conclusao}}</td>
+          @endif
+        </table>
+      </div>
+      <div>
+        <h3 id="title">5.2 SUMÁRIO DAS NÃO-CONFORMIDADES</h3>
+        @if($a->sumarionc != null)
+          <table class="table table-bordered">
+            <tr>
+              <th>Número de Não Conformidades Identificadas</th>
+              <td>Maior:{{$a->sumarionc->maior}}  Menor:{{$a->sumarionc->menor}}</td>
+            </tr> 
+            <tr>
+              <th>Follow Up é necessário</th>
+              <td>{{$a->sumarionc->followup}}</td>
+            </tr> 
+            <tr>
+              <th>Data de Inicio do Follow Up</th>
+              <td>{{$a->sumarionc->data_followup}}</td>
+            </tr> 
+            <tr>
+              <th>Duração (dias)</th>
+              <td>{{$a->sumarionc->duracao}}</td>
+            </tr> 
+            <tr>
+              <th>Data de Follow Up atual</th>
+              <td>{{$a->sumarionc->atual_followup}}</td>
+            </tr> 
+          </table>
+        @endif
+      </div>
+      <div>
+        <h3 id="title">5.3 EFICÁCIA DO SISTEMA DE GESTÃO</h3>
+        <table class="table table-bordered" >
+          <tr class="data">
+            @if($a->eficacia != null)
+              <td>{{$a->eficacia->eficacia}}</td>
+            @endif
+          </tr>  
+        </table>
+      </div>
+      <div>
+        <h3 id="title">5.4 OBSERVAÇÕES</h3>
+        <table class="table table-bordered" >
+          <tr class="data">
+            @if($a->observacoes != null)
+              <td>{{$a->observacoes->observacoes}}</td>
+            @endif
+          </tr>  
+        </table>
+      </div>
+    </page>
+    <page size="A4">
+      <h2 id="title">6. RECOMENDAÇÃO DO AUDITOR LÍDER</h2>
+      <hr>
+      <div>
+        <table class="table table-bordered">
+          <tr>
+            <th>Norma</th>
+            <th>Acreditação</th>
+            <th>Cópias</th>
+            <th>Idioma</th>
+          </tr>
+          @foreach ($a->recomendacao as $recomendacao)
+            <tr>
+              <td>{{$recomendacao->norma}}</td>
+              <td>{{$recomendacao->acreditacao}}</td>
+              <td>{{$recomendacao->copias}}</td>
+              <td>{{$recomendacao->idioma}}</td>
+            </tr>
+          @endforeach
+        </table>
+      </div>
+    </page>
+    <page size="A4">
+      <h2 id="title">7. PROGRAMA DE AUDITORIAS</h2>
+      <hr>
+    </page>
     <script type="text/javascript" src="{{URL::asset('vendors/jquery/dist/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('vendors/Chart.js/dist/Chart.min.js')}}"></script>

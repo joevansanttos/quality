@@ -24,22 +24,22 @@ class AuditoriaController extends Controller
   }
 
   public function lista_todos(){
-    $auditorias = Auditoria::all();
+    $auditorias = Auditoria::orderBy('cod', 'asc')->get();
     return view('auditorias')->with('auditorias', $auditorias);
   }	
 
   public function lista_inicial(){
-    $auditorias = Auditoria::all()->where('status_pi_id', '1');
+    $auditorias = Auditoria::orderBy('cod', 'asc')->where('status_pi_id', '1')->get();
     return view('auditorias_inicial')->with('auditorias', $auditorias);
   } 
 
   public function lista_andamento(){
-    $auditorias = Auditoria::all()->where('status_pi_id', '2');
+    $auditorias = Auditoria::orderBy('cod', 'asc')->where('status_pi_id', '2')->get();
     return view('auditorias_andamento')->with('auditorias', $auditorias);
   } 
 
   public function lista_finalizado(){
-    $auditorias = Auditoria::all()->where('status_pi_id', '3');
+    $auditorias = Auditoria::orderBy('cod', 'asc')->where('status_pi_id', '3')->get();
     return view('auditorias_finalizado')->with('auditorias', $auditorias);
   } 
 
@@ -93,7 +93,7 @@ class AuditoriaController extends Controller
 
   public function imprimir($id){
     $auditoria = Auditoria::find($id);
-    return view ('auditoria')->with('a', $auditoria);
+    return view ('auditoria_pdf')->with('a', $auditoria);
   }
 
   public function gestores($id){

@@ -29,20 +29,26 @@
 
 @section("conteudo")
 
-<table id="tabela" class="table table-bordered">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>Cliente</th>
       <th style="width: 12%;">Código</th> 
       <th style="width: 12%;">Data</th>    
-      <th style="width: 20%;">Ações</th>    
+      <th style="width: 10%;">Ações</th>    
     </tr>
   </thead>
   
   @foreach ($auditorias as $a)
     
     <tr>
-      <td>{{$a->cliente->nome}}</td>
+      
+      @if($a->cliente != null)
+        <td>{{$a->cliente->nome}}</td>
+      @else
+        <td></td>
+      @endif
+      
       <td>{{$a->cod}}</td> 
 
       <td>{{ date("d/m/Y", strtotime($a->data))}}</td>        
@@ -52,9 +58,6 @@
     @endif
 
     @if(Auth::user()->profissao_id != 4)
-        <a href="/auditorias/{{$a->id}}"><button data-toggle="tooltip" data-placement="top" title="Adicionar na Auditoria" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i></button></a>
-        <a href="/auditorias/gestores/{{$a->id}}"><button data-toggle="tooltip" data-placement="top" title="Adicionar Gestor" class="btn btn-info btn-xs"><i class="fa fa-users"></i></button></a>
-        <a href="/auditorias/imprimir/{{$a->id}}"><button data-toggle="tooltip" data-placement="top" title="Imprimir Auditoria" class="btn btn-success btn-xs"><i class="fa fa-print"></i></button></a>
         <a href="/auditorias/encontrar/{{$a->id}}"><button data-toggle="tooltip" data-placement="top" title="Alterar Auditoria" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
         <a href=""><button data-toggle="tooltip" data-placement="top" title="Remover Manual" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
     @endif

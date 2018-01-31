@@ -25,6 +25,7 @@ Route::post('/clientes/adiciona', 'ClienteController@adiciona');
 Route::post('/clientes/gestores', 'ClienteController@gestores');
 Route::resource('cliente-editar-formulario','ClienteController');
 Route::get('/clientes/encontrar/{id}', 'ClienteController@encontrar');
+Route::get('/clientes/ver/{id}', 'ClienteController@ver');
 Route::post('/clientes/alterar', 'ClienteController@alterar');
 Route::get('/clientes/remover/{id}', 'ClienteController@remover');
 Route::get('/clientes/ver/{id}', 'ClienteController@ver');
@@ -183,6 +184,10 @@ Route::get('/auditorias/{id}/processo/clausula/novo', 'AuditoriaProcessoControll
 Route::post('/auditorias/{id}/processo/clausula/adiciona', 'AuditoriaProcessoController@adiciona_clausula');
 Route::get('/auditorias/{id}/processo/departamentoclausula/novo', 'AuditoriaProcessoController@novo_departamentoclausula');
 Route::post('/auditorias/{id}/processo/departamentoclausula/adiciona', 'AuditoriaProcessoController@adiciona_departamentoclausula');
+Route::get('/auditorias/{id}/processo/detalhenaoconformidade/novo', 'AuditoriaProcessoController@novo_detalhenaoconformidade');
+Route::post('/auditorias/{id}/processo/detalhenaoconformidade/adiciona', 'AuditoriaProcessoController@adiciona_detalhenaoconformidade');
+Route::get('/auditorias/{id}/processo/detalhenaoconformidade/encontrar', 'AuditoriaProcessoController@encontrar_detalhenaoconformidade');
+Route::post('/auditorias/{id}/processo/detalhenaoconformidade/alterar', 'AuditoriaProcessoController@alterar_detalhenaoconformidade');
 Route::get('/auditorias/{id}/processo/naoconformidade/novo', 'AuditoriaProcessoController@nova_naoconformidade');
 Route::post('/auditorias/{id}/processo/naoconformidade/adiciona', 'AuditoriaProcessoController@adiciona_naoconformidade');
 Route::get('/auditorias/{id}/processo/naoconformidade/encontrar', 'AuditoriaProcessoController@encontrar_naoconformidade');

@@ -65,7 +65,7 @@
       </div>
       <div id="auditoria-gerais" class="panel-collapse collapse">
         <div class="panel-body">  
-          @include('auditoria_detalhes_gerais')
+          @include('auditoria_gerais')
         </div>
       </div>
     </div>   
@@ -84,7 +84,7 @@
       </div>
       <div id="auditoria-info" class="panel-collapse collapse">
         <div class="panel-body"> 
-          @include('auditoria_detalhes_info')
+          @include('auditoria_info')
         </div>
       </div>
     </div>   
@@ -102,7 +102,7 @@
       </div>
       <div id="auditoria-processo" class="panel-collapse collapse">
         <div class="panel-body">  
-           @include('auditoria_detalhes_processo') 
+           @include('auditoria_processo') 
         </div>
       </div>
     </div>   
@@ -120,7 +120,7 @@
       </div>
       <div id="auditoria-desempenho" class="panel-collapse collapse">
         <div class="panel-body">        
-          @include('auditoria_detalhes_desempenho') 
+          @include('auditoria_desempenho') 
         </div>
       </div>
     </div>   
@@ -138,7 +138,7 @@
       </div>
       <div id="auditoria-sumario" class="panel-collapse collapse">
         <div class="panel-body"> 
-          @include('auditoria_detalhes_sumario') 
+          @include('auditoria_sumario') 
         </div>
       </div>
     </div>   
@@ -156,7 +156,7 @@
       </div>
       <div id="auditoria-recomendacao" class="panel-collapse collapse">
         <div class="panel-body"> 
-          @include('auditoria_detalhes_recomendacao') 
+          @include('auditoria_recomendacao') 
         </div>
       </div>
     </div>   
@@ -174,7 +174,7 @@
       </div>
       <div id="auditoria-programas" class="panel-collapse collapse">
         <div class="panel-body"> 
-          @include('auditoria_detalhes_programa')
+          @include('auditoria_programa')
         </div>
       </div>
     </div>   
